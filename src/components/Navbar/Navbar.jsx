@@ -1,4 +1,4 @@
-import imagenUthopon from '../images/uthopon.png';
+import imagenUthopon from "../../images/uthopon.png";
 import './navbar.css';
 
 function Navbar(){
