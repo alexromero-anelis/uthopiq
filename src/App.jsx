@@ -1,12 +1,10 @@
-import './index.css'
+import './index.css';
+import Navbar from './components/navbar';
 
 function App() {
   return (
     <>
       <Navbar />
-      <main style={{ padding: '1rem' }}>
-        <h1>Bienvenido a mi app</h1>
-      </main>
     </>
   );
 }

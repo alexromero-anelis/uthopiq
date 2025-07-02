@@ -1,0 +1,54 @@
+@import url('../styles/global.css');
+
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background: var(--fondo-transparente);
+  padding: 1rem; /*1 rem son 16px normalmente, si uso rem, si cambio el tamaño base todo escalará*/
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /*Separa la imagen del texto*/
+}
+
+.navbar-logo img {
+  height: 60px;
+}
+
+.navbar-text {
+  font-family: var(--font-logo);
+  font-size: 1.4rem;
+  color: var(--blanco);
+}
+
+.navbar-text:hover {
+  color: var(--rojo-primario);
+  cursor: pointer;
+}
+
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  font-family: var(--font-p);
+}
+
+.navbar-links li a {
+  color: var(--blanco);
+  text-decoration: none;
+}
+
+.navbar-links li a:hover {
+  color: var(--rojo-primario);
+}
+
+
+/*TODO: Hacer los estilos para móviles*/
+@media screen and (max-width: 650px){ /*Pantallas de 650px o menos*/
+  
+}

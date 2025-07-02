@@ -1,0 +1,32 @@
+:root {
+  /* Colores */
+  --rojo-primario: #ff4b4b;
+  --negro-fondo: #252423;
+  --blanco: #ffffff; 
+  --gris-claro-letras: #E6E6E6;
+  --gris-claro: #6e6b6c; 
+  --gris-oscuro: #2f2e2d;
+
+  /*Navbar*/
+  --fondo-transparente: #252423;
+
+  /*Tipografía logo*/
+  --font-logo:'Orbitron-regular';
+  /*Tipografía H2*/
+  --font-h2: 'RussoOne-regular';
+  /*Tipografía párrafos*/
+  --font-p: 'Inter-regular';
+}
+
+@font-face {
+  font-family: 'Inter-regular';
+  src: url('../fonts/Inter/Inter_18pt-Regular.ttf');
+}
+@font-face {
+  font-family: 'Orbitron-regular';
+  src: url('../fonts/Orbitron/Orbitron-Regular.ttf');
+}
+@font-face {
+  font-family: 'RussoOne-regular';
+  src: url('../fonts/RussoOne/RussoOne-Regular.ttf');
+}
