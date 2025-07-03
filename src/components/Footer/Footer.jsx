@@ -11,7 +11,7 @@ function Footer() {
                 <img src={logo} alt="UTHOPIQ Logo" className="mb-4 w-12 h-12" />
                 <p className="footer-description">En <strong>UTHOPIQ</strong> somos especialistas en desarrollo web, automatización con inteligencia artificial y mentoría tecnológica.</p>
                 <div className="footer-social">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={18} /></a>
+                    <a href="https://www.instagram.com/uthopiq" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={18} /></a>
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
                 </div>
             </div>
