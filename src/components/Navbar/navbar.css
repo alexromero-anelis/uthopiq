@@ -8,6 +8,7 @@
   background: var(--negro-fondo);
   padding: 1rem;
   z-index: 1000;
+  width: 100%;
 }
 
 .navbar-left {
