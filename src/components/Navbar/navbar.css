@@ -1,12 +1,13 @@
 @import url('../../styles/global.css');
 
 .navbar {
-  position: relative;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: var(--negro-fondo);
   padding: 1rem;
+  z-index: 1000;
 }
 
 .navbar-left {
