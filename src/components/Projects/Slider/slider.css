@@ -1,0 +1,14 @@
+.swiper {
+  padding: 2rem 1rem;
+}
+
+.swiper-slide {
+  display: flex;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .swiper {
+    padding: 1rem 0.5rem;
+  }
+}

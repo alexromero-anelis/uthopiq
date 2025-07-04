@@ -4,7 +4,7 @@ import "./hero.css"
 function Hero() 
 {
     return (
-        <div className="hero-wrapper">
+        <div className="hero-wrapper" id="Inicio">
             <FondoAnimado />
 
             <div className="hero-container container mx-auto px-4 py-16 md:py-24 relative z-10">
@@ -54,21 +54,6 @@ function Hero()
                     </div>
                 </div>
 
-                {/* Icono flecha */}
-                <div className="flex justify-center mt-16">
-                    <div className="arrow-down animate-bounce">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="28"
-                            height="28"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="var(--rojo-primario)"
-                            strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </div>
-                </div>
             </div>
         </div>
     )
