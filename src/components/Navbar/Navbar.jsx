@@ -1,10 +1,10 @@
-import imagenUthopon from "../../images/uthopon.png";
-import imagenTexto from "../../images/uthopic-nombre.png";
-import { useState } from "react";
+import imagenUthopon from "../../images/uthopic-logo-completo.png";
+import { useState, useEffect } from "react";
 import './navbar.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
     const menuHamburguesa = () => {
         setMenuOpen(!menuOpen);
@@ -14,22 +14,37 @@ function Navbar() {
         setMenuOpen(false);
     };
 
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? "hidden" : "auto";
+    }, [menuOpen]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <>
-            <nav className="navbar">
-                <a href="#Inicio">
-                    <div className="navbar-left">
-                        <img src={imagenUthopon} alt="Imagen de un robot rojo con la cara negra y sonrisa agradable" />
-                        <img src={imagenTexto} alt="Texto con el nombre de uthopiq" />
-                    </div>
-                </a>
+            <nav className={`navbar ${scrolled ? 'navbar-solid' : 'navbar-transparent'}`}>
+                <div className="navbar-left">
+                    <a href="#inicio" aria-label="Ir a inicio">
+                        <div className="logo-container">
+                        <img src={imagenUthopon} alt="Imagen de un robot rojo con la cara negra y sonrisa agradable" className="logo"/>
+                        </div>
+                    </a>
+                </div>
+
 
                 <div className="navbar-center">
                     <ul className="navbar-links-desktop">
                         <li><a href="#Proyectos">Proyectos</a></li>
-                        <li><a href="#Quienes somos">Quienes somos</a></li>
+                        <li><a href="#Quienes somos">Quiénes somos</a></li>
                         <li><a href="#Servicios">Servicios</a></li>
-                        <li><a href="#Contactanos">Contactanos</a></li>
+                        <li><a href="#Contactanos">Contáctanos</a></li>
                     </ul>
                 </div>
 
@@ -40,15 +55,16 @@ function Navbar() {
                 )}
 
                 <div className={`navbar-links-container ${menuOpen ? 'open' : ''}`}>
-                    <img src={imagenUthopon} alt="Imagen de un robot rojo con la cara negra y sonrisa agradable" />
+                    <img src={imagenUthopon} alt="Logo de Uthopiq" />
                     <ul className="navbar-links">
-                        <li><a href="#Inicio" onClick={cerrarMenu}>Inicio</a></li>
-                        <li><a href="#Proyectos" onClick={cerrarMenu}>Proyectos</a></li>
-                        <li><a href="#Quienes somos" onClick={cerrarMenu}>Quienes somos</a></li>
-                        <li><a href="#Servicios" onClick={cerrarMenu}>Servicios</a></li>
-                        <li><a href="#Contactanos" onClick={cerrarMenu}>Contactanos</a></li>
+                        <li><a href="#inicio" onClick={cerrarMenu}>Inicio</a></li>
+                        <li><a href="#proyectos" onClick={cerrarMenu}>Proyectos</a></li>
+                        <li><a href="#quienes-somos" onClick={cerrarMenu}>Quiénes somos</a></li>
+                        <li><a href="#servicios" onClick={cerrarMenu}>Servicios</a></li>
+                        <li><a href="#contactanos" onClick={cerrarMenu}>Contáctanos</a></li>
                     </ul>
                 </div>
+
             </nav>
 
             {menuOpen && <div className="overlay" onClick={cerrarMenu}></div>}
