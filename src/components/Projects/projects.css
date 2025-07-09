@@ -38,3 +38,38 @@
   border-left: 4px solid var(--rojo-primario);
   padding-left: 1rem;
 }
+
+@media (max-width: 768px) {
+  .proyectos {
+    padding: 3rem 1rem;
+  }
+
+  .proyectos h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .proyectos h2::after {
+    width: 60px;
+    height: 2px;
+    margin: 0.4rem auto 0;
+  }
+
+  .proyectos-web,
+  .proyectos-automatizacion {
+    margin-bottom: 2.5rem;
+  }
+
+  .proyectos-web h3,
+  .proyectos-automatizacion h3 {
+    font-size: 1.25rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--rojo-primario);
+    margin-bottom: 1rem;
+  }
+
+  .proyectos-web .slider,
+  .proyectos-automatizacion .slider {
+    padding: 0 0.5rem;
+  }
+}

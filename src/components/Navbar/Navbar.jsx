@@ -1,4 +1,4 @@
-import imagenUthopon from "../../images/uthopic-logo-completo.png";
+import imagenUthopon from "../../images/uthopiq-logo-completo.png";
 import { useState, useEffect } from "react";
 import './navbar.css';
 
@@ -41,10 +41,10 @@ function Navbar() {
 
                 <div className="navbar-center">
                     <ul className="navbar-links-desktop">
-                        <li><a href="#Proyectos">Proyectos</a></li>
-                        <li><a href="#Quienes somos">Quiénes somos</a></li>
-                        <li><a href="#Servicios">Servicios</a></li>
-                        <li><a href="#Contactanos">Contáctanos</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#planes">Planes</a></li>
+                        <li><a href="#quienes-somos">Quiénes somos</a></li>
+                        <li><a href="#contacto">Contáctanos</a></li>
                     </ul>
                 </div>
 
@@ -59,9 +59,9 @@ function Navbar() {
                     <ul className="navbar-links">
                         <li><a href="#inicio" onClick={cerrarMenu}>Inicio</a></li>
                         <li><a href="#proyectos" onClick={cerrarMenu}>Proyectos</a></li>
+                        <li><a href="#planes" onClick={cerrarMenu}>Planes</a></li>
                         <li><a href="#quienes-somos" onClick={cerrarMenu}>Quiénes somos</a></li>
-                        <li><a href="#servicios" onClick={cerrarMenu}>Servicios</a></li>
-                        <li><a href="#contactanos" onClick={cerrarMenu}>Contáctanos</a></li>
+                        <li><a href="#contacto" onClick={cerrarMenu}>Contáctanos</a></li>
                     </ul>
                 </div>
 

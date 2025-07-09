@@ -9,7 +9,7 @@ function Projects(){
     
     return(
         <>
-            <div className="proyectos" id='Proyectos'>
+            <div className="proyectos" id='proyectos'>
                 <h2>Proyectos realizados</h2>
 
                 <div className='proyectos-web'>

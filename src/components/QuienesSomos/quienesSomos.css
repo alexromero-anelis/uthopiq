@@ -1,0 +1,114 @@
+.quienes {
+  background-color: var(--negro-fondo);
+  color: var(--gris-claro-letras);
+  font-family: var(--font-p);
+  padding: 4rem 2rem;
+}
+
+.quienes h2 {
+  text-align: center;
+  font-size: 3.5rem;
+  color: var(--blanco);
+  font-family: var(--font-h2);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.quienes h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: var(--rojo-primario);
+  margin: 0.5rem auto 1rem;
+  border-radius: 5px;
+}
+
+.quienes-intro {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--gris-claro);
+  line-height: 1.6;
+}
+
+.socio {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.socio img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 4px solid var(--rojo-primario);
+}
+
+.socio-texto {
+  max-width: 500px;
+}
+
+.socio-texto h3 {
+  color: var(--rojo-primario);
+  font-family: var(--font-h2);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.socio-texto p {
+  font-size: 1rem;
+  color: var(--gris-claro);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .quienes {
+    padding: 3rem 1rem;
+  }
+
+  .quienes h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quienes h2::after {
+    width: 60px;
+    height: 2px;
+    margin: 0.4rem auto 1rem;
+  }
+
+  .quienes-intro {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+
+  .socio {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .socio img {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 1rem;
+  }
+
+  .socio-texto h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .socio-texto p {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+}

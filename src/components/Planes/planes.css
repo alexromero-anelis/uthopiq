@@ -1,0 +1,55 @@
+.planes {
+  background-color: var(--negro-fondo);
+  color: var(--gris-claro-letras);
+  font-family: var(--font-p);
+  padding: 4rem 2rem;
+}
+
+.planes h2 {
+  text-align: center;
+  font-size: 3.5rem;
+  color: var(--blanco);
+  font-family: var(--font-h2);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.planes h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: var(--rojo-primario);
+  margin: 0.5rem auto 0;
+  border-radius: 5px;
+}
+
+.planes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .planes {
+    padding: 3rem 1rem;
+  }
+
+  .planes h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .planes h2::after {
+    width: 60px;
+    height: 2px;
+    margin: 0.4rem auto 0;
+  }
+
+  .planes-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}

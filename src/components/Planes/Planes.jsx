@@ -1,0 +1,18 @@
+import './planes.css';
+import CardPlan from './CardPlan/CardPlan';
+import planesData from './planesData';
+
+function Planes() {
+    return (
+        <section className="planes" id="planes">
+            <h2>Nuestros Planes Web</h2>
+            <div className="planes-grid">
+                {planesData.map((plan, index) => (
+                    <CardPlan key={index} {...plan} />
+                ))}
+            </div>
+        </section>
+    );
+}
+
+export default Planes;
