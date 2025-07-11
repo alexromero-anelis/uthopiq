@@ -4,7 +4,7 @@ import "./hero.css"
 function Hero() 
 {
     return (
-        <div className="hero-wrapper" id="Inicio">
+        <div className="hero-wrapper" id="inicio">
             <FondoAnimado />
 
             <div className="hero-container container mx-auto px-4 py-16 md:py-24 relative z-10">
