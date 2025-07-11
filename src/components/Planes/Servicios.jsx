@@ -72,7 +72,7 @@ const serviciosIncluidos = [
 function Servicios() {
   return (
     <section className="servicios" id="servicios">
-      <h2>Servicios en todos los planes</h2>
+      <h2>Servicios incluidos en planes web</h2>
       <div className="servicios-grid">
         {serviciosIncluidos.map((servicio, index) => (
           <div className="servicio-card" key={index}>

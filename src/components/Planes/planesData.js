@@ -3,7 +3,6 @@ import uthopiqName from '../../images/uthopiq-nombre.png';
 const planesData = [
   {
     title: "Landing Básica",
-    image: uthopiqName,
     price: "Desde 220€",
     features: [
       "1 página tipo portfolio",
@@ -14,7 +13,6 @@ const planesData = [
   },
   {
     title: "Landing Avanzada",
-    image: uthopiqName,
     price: "Desde 320€",
     features: [
       "Todos los servicios de la Landing Básica",
@@ -24,7 +22,6 @@ const planesData = [
   },
   {
     title: "Web Estándar",
-    image: uthopiqName,
     price: "Desde 480€",
     features: [
       "Todos los servicios de la Landing Avanzada",
@@ -34,7 +31,6 @@ const planesData = [
   },
   {
     title: "Web Avanzada",
-    image: uthopiqName,
     price: "Desde 690€",
     features: [
       "Todos los servicios de la Web Estándar",
@@ -44,7 +40,6 @@ const planesData = [
   },
   {
     title: "Web a Medida",
-    image: uthopiqName,
     price: "Desde 1200€",
     features: [
       "Funcionalidades avanzadas (login, bases de datos, etc)",
