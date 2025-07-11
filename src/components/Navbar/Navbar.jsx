@@ -55,6 +55,14 @@ function Navbar() {
                     </ul>
                 </div>
 
+                <div className="navbar-right">
+                    <a href="#planes" className="navbar-cta-desktop">
+                        <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
+                        Personaliza tu plan
+                        </button>
+                    </a>
+                </div>
+
                 {!menuOpen && (
                     <button className="navbar-hamburguesa" onClick={menuHamburguesa}>
                         ☰
@@ -83,8 +91,15 @@ function Navbar() {
                         <li><a href="#automatizaciones" onClick={cerrarMenu}>Automatizaciones</a></li>
                         <li><a href="#quienes-somos" onClick={cerrarMenu}>Quiénes somos</a></li>
                         <li><a href="#contacto" onClick={cerrarMenu}>Contáctanos</a></li>
+                        
+                        <a href="#planes" className="navbar-cta-mobile">
+                        <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
+                            Personaliza tu plan
+                        </button>
+                        </a>
                     </ul>
                 </div>
+
             </nav>
 
             {menuOpen && <div className="overlay" onClick={cerrarMenu}></div>}

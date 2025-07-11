@@ -84,6 +84,21 @@
   padding: 0;
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-cta-desktop {
+  display: block;
+  margin-left: 2rem;
+}
+
+.navbar-cta-mobile {
+  display: none;
+  width: 100%;
+}
+
 /* ====================================================== */
 /* ============= SOLO PARA MÓVIL ======================== */
 /* ====================================================== */
@@ -158,6 +173,21 @@
 
   .navbar-links li .submenu li a:hover {
     color: var(--rojo-primario);
+  }
+
+  .navbar-cta-desktop {
+    display: none;
+  }
+
+  .navbar-cta-mobile {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .navbar-cta-mobile button {
+    width: 100%;
+    max-width: 100%;
   }
 }
 

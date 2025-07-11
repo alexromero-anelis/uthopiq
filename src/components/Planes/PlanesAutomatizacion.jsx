@@ -1,5 +1,5 @@
 import './planes.css';
-import automatizacionImg from '../../images/63adfd8a-f576-4b7a-a4b5-a0498f730364.png'; 
+import automatizacionImg from '../../images/automatizaciones.png'; 
 
 function PlanesAutomatizacion() {
     return (

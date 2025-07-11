@@ -81,6 +81,12 @@
   background-color: #c0392b;
 }
 
+.planes-boton-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
 @media (max-width: 768px) {
   .planes {
     padding: 3rem 1rem;
@@ -110,5 +116,9 @@
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+  }
+
+  .planes-boton-container {
+    margin-top: 2rem;
   }
 }

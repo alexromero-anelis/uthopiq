@@ -11,6 +11,13 @@ function Planes() {
                     <CardPlan key={index} {...plan} />
                 ))}
             </div>
+            <div className="planes-boton-container">
+                <a href="#planes">
+                    <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
+                        Personaliza tu plan
+                    </button>
+                </a>
+            </div>
         </section>
     );
 }
