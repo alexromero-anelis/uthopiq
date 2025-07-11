@@ -5,7 +5,7 @@ import Hero from './components/Hero/Hero.jsx';
 import Projects from './components/Projects/Projects.jsx';
 import Planes from './components/Planes/Planes.jsx'
 import PlanesAutomatizacion from './components/Planes/PlanesAutomatizacion.jsx';
-import ServiciosAdicionales from './components/Planes/ServiciosAdicionales.jsx';
+import Servicios from './components/Planes/Servicios.jsx';
 import Contacto from './components/Contacto/Contacto.jsx'
 import QuienesSomos from './components/QuienesSomos/QuienesSomos.jsx';
 
@@ -17,7 +17,7 @@ function App() {
       <Projects />
       <Planes />
       <PlanesAutomatizacion/>
-      <ServiciosAdicionales/>
+      <Servicios/>
       <QuienesSomos />
       <Contacto/>
       <Footer />

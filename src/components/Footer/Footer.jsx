@@ -6,7 +6,6 @@ function Footer() {
   return (
     <footer className="footer-container">
         <div className="footer-grid">
-            {/* Columna 1: Sobre la empresa */}
             <div>
                 <img src={logo} alt="UTHOPIQ Logo" className="mb-4 w-12 h-12" />
                 <p className="footer-description">En <strong>UTHOPIQ</strong> somos especialistas en desarrollo web, automatización con inteligencia artificial y mentoría tecnológica.</p>
@@ -16,31 +15,29 @@ function Footer() {
                 </div>
             </div>
 
-            {/* Columna 2: Servicios */}
             <div>
-                <h3 className="footer-title">Servicios</h3>
+                <h3 className="footer-title">Planes Web</h3>
                 <ul className="footer-column">
-                    <li>Desarrollo de Páginas Web</li>
-                    <li>Automatizaciones con IA</li>
-                    <li>Mentorías en Inteligencia Artificial</li>
-                    <li>Consultoría Personalizada</li>
-                    <li>Integración de Chatbots</li>
+                    <li>Landing Básica</li>
+                    <li>Landing Avanzada</li>
+                    <li>Web Estándar</li>
+                    <li>Web Avanzada</li>
+                    <li>Web a Medida</li>
                 </ul>
             </div>
 
-            {/* Columna 3: Empresa */}
             <div>
                 <h3 className="footer-title">Empresa</h3>
                 <ul className="footer-column footer-links">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Proyectos</a></li>
-                    <li><a href="#">Quiénes Somos</a></li>
-                    <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Contáctanos</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#planes">Planes</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="#contacto">Contáctanos</a></li>
                 </ul>
             </div>
 
-            {/* Columna 4: Contacto */}
             <div>
                 <h3 className="footer-title">Contacto</h3>
                 <div className="footer-column footer-contact">
@@ -56,10 +53,8 @@ function Footer() {
             </div>
         </div>
 
-        {/* Separador */}
         <div className="footer-separator" />
 
-        {/* Línea inferior */}
         <div className="footer-bottom">
             <p>&copy;{new Date().getFullYear()} <span style={{ color: "white", fontWeight: "bold" }}>Uthopiq</span>. Todos los derechos reservados.</p>
             <div className="links">

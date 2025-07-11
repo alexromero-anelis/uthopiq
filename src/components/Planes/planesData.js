@@ -2,39 +2,55 @@ import uthopiqName from '../../images/uthopiq-nombre.png';
 
 const planesData = [
   {
-    title: "Landing Page",
+    title: "Landing Básica",
     image: uthopiqName,
     price: "Desde 220€",
     features: [
-      "1 sección personalizada",
-      "Diseño responsive",
-      "Formulario de contacto",
-      "Integración con WhatsApp o email",
-      "Entrega en 5 días hábiles"
+      "1 página tipo portfolio",
+      "Diseño tipo scroll único",
+      "Formulario de contacto o enlace a redes",
+      "Entrega rápida (menos de 7 días)"
     ]
   },
   {
-    title: "Web PRO",
+    title: "Landing Avanzada",
+    image: uthopiqName,
+    price: "Desde 320€",
+    features: [
+      "Todos los servicios de la Landing Básica",
+      "Animaciones, secciones interactivas o formularios avanzados",
+      "Posibilidad de añadir servicios adicionales"
+    ]
+  },
+  {
+    title: "Web Estándar",
     image: uthopiqName,
     price: "Desde 480€",
     features: [
-      "Hasta 5 secciones",
-      "Blog básico",
-      "SEO básico",
-      "1 automatización incluida",
-      "Integración con redes sociales"
+      "Todos los servicios de la Landing Avanzada",
+      "2 a 5 páginas personalizables",
+      "Entrega de 7-15 días"
     ]
   },
   {
-    title: "Web ESCALA",
+    title: "Web Avanzada",
     image: uthopiqName,
-    price: "Desde 890€",
+    price: "Desde 690€",
     features: [
-      "Hasta 10 secciones o funcionalidades avanzadas",
-      "SEO técnico y de contenido",
-      "Hasta 3 automatizaciones n8n",
-      "Chatbot básico incluido",
-      "Video tutorial para autogestión"
+      "Todos los servicios de la Web Estándar",
+      "Hasta 10 páginas",
+      "Entrega 14-20 días"
+    ]
+  },
+  {
+    title: "Web a Medida",
+    image: uthopiqName,
+    price: "Desde 1200€",
+    features: [
+      "Funcionalidades avanzadas (login, bases de datos, etc)",
+      "E-commerce u otras integraciones",
+      "Ideal para proyectos más grandes que requieran lógica de programación",
+      "La entrega depende de la dificultad del proyecto"
     ]
   }
 ];
