@@ -22,7 +22,7 @@ function QuienesSomos() {
         </div>
       </div>
 
-      <div className="socio">
+      <div className="socio tomas">
         <div className="socio-texto">
             <h3>Tomás Primo</h3>
             <p>

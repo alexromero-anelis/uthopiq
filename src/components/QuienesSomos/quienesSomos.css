@@ -96,6 +96,10 @@
     gap: 1.5rem;
   }
 
+  .tomas{
+    flex-direction: column-reverse;
+  }
+
   .socio img {
     width: 180px;
     height: 180px;
