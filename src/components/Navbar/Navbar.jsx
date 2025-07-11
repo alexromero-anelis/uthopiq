@@ -4,6 +4,7 @@ import './navbar.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [webSubmenuOpen, setWebSubmenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     const menuHamburguesa = () => {
@@ -12,6 +13,7 @@ function Navbar() {
 
     const cerrarMenu = () => {
         setMenuOpen(false);
+        setWebSubmenuOpen(false);
     };
 
     useEffect(() => {
@@ -22,7 +24,6 @@ function Navbar() {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -33,17 +34,22 @@ function Navbar() {
                 <div className="navbar-left">
                     <a href="#inicio" aria-label="Ir a inicio">
                         <div className="logo-container">
-                        <img src={imagenUthopon} alt="Imagen de un robot rojo con la cara negra y sonrisa agradable" className="logo"/>
+                            <img src={imagenUthopon} alt="Logo Uthopiq" className="logo" />
                         </div>
                     </a>
                 </div>
 
-
                 <div className="navbar-center">
                     <ul className="navbar-links-desktop">
                         <li><a href="#proyectos">Proyectos</a></li>
-                        <li><a href="#planes">Planes</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
+                        <li className="dropdown">
+                            <a href="#web" className="dropdown-toggle">Web</a>
+                            <ul className="dropdown-menu">
+                                <li><a href="#planes">Planes</a></li>
+                                <li><a href="#servicios">Servicios</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#automatizaciones">Automatizaciones</a></li>
                         <li><a href="#quienes-somos">Quiénes somos</a></li>
                         <li><a href="#contacto">Contáctanos</a></li>
                     </ul>
@@ -60,19 +66,30 @@ function Navbar() {
                     <ul className="navbar-links">
                         <li><a href="#inicio" onClick={cerrarMenu}>Inicio</a></li>
                         <li><a href="#proyectos" onClick={cerrarMenu}>Proyectos</a></li>
-                        <li><a href="#planes" onClick={cerrarMenu}>Planes</a></li>
-                        <li><a href="#servicios" onClick={cerrarMenu}>Servicios</a></li>
+
+                        <li>
+                            <a href="#web" onClick={(e) => {
+                                e.preventDefault();
+                                setWebSubmenuOpen(!webSubmenuOpen);
+                            }}>Web</a>
+                            {webSubmenuOpen && (
+                                <ul className="submenu">
+                                    <li><a href="#planes" onClick={cerrarMenu}>Planes</a></li>
+                                    <li><a href="#servicios" onClick={cerrarMenu}>Servicios</a></li>
+                                </ul>
+                            )}
+                        </li>
+
+                        <li><a href="#automatizaciones" onClick={cerrarMenu}>Automatizaciones</a></li>
                         <li><a href="#quienes-somos" onClick={cerrarMenu}>Quiénes somos</a></li>
                         <li><a href="#contacto" onClick={cerrarMenu}>Contáctanos</a></li>
                     </ul>
                 </div>
-
             </nav>
 
             {menuOpen && <div className="overlay" onClick={cerrarMenu}></div>}
         </>
     );
 }
-
 
 export default Navbar;

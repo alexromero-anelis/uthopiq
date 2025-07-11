@@ -24,10 +24,10 @@ function Hero()
                     {/* Botones CTA */}
                     <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center mb-20">
                         <button className="cta-button px-8 py-4 rounded-lg font-medium text-lg">
-                            Contáctanos Ahora
+                            Contáctanos ahora
                         </button>
                         <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
-                            Ver Proyectos
+                            Personaliza tu plan
                         </button>
                     </div>
                 </div>

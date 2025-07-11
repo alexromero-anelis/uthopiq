@@ -4,7 +4,7 @@ import planesAutomatizacion from './planesAutomatizacionData';
 
 function PlanesAutomatizacion() {
     return (
-        <section className="planes" id="Automatizaciones">
+        <section className="planes" id="automatizaciones">
             <h2>Nuestras Automatizaciones</h2>
             <div className="planes-grid">
                 {planesAutomatizacion.map((plan, index) => (
