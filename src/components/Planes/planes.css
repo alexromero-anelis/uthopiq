@@ -7,7 +7,7 @@
 
 .planes h2 {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color: var(--blanco);
   font-family: var(--font-h2);
   margin-bottom: 3rem;
@@ -93,7 +93,7 @@
   }
 
   .planes h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
   }
 
@@ -113,10 +113,10 @@
   }
 
   .planes-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
 
   .planes-boton-container {
     margin-top: 2rem;

@@ -4,9 +4,11 @@
   border-radius: 1.5rem;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(255, 75, 75, 0.15);
-  max-width: 380px;
+  max-width: 100%;
+  min-width: 260px;
   width: 100%;
   display: flex;
+  flex: 1 1 300px;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -42,10 +44,25 @@
 .card-plan-list {
   list-style: none;
   padding-left: 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
 .card-plan-list li {
   margin-bottom: 0.5rem;
 }
+
+@media (max-width: 768px) {
+  .card-plan h3 {
+    font-size: 1.4rem;
+  }
+
+  .card-plan-price {
+    font-size: 1rem;
+  }
+
+  .card-plan-list {
+    font-size: 0.85rem;
+  }
+}
+

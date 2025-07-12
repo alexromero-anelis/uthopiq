@@ -1,11 +1,10 @@
 /* hero.css */
 .hero-wrapper {
-  min-height: 100vh;
-  position: relative;
   background-color: var(--negro-fondo);
   color: var(--blanco);
-  padding-top: 135px;
-}
+  padding-top: 100px; /* o menos */
+  padding-bottom: 80px;
+} 
 
 .hero-title-white {
   color: var(--blanco);
