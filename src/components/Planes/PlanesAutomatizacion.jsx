@@ -12,7 +12,7 @@ function PlanesAutomatizacion() {
                         <br /><br />
                         Tanto si tienes una idea como si no sabes por dónde empezar, estamos aquí para ayudarte.
                     </p>
-                    <a href="#Contacto" className="btn-cta">
+                    <a href="/personaliza-tu-plan"  rel="noopener noreferrer" className="btn-cta">
                         Solicita tu automatización
                     </a>
                 </div>

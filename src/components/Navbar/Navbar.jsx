@@ -56,7 +56,7 @@ function Navbar() {
                 </div>
 
                 <div className="navbar-right">
-                    <a href="#planes" className="navbar-cta-desktop">
+                    <a href="/personaliza-tu-plan" rel="noopener noreferrer" className="navbar-cta-desktop">
                         <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
                         Personaliza tu plan
                         </button>
@@ -92,7 +92,7 @@ function Navbar() {
                         <li><a href="#quienes-somos" onClick={cerrarMenu}>Quiénes somos</a></li>
                         <li><a href="#contacto" onClick={cerrarMenu}>Contáctanos</a></li>
                         
-                        <a href="#planes" className="navbar-cta-mobile">
+                        <a href="/personaliza-tu-plan"  rel="noopener noreferrer" className="navbar-cta-mobile">
                         <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
                             Personaliza tu plan
                         </button>

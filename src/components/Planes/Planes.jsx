@@ -12,7 +12,7 @@ function Planes() {
                 ))}
             </div>
             <div className="planes-boton-container">
-                <a href="#planes">
+                <a href="/personaliza-tu-plan" rel="noopener noreferrer">
                     <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
                         Personaliza tu plan
                     </button>
