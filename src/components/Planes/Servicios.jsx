@@ -68,31 +68,35 @@ const serviciosIncluidos = [
   }
 ];
 
-
 function Servicios() {
   return (
-    <section className="servicios" id="servicios">
-      <h2>Servicios incluidos en planes web</h2>
-      <div className="servicios-grid">
-        {serviciosIncluidos.map((servicio, index) => (
-          <div className="servicio-card" key={index}>
-            <h3>{servicio.title}</h3>
-            <p>{servicio.description}</p>
-            <span className="precio">{servicio.price}</span>
-          </div>
-        ))}
-      </div>
-      <h2>Servicios Adicionales</h2>
-      <div className="servicios-grid">
-        {serviciosAdicionales.map((servicio, index) => (
-          <div className="servicio-card" key={index}>
-            <h3>{servicio.title}</h3>
-            <p>{servicio.description}</p>
-            <span className="precio">{servicio.price}</span>
-          </div>
-        ))}
-      </div>
-    </section>
+    <>
+      <section className="servicios" id="servicios">
+        <h2>Servicios incluidos en planes web</h2>
+        <div className="servicios-grid">
+          {serviciosIncluidos.map((servicio, index) => (
+            <div className="servicio-card" key={index}>
+              <h3>{servicio.title}</h3>
+              <p>{servicio.description}</p>
+              {servicio.price && <span className="precio">{servicio.price}</span>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="servicios servicios-adicionales">
+        <h2>Servicios Adicionales</h2>
+        <div className="servicios-grid">
+          {serviciosAdicionales.map((servicio, index) => (
+            <div className="servicio-card" key={index}>
+              <h3>{servicio.title}</h3>
+              <p>{servicio.description}</p>
+              <span className="precio">{servicio.price}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 
