@@ -8,16 +8,35 @@ function PlanesAutomatizacion() {
             <div className="planes-contenido">
                 <div className="planes-texto">
                     <p>
-                        Desarrollamos automatizaciones totalmente personalizadas para tu negocio, conectando tus herramientas favoritas con inteligencia artificial para ahorrar tiempo, reducir errores y mejorar la productividad.
-                        <br /><br />
-                        Tanto si tienes una idea como si no sabes por dónde empezar, estamos aquí para ayudarte.
+                        Creamos automatizaciones personalizadas para conectar tus herramientas, eliminar tareas repetitivas y aumentar la productividad de tu negocio.
+                        <br />
                     </p>
-                    <a href="/personaliza-tu-plan"  rel="noopener noreferrer" className="btn-cta">
+                    <div className="beneficios-grid beneficios-4">
+                        <div className="beneficio">
+                            <h4>Eficiencia</h4>
+                            <p>Ahorra tiempo automatizando tareas clave.</p>
+                        </div>
+                        <div className="beneficio">
+                            <h4>Precisión</h4>
+                            <p>Reduce errores humanos con flujos automatizados.</p>
+                        </div>
+                        <div className="beneficio">
+                            <h4>Escalabilidad</h4>
+                            <p>Optimiza procesos sin aumentar costes operativos.</p>
+                        </div>
+                        <div className="beneficio">
+                            <h4>Adaptabilidad</h4>
+                            <p>Conecta cualquier herramienta o API fácilmente.</p>
+                        </div>
+                    </div>
+                    <a href="/personaliza-tu-plan" rel="noopener noreferrer" className="btn-cta animado">
                         Solicita tu automatización
                     </a>
                 </div>
                 <div className="planes-imagen">
-                    <img src={automatizacionImg} alt="Automatización con IA" />
+                    <div className="imagen-contenedor">
+                        <img src={automatizacionImg} alt="Automatización con IA" />
+                    </div>
                 </div>
             </div>
         </section>
