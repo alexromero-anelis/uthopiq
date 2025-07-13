@@ -99,6 +99,25 @@
   width: 100%;
 }
 
+.btn-hover-pulse:hover {
+  background-color: #ff6f61;
+  animation: pulse 0.6s ease-in-out;
+  color: var(--blanco);
+  border-color: transparent;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 75, 75, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 75, 75, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 75, 75, 0);
+  }
+}
+
 /* ====================================================== */
 /* ============= SOLO PARA MÓVIL ======================== */
 /* ====================================================== */
@@ -189,6 +208,47 @@
     width: 100%;
     max-width: 100%;
   }
+}
+
+/* === Botones que reemplazan enlaces === */
+.navbar-links-desktop button,
+.navbar-links-container button,
+.dropdown-menu button,
+.submenu button {
+  background: none;
+  border: none;
+  color: var(--blanco);
+  font-family: var(--font-h2);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-links-desktop button:hover,
+.navbar-links-container button:hover,
+.dropdown-menu button:hover,
+.submenu button:hover {
+  color: var(--rojo-primario);
+  transform: translateY(-2px);
+}
+
+/* Subrayado en hover como los enlaces */
+.navbar-links-desktop li button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--rojo-primario);
+  transition: width 0.3s ease;
+}
+
+.navbar-links-desktop li button:hover::after {
+  width: 100%;
 }
 
 /* ====================================================== */

@@ -1,6 +1,6 @@
 import imagenUthopon from "../../images/uthopiq-logo-completo.png";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import './navbar.css';
 
 function Navbar() {
@@ -9,6 +9,7 @@ function Navbar() {
     const [scrolled, setScrolled] = useState(false);
 
     const location = useLocation();
+    const navigate = useNavigate();
     const enFormulario = location.pathname === "/personaliza-tu-plan";
 
     const menuHamburguesa = () => {
@@ -32,6 +33,27 @@ function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const scrollToSection = (id) => {
+        const goToSection = () => {
+            const interval = setInterval(() => {
+                const section = document.getElementById(id);
+                if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                    clearInterval(interval);
+                }
+            }, 100);
+        };
+
+        if (location.pathname !== "/") {
+            navigate("/");
+            setTimeout(goToSection, 200); // da tiempo a montar el DOM
+        } else {
+            goToSection();
+        }
+
+        cerrarMenu();
+    };
+
     return (
         <>
             <nav className={`navbar ${scrolled ? 'navbar-solid' : 'navbar-transparent'}`}>
@@ -45,17 +67,17 @@ function Navbar() {
 
                 <div className="navbar-center">
                     <ul className="navbar-links-desktop">
-                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><button onClick={() => scrollToSection("proyectos")}>Proyectos</button></li>
                         <li className="dropdown">
-                            <a href="#web" className="dropdown-toggle">Web</a>
+                            <button className="dropdown-toggle" onClick={() => scrollToSection("web")}>Web</button>
                             <ul className="dropdown-menu">
-                                <li><a href="#planes">Planes</a></li>
-                                <li><a href="#servicios">Servicios</a></li>
+                                <li><button onClick={() => scrollToSection("web")}>Planes</button></li>
+                                <li><button onClick={() => scrollToSection("servicios")}>Servicios</button></li>
                             </ul>
                         </li>
-                        <li><a href="#automatizaciones">Automatizaciones</a></li>
-                        <li><a href="#quienes-somos">Quiénes somos</a></li>
-                        <li><a href="#contacto">Contáctanos</a></li>
+                        <li><button onClick={() => scrollToSection("automatizaciones")}>Automatizaciones</button></li>
+                        <li><button onClick={() => scrollToSection("quienes-somos")}>Quiénes somos</button></li>
+                        <li><button onClick={() => scrollToSection("contacto")}>Contáctanos</button></li>
                     </ul>
                 </div>
 
@@ -76,25 +98,22 @@ function Navbar() {
                 <div className={`navbar-links-container ${menuOpen ? 'open' : ''}`}>
                     <img src={imagenUthopon} alt="Logo de Uthopiq" />
                     <ul className="navbar-links">
-                        <li><a href="#inicio" onClick={cerrarMenu}>Inicio</a></li>
-                        <li><a href="#proyectos" onClick={cerrarMenu}>Proyectos</a></li>
+                        <li><button onClick={() => scrollToSection("inicio")}>Inicio</button></li>
+                        <li><button onClick={() => scrollToSection("proyectos")}>Proyectos</button></li>
 
                         <li>
-                            <a href="#web" onClick={(e) => {
-                                e.preventDefault();
-                                setWebSubmenuOpen(!webSubmenuOpen);
-                            }}>Web</a>
+                            <button onClick={() => setWebSubmenuOpen(!webSubmenuOpen)}>Web</button>
                             {webSubmenuOpen && (
                                 <ul className="submenu">
-                                    <li><a href="#planes" onClick={cerrarMenu}>Planes</a></li>
-                                    <li><a href="#servicios" onClick={cerrarMenu}>Servicios</a></li>
+                                    <li><button onClick={() => scrollToSection("web")}>Planes</button></li>
+                                    <li><button onClick={() => scrollToSection("servicios")}>Servicios</button></li>
                                 </ul>
                             )}
                         </li>
 
-                        <li><a href="#automatizaciones" onClick={cerrarMenu}>Automatizaciones</a></li>
-                        <li><a href="#quienes-somos" onClick={cerrarMenu}>Quiénes somos</a></li>
-                        <li><a href="#contacto" onClick={cerrarMenu}>Contáctanos</a></li>
+                        <li><button onClick={() => scrollToSection("automatizaciones")}>Automatizaciones</button></li>
+                        <li><button onClick={() => scrollToSection("quienes-somos")}>Quiénes somos</button></li>
+                        <li><button onClick={() => scrollToSection("contacto")}>Contáctanos</button></li>
 
                         <Link
                             to={enFormulario ? "/" : "/personaliza-tu-plan"}
