@@ -4,7 +4,7 @@ import planesData from './planesData';
 
 function Planes() {
     return (
-        <section className="planes" id="planes">
+        <section className="planes" id="web">
             <h2>Nuestros Planes Web</h2>
             <div className="planes-grid">
                 {planesData.map((plan, index) => (
