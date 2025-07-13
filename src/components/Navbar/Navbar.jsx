@@ -1,11 +1,15 @@
 import imagenUthopon from "../../images/uthopiq-logo-completo.png";
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import './navbar.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [webSubmenuOpen, setWebSubmenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    const location = useLocation();
+    const enFormulario = location.pathname === "/personaliza-tu-plan";
 
     const menuHamburguesa = () => {
         setMenuOpen(!menuOpen);
@@ -32,11 +36,11 @@ function Navbar() {
         <>
             <nav className={`navbar ${scrolled ? 'navbar-solid' : 'navbar-transparent'}`}>
                 <div className="navbar-left">
-                    <a href="#inicio" aria-label="Ir a inicio">
+                    <Link to="/" aria-label="Ir a inicio">
                         <div className="logo-container">
                             <img src={imagenUthopon} alt="Logo Uthopiq" className="logo" />
                         </div>
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="navbar-center">
@@ -56,11 +60,11 @@ function Navbar() {
                 </div>
 
                 <div className="navbar-right">
-                    <a href="/personaliza-tu-plan" rel="noopener noreferrer" className="navbar-cta-desktop">
+                    <Link to={enFormulario ? "/" : "/personaliza-tu-plan"} className="navbar-cta-desktop">
                         <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
-                        Personaliza tu plan
+                            {enFormulario ? "Volver al inicio" : "Personaliza tu plan"}
                         </button>
-                    </a>
+                    </Link>
                 </div>
 
                 {!menuOpen && (
@@ -91,15 +95,18 @@ function Navbar() {
                         <li><a href="#automatizaciones" onClick={cerrarMenu}>Automatizaciones</a></li>
                         <li><a href="#quienes-somos" onClick={cerrarMenu}>Quiénes somos</a></li>
                         <li><a href="#contacto" onClick={cerrarMenu}>Contáctanos</a></li>
-                        
-                        <a href="/personaliza-tu-plan"  rel="noopener noreferrer" className="navbar-cta-mobile">
-                        <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
-                            Personaliza tu plan
-                        </button>
-                        </a>
+
+                        <Link
+                            to={enFormulario ? "/" : "/personaliza-tu-plan"}
+                            onClick={cerrarMenu}
+                            className="navbar-cta-mobile"
+                        >
+                            <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
+                                {enFormulario ? "Volver al inicio" : "Personaliza tu plan"}
+                            </button>
+                        </Link>
                     </ul>
                 </div>
-
             </nav>
 
             {menuOpen && <div className="overlay" onClick={cerrarMenu}></div>}

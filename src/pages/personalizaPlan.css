@@ -2,41 +2,42 @@
   background-color: var(--negro-fondo);
   color: var(--gris-claro-letras);
   font-family: var(--font-p);
-  padding: 4rem 2rem;
+  padding: 4rem 2rem 6rem;
   min-height: 100vh;
 }
 
 .personaliza-container h1 {
   text-align: center;
-  font-size: 3.5rem;
-  color: var(--blanco);
+  font-size: 2.5rem;
+  margin-top: 4rem;
   font-family: var(--font-h2);
-  margin-bottom: 3rem;
+  color: var(--blanco);
+  margin-bottom: 2.5rem;
   position: relative;
 }
 
 .personaliza-container h1::after {
   content: '';
   display: block;
-  width: 80px;
+  width: 60px;
   height: 3px;
   background-color: var(--rojo-primario);
-  margin: 0.5rem auto 0;
+  margin: 0.4rem auto 0;
   border-radius: 5px;
 }
 
 .formulario {
-  max-width: 700px;
+  max-width: 640px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .formulario label {
   display: flex;
   flex-direction: column;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: var(--gris-claro-letras);
 }
 
@@ -44,39 +45,42 @@
 .formulario select,
 .formulario textarea {
   margin-top: 0.5rem;
-  padding: 0.9rem 1rem;
-  border: none;
+  padding: 0.75rem 1rem;
+  border: 1px solid #333;
   border-radius: 8px;
   background-color: var(--gris-oscuro);
   color: var(--blanco);
   font-family: var(--font-p);
-  font-size: 1rem;
-  transition: box-shadow 0.3s ease;
+  font-size: 0.95rem;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
 .formulario input:focus,
 .formulario select:focus,
 .formulario textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--rojo-primario);
+  border-color: var(--rojo-primario);
+  box-shadow: 0 0 0 2px rgba(255, 75, 75, 0.4);
 }
 
 .formulario textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 100px;
 }
 
 .formulario button {
   background-color: var(--rojo-primario);
   color: var(--blanco);
-  padding: 1rem 2rem;
+  padding: 0.9rem 1.5rem;
   border: none;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   font-family: var(--font-p);
   cursor: pointer;
   transition: background-color 0.3s ease;
+  align-self: center;
+  margin-top: 1rem;
 }
 
 .formulario button:hover {
@@ -84,7 +88,7 @@
 }
 
 .servicios-simples {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 1rem;
   border: 1px solid #444;
   border-radius: 8px;
@@ -94,18 +98,19 @@
 .servicios-simples p {
   margin-bottom: 1rem;
   font-family: var(--font-h2);
+  font-size: 1rem;
   color: var(--blanco);
 }
 
 .checkbox-simple {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
   color: var(--gris-claro-letras);
   background-color: #1f1f1f;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 1rem;
   border-radius: 6px;
   transition: background-color 0.3s ease;
 }
@@ -115,10 +120,9 @@
 }
 
 .checkbox-simple input {
-  margin: 0;
   accent-color: var(--rojo-primario);
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
 }
 
@@ -126,19 +130,42 @@
   flex: 1;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .personaliza-container {
-    padding: 3rem 1rem;
+    padding: 3rem 1rem 5rem;
   }
 
   .personaliza-container h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
   }
 
-  .personaliza-container h1::after {
-    width: 60px;
-    height: 2px;
-    margin: 0.4rem auto 0;
+  .formulario {
+    gap: 1.2rem;
+  }
+
+  .formulario label {
+    font-size: 0.9rem;
+  }
+
+  .formulario input,
+  .formulario select,
+  .formulario textarea {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .formulario button {
+    font-size: 0.95rem;
+  }
+
+  .servicios-simples p {
+    font-size: 0.95rem;
+  }
+
+  .checkbox-simple {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
   }
 }
