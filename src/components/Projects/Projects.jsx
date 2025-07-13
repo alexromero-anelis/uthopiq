@@ -11,6 +11,9 @@ function Projects(){
         <>
             <div className="proyectos" id='proyectos'>
                 <h2>Proyectos realizados</h2>
+                <p className="proyectos-subtitulo">
+                Aquí algunos ejemplos de soluciones que hemos desarrollado en diseño web y automatización.
+                </p>
 
                 <div className='proyectos-web'>
                     <h3>Desarrollo Web</h3>
