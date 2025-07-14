@@ -28,10 +28,26 @@
   padding: 1.5rem;
 }
 
+@media (min-width: 647px) {
+  .card-plan.doble-columna {
+    grid-column: span 2;
+  }
+}
+
+.alineado {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icono-bono {
+  color: var(--rojo-primario);
+  flex-shrink: 0;
+}
+
 .card-plan h3 {
+  font-size: 1.3rem;
   font-family: var(--font-h2);
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
   color: var(--rojo-primario);
 }
 
@@ -44,7 +60,7 @@
 .card-plan-list {
   list-style: none;
   padding-left: 0;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   line-height: 1.6;
 }
 
@@ -54,7 +70,7 @@
 
 @media (max-width: 768px) {
   .card-plan h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .card-plan-price {
