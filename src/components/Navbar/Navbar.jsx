@@ -5,6 +5,7 @@ import './navbar.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [proyectosSubmenuOpen, setProyectosSubmenuOpen] = useState(false);
     const [webSubmenuOpen, setWebSubmenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -67,7 +68,16 @@ function Navbar() {
 
                 <div className="navbar-center">
                     <ul className="navbar-links-desktop">
-                        <li><button onClick={() => scrollToSection("proyectos")}>Proyectos</button></li>
+                        <li className="dropdown">
+                            <button className="dropdown-toggle" onClick={() => scrollToSection("proyectos")}>Proyectos</button>
+                            <ul className="dropdown-menu">
+                                <li>
+                                <Link to="/pagina-proyectos" className="dropdown-link" onClick={cerrarMenu}>
+                                    Ver todos
+                                </Link>
+                                </li>
+                            </ul>
+                        </li>
                         <li className="dropdown">
                             <button className="dropdown-toggle" onClick={() => scrollToSection("web")}>Web</button>
                             <ul className="dropdown-menu">
@@ -99,7 +109,19 @@ function Navbar() {
                     <img src={imagenUthopon} alt="Logo de Uthopiq" />
                     <ul className="navbar-links">
                         <li><button onClick={() => scrollToSection("inicio")}>Inicio</button></li>
-                        <li><button onClick={() => scrollToSection("proyectos")}>Proyectos</button></li>
+                        <li>
+                            <button onClick={() => setProyectosSubmenuOpen(!proyectosSubmenuOpen)}>Proyectos</button>
+                            {proyectosSubmenuOpen && (
+                                <ul className="submenu">
+                                    <li>
+                                        <Link to="/pagina-proyectos">
+                                            <button onClick={cerrarMenu}>Ver todos</button>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            )}
+                        </li>
+
 
                         <li>
                             <button onClick={() => setWebSubmenuOpen(!webSubmenuOpen)}>Web</button>

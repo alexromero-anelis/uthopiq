@@ -1,0 +1,64 @@
+.proyectos-page {
+  background-color: var(--negro-fondo);
+  color: var(--gris-claro-letras);
+  padding: 4rem 2rem;
+  font-family: var(--font-p);
+  min-height: 100vh;
+  margin-top: 5rem;
+}
+
+.proyectos-page h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--blanco);
+  font-family: var(--font-h2);
+  margin-bottom: 2rem;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+}
+
+.filtro label {
+  font-size: 1rem;
+  color: var(--gris-claro);
+}
+
+.filtro select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--gris-oscuro);
+  color: var(--blanco);
+}
+
+.grid-proyectos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .grid-proyectos {
+    gap: 1rem;
+  }
+
+  .grid-proyectos > * {
+    flex: 1 1 100%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-proyectos > * {
+    flex: 1 1 100%;
+    max-width: 100%;
+    transform: scale(0.95);
+  }
+}

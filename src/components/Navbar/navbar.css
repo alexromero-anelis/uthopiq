@@ -331,3 +331,32 @@
     color: var(--rojo-primario);
   }
 }
+
+.dropdown-menu .dropdown-link {
+  color: var(--blanco);
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: block;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.dropdown-menu .dropdown-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--rojo-primario);
+  transition: width 0.3s ease;
+}
+
+.dropdown-menu .dropdown-link:hover {
+  color: var(--rojo-primario);
+}
+
+.dropdown-menu .dropdown-link:hover::after {
+  width: 100%;
+}
