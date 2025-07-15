@@ -11,7 +11,7 @@ function Navbar() {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const enFormulario = location.pathname === "/personaliza-tu-plan";
+  const enFormulario = location.pathname === "/personaliza-tu-plan" || location.pathname === "/pagina-proyectos";
 
   const menuHamburguesa = () => {
     setMenuOpen(!menuOpen);
