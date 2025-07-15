@@ -26,9 +26,11 @@ function Hero()
                     <button className="cta-button px-6 py-3 rounded-md font-medium text-base">
                         Contáctanos ahora
                     </button>
-                    <button className="cta-button-outline px-6 py-3 rounded-md font-medium text-base border-2">
-                        Personaliza tu plan
-                    </button>
+                    <a href="/personaliza-tu-plan">
+                        <button className="cta-button-outline px-6 py-3 rounded-md font-medium text-base border-2">
+                            Personaliza tu plan
+                        </button>
+                    </a>
                     </div>
                 </div>
 

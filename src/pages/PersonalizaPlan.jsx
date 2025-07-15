@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './personalizaPlan.css';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
@@ -13,6 +13,10 @@ const serviciosAdicionales = [
 function PersonalizaPlan() {
   const [tipoServicio, setTipoServicio] = useState('plan-web');
   const [seleccionados, setSeleccionados] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const toggleServicio = (servicio) => {
     setSeleccionados((prev) =>

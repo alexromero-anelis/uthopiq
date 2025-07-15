@@ -29,7 +29,7 @@ function PlanesAutomatizacion() {
                             <p>Conecta cualquier herramienta o API fácilmente.</p>
                         </div>
                     </div>
-                    <a href="/personaliza-tu-plan" rel="noopener noreferrer" className="btn-cta animado">
+                    <a href="/personaliza-tu-plan" className="btn-cta animado">
                         Solicita tu automatización
                     </a>
                 </div>
