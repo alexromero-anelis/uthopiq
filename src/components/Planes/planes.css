@@ -176,6 +176,33 @@
   animation: pulse 0.6s ease-in-out;
 }
 
+.automatizacion {
+  padding: 4rem 2rem;
+}
+
+.planes-header {
+  text-align: center;
+  margin: 0 auto 3rem;
+  max-width: 800px;
+}
+
+.planes-subtitle {
+  font-size: 1rem;
+  color: var(--rojo-primario);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.planes-descripcion {
+  font-size: 0.9rem;
+  color: var(--gris-claro);
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 75, 75, 0.4);
@@ -222,5 +249,26 @@
 
   .planes-boton-container {
     margin-top: 2rem;
+  }
+
+  .planes-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+  }
+
+  .imagen-contenedor {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+    .imagen-contenedor img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
   }
 }
