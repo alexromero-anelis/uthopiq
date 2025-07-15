@@ -1,6 +1,7 @@
 import './planes.css';
 import CardPlan from './CardPlan/CardPlan';
 import planesData from './planesData';
+import { Link} from "react-router-dom";
 
 function Planes() {
     return (
@@ -20,11 +21,11 @@ function Planes() {
             </div>
 
             <div className="planes-boton-container">
-                <a href="/personaliza-tu-plan">
+                <Link to="/personaliza-tu-plan">
                     <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
                         Personaliza tu plan
                     </button>
-                </a>
+                </Link>
             </div>
         </section>
     );

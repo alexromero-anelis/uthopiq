@@ -1,5 +1,6 @@
 import FondoAnimado from "./FondoAnimado.jsx"
 import "./hero.css"
+import { Link} from "react-router-dom";
 
 function Hero() 
 {
@@ -26,11 +27,11 @@ function Hero()
                     <button className="cta-button px-6 py-3 rounded-md font-medium text-base">
                         Contáctanos ahora
                     </button>
-                    <a href="/personaliza-tu-plan">
+                    <Link to="/personaliza-tu-plan">
                         <button className="cta-button-outline px-6 py-3 rounded-md font-medium text-base border-2">
                             Personaliza tu plan
                         </button>
-                    </a>
+                    </Link>
                     </div>
                 </div>
 

@@ -1,5 +1,6 @@
 import './planes.css';
 import automatizacionImg from '../../images/automatizaciones.png'; 
+import { Link} from "react-router-dom";
 
 function PlanesAutomatizacion() {
     return (
@@ -29,9 +30,9 @@ function PlanesAutomatizacion() {
                             <p>Conecta cualquier herramienta o API fácilmente.</p>
                         </div>
                     </div>
-                    <a href="/personaliza-tu-plan" className="btn-cta animado">
+                    <Link to="/personaliza-tu-plan" className="btn-cta animado">
                         Solicita tu automatización
-                    </a>
+                    </Link>
                 </div>
                 <div className="planes-imagen">
                     <div className="imagen-contenedor">
