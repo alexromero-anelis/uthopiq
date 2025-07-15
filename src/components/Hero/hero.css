@@ -2,8 +2,7 @@
 .hero-wrapper {
   background-color: var(--negro-fondo);
   color: var(--blanco);
-  padding-top: 100px; /* o menos */
-  padding-bottom: 80px;
+  padding-top: 80px; 
 } 
 
 .hero-title-white {

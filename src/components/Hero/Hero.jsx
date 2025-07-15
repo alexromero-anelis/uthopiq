@@ -8,16 +8,16 @@ function Hero()
         <div className="hero-wrapper" id="inicio">
             <FondoAnimado />
 
-            <div className="hero-container container mx-auto px-4 py-14 md:py-16 relative z-10">
+            <div className="hero-container container mx-auto px-4 min-h-screen flex flex-col justify-center relative z-10">
                 {/* Hero Section */}
                 <div className="text-center max-w-4xl mx-auto">
-                    <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl mb-4">
+                    <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl mb-4">
                         <span className="hero-title-white">Desarrollo Web &</span>
                         <br />
-                        <span className="hero-title-red">Soluciones IA</span>
+                        <span className="hero-title-red">Agencia IA</span>
                     </h1>
 
-                    <p className="hero-subtitle text-base sm:text-lg md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                    <p className="hero-subtitle text-base sm:text-lg md:text-lg max-w-1xl mx-auto mb-10 leading-relaxed">
                     Creamos sitios web modernos y automatizamos procesos con inteligencia artificial. Potencia tu negocio con
                     soluciones tecnológicas que trabajan 24/7 para ti.
                     </p>
