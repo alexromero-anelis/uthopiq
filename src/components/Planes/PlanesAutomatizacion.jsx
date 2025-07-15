@@ -7,7 +7,7 @@ function PlanesAutomatizacion() {
 <section className="planes automatizacion" id="automatizaciones">
     <div className="planes-header">
         <span className="planes-subtitle">Automatizaciones con IA</span>
-        <h2>Nuestras Automatizaciones</h2>
+        <h2>Automatizaciones personalizadas</h2>
         <p className="planes-descripcion">
             Creamos automatizaciones personalizadas para conectar tus herramientas, eliminar tareas repetitivas y aumentar la productividad de tu negocio.
         </p>
