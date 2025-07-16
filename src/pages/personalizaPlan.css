@@ -130,6 +130,12 @@
   flex: 1;
 }
 
+.recaptcha-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .personaliza-container {
