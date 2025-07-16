@@ -117,6 +117,12 @@
   text-decoration: underline;
 }
 
+.captcha-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
 @media (max-width: 768px) {
   .contacto {
     padding: 3rem 1rem 5rem;
