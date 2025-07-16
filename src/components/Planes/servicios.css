@@ -20,7 +20,7 @@
 }
 
 .servicios h2::after {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
   height: 3px;
@@ -102,7 +102,7 @@
 }
 
 .servicio-grupo ul li::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0.6rem;
@@ -119,62 +119,36 @@
   margin-top: 2rem;
 }
 
-.servicio-extra {
-  background-color: var(--gris-oscuro);
-  padding: 2rem 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 14px rgba(255, 75, 75, 0.15);
-  transition: all 0.3s ease;
+.servicio-alojamiento {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+}
+
+.servicio-alojamiento::before {
+  display: none;
+}
+
+.servicio-alojamiento.destacado {
+  background-color: rgba(255, 75, 75, 0.1);
+  padding: 1rem;
+  border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-.servicio-extra:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 22px rgba(255, 75, 75, 0.3);
-}
-
-.extra-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
-
-.extra-header h3 {
-  color: var(--rojo-primario);
-  font-family: var(--font-h2);
-  font-size: 1.15rem;
-  margin: 0;
-  white-space: nowrap;
-}
-
-.extra-icon {
-  width: 1.4rem;
-  height: 1.4rem;
-  color: var(--rojo-primario);
-}
-
-.servicio-extra p {
-  font-size: 0.9rem;
-  color: var(--gris-claro-letras);
-  margin-bottom: 0.8rem;
-}
-
-.servicio-extra .precio {
+  gap: 0.5rem;
   font-weight: bold;
-  color: var(--blanco);
-  font-size: 0.9rem;
-  margin-top: auto;
+}
+
+.suscripcion-label {
+  font-size: 0.8rem;
+  color: var(--rojo-primario);
+  margin-left: 0.3rem;
 }
 
 .ver-bonos {
-  background-color: var(--rojo-primario);
-  color: var(--blanco);
-  border: none;
+  border-color: var(--rojo-primario);
+  color: var(--rojo-primario);
+  border: solid 2px;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
@@ -184,7 +158,10 @@
 }
 
 .ver-bonos:hover {
-  background-color: #e54848;
+  background-color: var(--blanco);
+  color: var(--negro-fondo);
+  border-color: var(--blanco);
+  font-weight: 200;
 }
 
 /* ====== MODAL ====== */
@@ -270,8 +247,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {

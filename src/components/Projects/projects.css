@@ -49,6 +49,31 @@
   text-align: left;
 }
 
+.proyectos-boton-ver-todos {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.ver-todos-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: var(--rojo-primario);
+  border: 2px solid var(--rojo-primario);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.ver-todos-btn:hover {
+  background-color: var(--blanco);
+  border-color: transparent;
+  color: var(--negro-fondo);
+  
+}
+
+
 @media (max-width: 768px) {
   .proyectos {
     padding: 3rem 1rem;

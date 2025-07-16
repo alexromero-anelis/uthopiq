@@ -68,6 +68,16 @@
   line-height: 1.6;
 }
 
+.socio-texto a {
+  text-decoration: none;
+  color: inherit; /* mantiene el color del texto del h3 */
+  transition: text-decoration 0.2s ease;
+}
+
+.socio-texto a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .quienes {
     padding: 3rem 1rem;
@@ -115,4 +125,5 @@
     font-size: 0.95rem;
     padding: 0 1rem;
   }
+
 }
