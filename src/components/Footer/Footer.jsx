@@ -47,7 +47,7 @@ function Footer() {
                     </div>
                     <div className="flex items-center gap-2">
                         <Mail size={18} className="icon" />
-                        <a href="mailto:contacto@uthopiq.com">uthopiq@gmail.com</a>
+                        <a href="mailto:contacto@uthopiq.com">contacto@uthopiq.com</a>
                     </div>
                 </div>
             </div>
