@@ -11,7 +11,9 @@ function Navbar() {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const enFormulario = location.pathname === "/personaliza-tu-plan" || location.pathname === "/pagina-proyectos";
+  const enFormulario =
+    location.pathname === "/personaliza-tu-plan" ||
+    location.pathname === "/pagina-proyectos";
 
   const menuHamburguesa = () => {
     setMenuOpen(!menuOpen);
@@ -111,6 +113,9 @@ function Navbar() {
               <button onClick={() => scrollToSection("automatizaciones")}>
                 Automatizaciones
               </button>
+            </li>
+            <li>
+              <button onClick={() => scrollToSection("bonos")}>Bonos</button>
             </li>
             <li>
               <button onClick={() => scrollToSection("quienes-somos")}>

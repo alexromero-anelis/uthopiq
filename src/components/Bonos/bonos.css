@@ -1,0 +1,47 @@
+.bonos {
+  background-color: var(--negro-fondo);
+  padding: 4rem 2rem;
+  color: var(--gris-claro-letras);
+  text-align: center;
+}
+
+.bonos h2 {
+  font-size: 2.5rem;
+  color: var(--blanco);
+  font-family: var(--font-h2);
+  margin-bottom: 1rem;
+}
+
+.bonos-subtitle {
+  color: var(--gris-claro);
+  margin-bottom: 2.5rem;
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bono-simple-table {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid var(--gris-claro);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bono-simple-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--gris);
+}
+
+.bono-simple-row.header {
+  background-color: var(--rojo-primario);
+  color: var(--blanco);
+  font-weight: bold;
+}
+
+.bono-simple-row:last-child {
+  border-bottom: none;
+}

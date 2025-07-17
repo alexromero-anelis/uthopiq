@@ -111,13 +111,13 @@ function Contacto() {
 
   return (
     <section className="contacto" id="contacto">
-      <h2>Contacto</h2>
-      <p className="contacto-sub">
+      <h2 data-aos="fade-up">Contacto</h2>
+      <p className="contacto-sub" data-aos="fade-up">
         ¿Tienes un proyecto o necesitas ayuda? Escríbenos y responderemos en
         menos de 24h.
       </p>
 
-      <form className="formulario" onSubmit={handleSubmit}>
+      <form className="formulario" onSubmit={handleSubmit} data-aos="fade-up">
         <label>
           Nombre:
           <input type="text" name="nombre" />
@@ -147,7 +147,7 @@ function Contacto() {
         <button type="submit">Enviar mensaje</button>
       </form>
 
-      <div className="contacto-info">
+      <div className="contacto-info" data-aos="fade-up">
         <p>
           Puedes escribirnos directamente a{" "}
           <a href="mailto:contacto@uthopiq.com">contacto@uthopiq.com</a>

@@ -1,5 +1,5 @@
 .contacto {
-  background-color: #1f1f1f;
+  background-color: var(--negro-fondo);
   color: var(--gris-claro-letras);
   font-family: var(--font-p);
   padding: 4rem 2rem 2rem;

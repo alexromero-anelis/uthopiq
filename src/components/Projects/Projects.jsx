@@ -15,23 +15,35 @@ function Projects() {
   return (
     <>
       <div className="proyectos" id="proyectos">
-        <h2>Proyectos realizados</h2>
-        <p className="proyectos-subtitulo">
+        <h2 data-aos="fade-up">Proyectos realizados</h2>
+        <p className="proyectos-subtitulo" data-aos="fade-up">
           Aquí algunos ejemplos de soluciones que hemos desarrollado en diseño
           web y automatización.
         </p>
 
-        <div className="proyectos-web">
+        <div className="proyectos-web" data-aos="fade-up">
           <h3>Desarrollo Web</h3>
-          <Slider projects={webProjects} />
+          {webProjects.length > 0 ? (
+            <Slider projects={webProjects} />
+          ) : (
+            <p className="proyectos-aviso">
+              Pronto añadiremos proyectos de desarrollo web.
+            </p>
+          )}
         </div>
 
-        <div className="proyectos-automatizacion">
+        <div className="proyectos-automatizacion" data-aos="fade-up">
           <h3>Automatizaciones</h3>
-          <Slider projects={automationProjects} />
+          {automationProjects.length > 0 ? (
+            <Slider projects={automationProjects} />
+          ) : (
+            <p className="proyectos-aviso">
+              Estamos preparando automatizaciones que pronto verás aquí.
+            </p>
+          )}
         </div>
 
-        <div className="proyectos-boton-ver-todos">
+        <div className="proyectos-boton-ver-todos" data-aos="fade-up">
           <Link
             to="/pagina-proyectos"
             className="cta-button-outline ver-todos-btn"

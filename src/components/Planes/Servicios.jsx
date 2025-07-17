@@ -1,4 +1,3 @@
-// Servicios.jsx
 import { useState, useEffect } from "react";
 import {
   Paintbrush,
@@ -14,6 +13,12 @@ import "./servicios.css";
 
 const serviciosAdicionales = [
   {
+    title: "Alojamiento",
+    description: "Hospedaje mensual optimizado según el tipo de página web.",
+    icon: Settings,
+    isHosting: true,
+  },
+  {
     title: "Blog",
     description: "Configuración de blog con diseño y estructura optimizados.",
     price: "Desde 80€",
@@ -25,36 +30,17 @@ const serviciosAdicionales = [
     price: "Desde 50€/idioma",
     icon: Globe,
   },
-  {
-    title: "Chatbots",
-    description:
-      "Desarrollo de chatbots para atención automática en web o WhatsApp.",
-    price: " ",
-    icon: Bot,
-  },
-  {
-    title: "Automatizaciones",
-    description:
-      "Implementación de flujos automáticos para ahorrar tiempo y mejorar procesos.",
-    price: "Depende de la dificultad",
-    icon: Workflow,
-  },
-  {
-    title: "Bonos de soporte técnico",
-    description: "Soporte durante el desarrollo y revisiones al finalizar.",
-    icon: LifeBuoy,
-    isBono: true,
-  },
+  // {
+  //   title: "Bonos de soporte técnico",
+  //   description: "Soporte durante el desarrollo y revisiones al finalizar.",
+  //   icon: LifeBuoy,
+  //   isBono: true,
+  // },
 ];
 
 function Servicios() {
   const [showModal, setShowModal] = useState(false);
   const [showHostingModal, setShowHostingModal] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = showModal ? "hidden" : "auto";
-    return () => (document.body.style.overflow = "auto");
-  }, [showModal]);
 
   useEffect(() => {
     const isModalOpen = showModal || showHostingModal;
@@ -67,7 +53,7 @@ function Servicios() {
       <section className="servicios" id="servicios">
         <h2>Servicios incluidos en planes web</h2>
         <div className="servicios-grupos">
-          <div className="servicio-grupo">
+          <div className="servicio-grupo" data-aos="fade-up">
             <div className="grupo-header">
               <Paintbrush className="grupo-icono" />
               <h3>Diseño & Rendimiento</h3>
@@ -87,7 +73,7 @@ function Servicios() {
               </li>
             </ul>
           </div>
-          <div className="servicio-grupo">
+          <div className="servicio-grupo" data-aos="fade-up">
             <div className="grupo-header">
               <Settings className="grupo-icono" />
               <h3>Funcionalidades Técnicas</h3>
@@ -103,21 +89,9 @@ function Servicios() {
               <li>
                 <strong>SEO básico:</strong> Títulos, estructura y metadatos.
               </li>
-              <li className="servicio-alojamiento destacado">
-                <div className="alojamiento-contenido">
-                  <strong>Alojamiento</strong>{" "}
-                  <span className="suscripcion-label">(pago mensual)</span>
-                </div>
-                <button
-                  className="ver-bonos hosting-link"
-                  onClick={() => setShowHostingModal(true)}
-                >
-                  Consultar precios de alojamiento
-                </button>
-              </li>
             </ul>
           </div>
-          <div className="servicio-grupo">
+          <div className="servicio-grupo" data-aos="fade-up">
             <div className="grupo-header">
               <Handshake className="grupo-icono" />
               <h3>Acompañamiento</h3>
@@ -136,11 +110,10 @@ function Servicios() {
       </section>
 
       <section className="servicios servicios-adicionales">
-        <h2>Servicios Adicionales</h2>
+        <h2 data-aos="fade-up">Servicios Adicionales</h2>
 
-        {/* Primera fila: 3 servicios */}
-        <div className="servicios-grupos">
-          {serviciosAdicionales.slice(0, 3).map((servicio, index) => {
+        <div className="servicios-grupos" data-aos="fade-up">
+          {serviciosAdicionales.map((servicio, index) => {
             const Icon = servicio.icon;
             return (
               <div className="servicio-grupo" key={index}>
@@ -156,45 +129,22 @@ function Servicios() {
                     </li>
                   )}
                   {servicio.isBono && (
-                    <li>
+                    <div className="boton-servicio-wrapper">
                       <button
                         className="ver-bonos"
                         onClick={() => setShowModal(true)}
                       >
                         Ver bonos
                       </button>
-                    </li>
+                    </div>
                   )}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Segunda fila: 2 servicios */}
-        <div className="servicios-grupos">
-          {serviciosAdicionales.slice(3).map((servicio, index) => {
-            const Icon = servicio.icon;
-            return (
-              <div className="servicio-grupo" key={index + 3}>
-                <div className="grupo-header">
-                  <Icon className="grupo-icono" />
-                  <h3>{servicio.title}</h3>
-                </div>
-                <ul>
-                  <li>{servicio.description}</li>
-                  {servicio.price && (
-                    <li>
-                      <strong>Precio:</strong> {servicio.price}
-                    </li>
-                  )}
-                  {servicio.isBono && (
-                    <div className="bono-boton-wrapper">
+                  {servicio.isHosting && (
+                    <div className="boton-servicio-wrapper">
                       <button
-                        className="ver-bonos"
-                        onClick={() => setShowModal(true)}
+                        className="ver-bonos hosting-link"
+                        onClick={() => setShowHostingModal(true)}
                       >
-                        Ver bonos
+                        Consultar precios de alojamiento
                       </button>
                     </div>
                   )}
@@ -211,7 +161,7 @@ function Servicios() {
             <button className="modal-close" onClick={() => setShowModal(false)}>
               ×
             </button>
-            <h3>Bonos de soporte </h3>
+            <h3>Bonos de soporte</h3>
             <p className="modal-subtitle">
               Usa estos bonos después de la entrega para soporte técnico o
               mejoras.

@@ -5,9 +5,9 @@ import tomas from "../../images/tomas.jpeg";
 function QuienesSomos() {
   return (
     <section className="quienes" id="quienes-somos">
-      <h2>Quiénes Somos</h2>
+      <h2 data-aos="fade-up">Quiénes Somos</h2>
 
-      <p className="quienes-intro">
+      <p className="quienes-intro" data-aos="fade-up">
         En <strong>Uthopiq</strong> creemos en hacer el mundo digital más
         accesible, profesional y automatizado. Creamos páginas web con WordPress
         adaptadas a cada negocio, y conectamos procesos con automatizaciones y
@@ -15,8 +15,8 @@ function QuienesSomos() {
         con muchas ganas de transformar ideas en soluciones prácticas.
       </p>
 
-      <div className="socio">
-        <img src={alejandro} alt="Imagen de Alejandro Romero" />
+      <div className="socio" data-aos="fade-up">
+        <img src={alejandro} alt="Imagen de Alejandro Romero" data-aos="fade-up" />
         <div className="socio-texto">
           <h3>
             <a
@@ -38,7 +38,7 @@ function QuienesSomos() {
         </div>
       </div>
 
-      <div className="socio tomas">
+      <div className="socio tomas" data-aos="fade-up">
         <div className="socio-texto">
           <h3>
             <a
@@ -58,7 +58,7 @@ function QuienesSomos() {
             y mejoran la experiencia digital de los negocios.
           </p>
         </div>
-        <img src={tomas} alt="Imagen de Tomás Primo" />
+        <img src={tomas} alt="Imagen de Tomás Primo" data-aos="fade-up" />
       </div>
     </section>
   );
