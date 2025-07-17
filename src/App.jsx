@@ -12,6 +12,7 @@ import Contacto from './components/Contacto/Contacto.jsx';
 import QuienesSomos from './components/QuienesSomos/QuienesSomos.jsx';
 import PersonalizaPlan from './pages/PersonalizaPlan.jsx';
 import PaginaProyectos from './pages/ProyectosPage.jsx';
+import ChatWidgetLoader from './components/ChatBot/ChatWidgetLoader.jsx'
 
 function App() {
   // Scroll suave reutilizable
@@ -38,6 +39,7 @@ function App() {
               <QuienesSomos />
               <Contacto />
               <Footer />
+              <ChatWidgetLoader />
             </>
           }
         />

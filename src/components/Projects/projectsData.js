@@ -1,4 +1,4 @@
-import imgBot from '../../images/uthopon.png';
+import imgBot from '/images/uthopon.png';
 
 const projectsData = [
   {
