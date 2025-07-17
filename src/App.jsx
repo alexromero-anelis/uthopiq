@@ -14,6 +14,14 @@ import PersonalizaPlan from './pages/PersonalizaPlan.jsx';
 import PaginaProyectos from './pages/ProyectosPage.jsx';
 
 function App() {
+  // Scroll suave reutilizable
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Router>
       <Routes>
@@ -22,7 +30,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Hero />
+              <Hero scrollToSection={scrollToSection} />
               <Projects />
               <PlanesWeb />
               <ServiciosWeb />

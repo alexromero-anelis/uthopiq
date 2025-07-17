@@ -2,13 +2,13 @@ import FondoAnimado from "./FondoAnimado.jsx"
 import "./hero.css"
 import { Link} from "react-router-dom";
 
-function Hero() 
+function Hero({ scrollToSection })
 {
     return (
         <div className="hero-wrapper" id="inicio">
             <FondoAnimado />
 
-            <div className="hero-container container mx-auto px-4 min-h-screen flex flex-col justify-center relative z-10">
+            <div className="hero-container container mx-auto px-4 min-h-screen flex flex-col justify-center relative z-10 mt-28 sm:mt-0">
                 {/* Hero Section */}
                 <div className="text-center max-w-4xl mx-auto">
                     <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl mb-4">
@@ -24,7 +24,7 @@ function Hero()
 
                     {/* Botones CTA */}
                     <div className="hero-buttons flex flex-col sm:flex-row gap-3 justify-center mb-12">
-                    <button className="cta-button px-6 py-3 rounded-md font-medium text-base">
+                    <button className="cta-button px-6 py-3 rounded-md font-medium text-base" onClick={() => scrollToSection("contacto")}>
                         Contáctanos ahora
                     </button>
                     <Link to="/personaliza-tu-plan">

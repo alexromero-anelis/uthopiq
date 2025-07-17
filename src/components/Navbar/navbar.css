@@ -212,6 +212,7 @@
 
   .cta-button-outline {
     display: inline-block;
+    width: 100%;
     text-decoration: none;
     text-align: center;
     color: var(--blanco);
