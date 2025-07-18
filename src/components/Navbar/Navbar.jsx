@@ -82,7 +82,7 @@ function Navbar() {
               <ul className="dropdown-menu">
                 <li>
                   <Link
-                    to="/pagina-proyectos"
+                    to="/proyectos"
                     className="dropdown-link"
                     onClick={cerrarMenu}
                   >
@@ -162,7 +162,7 @@ function Navbar() {
               {proyectosSubmenuOpen && (
                 <ul className="submenu">
                   <li>
-                    <Link to="/pagina-proyectos">
+                    <Link to="/proyectos">
                       <button onClick={cerrarMenu}>Ver todos</button>
                     </Link>
                   </li>

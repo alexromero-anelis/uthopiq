@@ -53,7 +53,7 @@ function App() {
           }
         />
         <Route path="/personaliza-tu-plan" element={<PersonalizaPlan />} />
-        <Route path="/pagina-proyectos" element={<PaginaProyectos />} />
+        <Route path="/proyectos" element={<PaginaProyectos />} />
       </Routes>
     </Router>
   );
