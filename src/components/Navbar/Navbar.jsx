@@ -1,12 +1,14 @@
-import imagenUthopon from "../../images/uthopiq-logo-completo.png";
+// components/Navbar/Navbar.jsx
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import imagenUthopon from "../../images/uthopiq-logo-completo.png";
+import DesktopNavbarLinks from "./DesktopNavbarLinks";
+import MobileNavbarLinks from "./MobileNavbarLinks";
 import "./navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [proyectosSubmenuOpen, setProyectosSubmenuOpen] = useState(false);
-  const [webSubmenuOpen, setWebSubmenuOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
   const [scrolled, setScrolled] = useState(false);
 
   const location = useLocation();
@@ -15,26 +17,10 @@ function Navbar() {
     location.pathname === "/personaliza-tu-plan" ||
     location.pathname === "/pagina-proyectos";
 
-  const menuHamburguesa = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   const cerrarMenu = () => {
     setMenuOpen(false);
-    setWebSubmenuOpen(false);
+    setOpenSubmenu(null);
   };
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "auto";
-  }, [menuOpen]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (id) => {
     const goToSection = () => {
@@ -49,13 +35,23 @@ function Navbar() {
 
     if (location.pathname !== "/") {
       navigate("/");
-      setTimeout(goToSection, 200); // da tiempo a montar el DOM
+      setTimeout(goToSection, 200);
     } else {
       goToSection();
     }
 
     cerrarMenu();
   };
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -71,63 +67,10 @@ function Navbar() {
         </div>
 
         <div className="navbar-center">
-          <ul className="navbar-links-desktop">
-            <li className="dropdown">
-              <button
-                className="dropdown-toggle"
-                onClick={() => scrollToSection("proyectos")}
-              >
-                Proyectos
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link
-                    to="/proyectos"
-                    className="dropdown-link"
-                    onClick={cerrarMenu}
-                  >
-                    Ver todos
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="dropdown">
-              <button
-                className="dropdown-toggle"
-                onClick={() => scrollToSection("web")}
-              >
-                Web
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <button onClick={() => scrollToSection("web")}>Planes</button>
-                </li>
-                <li>
-                  <button onClick={() => scrollToSection("servicios")}>
-                    Servicios
-                  </button>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("automatizaciones")}>
-                Automatizaciones
-              </button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("bonos")}>Bonos</button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("quienes-somos")}>
-                Quiénes somos
-              </button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("contacto")}>
-                Contáctanos
-              </button>
-            </li>
-          </ul>
+          <DesktopNavbarLinks
+            scrollToSection={scrollToSection}
+            cerrarMenu={cerrarMenu}
+          />
         </div>
 
         <div className="navbar-right">
@@ -142,81 +85,22 @@ function Navbar() {
         </div>
 
         {!menuOpen && (
-          <button className="navbar-hamburguesa" onClick={menuHamburguesa}>
+          <button
+            className="navbar-hamburguesa"
+            onClick={() => setMenuOpen(true)}
+          >
             ☰
           </button>
         )}
 
-        <div className={`navbar-links-container ${menuOpen ? "open" : ""}`}>
-          <img src={imagenUthopon} alt="Logo de Uthopiq" />
-          <ul className="navbar-links">
-            <li>
-              <button onClick={() => scrollToSection("inicio")}>Inicio</button>
-            </li>
-            <li>
-              <button
-                onClick={() => setProyectosSubmenuOpen(!proyectosSubmenuOpen)}
-              >
-                Proyectos
-              </button>
-              {proyectosSubmenuOpen && (
-                <ul className="submenu">
-                  <li>
-                    <Link to="/proyectos">
-                      <button onClick={cerrarMenu}>Ver todos</button>
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-
-            <li>
-              <button onClick={() => setWebSubmenuOpen(!webSubmenuOpen)}>
-                Web
-              </button>
-              {webSubmenuOpen && (
-                <ul className="submenu">
-                  <li>
-                    <button onClick={() => scrollToSection("web")}>
-                      Planes
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={() => scrollToSection("servicios")}>
-                      Servicios
-                    </button>
-                  </li>
-                </ul>
-              )}
-            </li>
-
-            <li>
-              <button onClick={() => scrollToSection("automatizaciones")}>
-                Automatizaciones
-              </button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("quienes-somos")}>
-                Quiénes somos
-              </button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("contacto")}>
-                Contáctanos
-              </button>
-            </li>
-
-            <div className="navbar-cta-mobile">
-              <Link
-                to={enFormulario ? "/" : "/personaliza-tu-plan"}
-                onClick={cerrarMenu}
-                className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2 text-center"
-              >
-                {enFormulario ? "Volver al inicio" : "Personaliza tu plan"}
-              </Link>
-            </div>
-          </ul>
-        </div>
+        <MobileNavbarLinks
+          open={menuOpen}
+          cerrarMenu={cerrarMenu}
+          openSubmenu={openSubmenu}
+          setOpenSubmenu={setOpenSubmenu}
+          scrollToSection={scrollToSection}
+          enFormulario={enFormulario}
+        />
       </nav>
 
       {menuOpen && <div className="overlay" onClick={cerrarMenu}></div>}

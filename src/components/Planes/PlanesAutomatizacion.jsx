@@ -7,7 +7,7 @@ function PlanesAutomatizacion() {
     <section className="automatizacion-section" id="automatizaciones">
       <div className="automatizacion-header" data-aos="fade-up">
         <span className="automatizacion-subtitle">Automatización con IA</span>
-        <h2>Transforma tu negocio con flujos automáticos</h2>
+        <h2>Automatiza tu negocio</h2>
         <p className="automatizacion-descripcion">
           Diseñamos <strong>automatizaciones inteligentes</strong> para conectar
           tus herramientas, eliminar procesos repetitivos y aumentar tu

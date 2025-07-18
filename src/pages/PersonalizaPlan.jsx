@@ -8,8 +8,7 @@ import Footer from '../components/Footer/Footer';
 const serviciosAdicionales = [
   { title: "Blog", price: "Desde 80€" },
   { title: "Multi-idioma", price: "Desde 50€/idioma" },
-  { title: "Chatbots", price: "Desde 150€" },
-  { title: "Automatizaciones", price: "Desde 80€/flujo" }
+  { title: "Alojamiento", price: "Desde 10€" }
 ];
 
 function PersonalizaPlan() {

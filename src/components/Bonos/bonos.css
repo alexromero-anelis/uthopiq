@@ -60,3 +60,9 @@
 .bono-simple-row:last-child {
   border-bottom: none;
 }
+
+@media (max-width: 768px) {
+  .bonos h2 {
+    font-size: 1.8rem;
+  }
+}
