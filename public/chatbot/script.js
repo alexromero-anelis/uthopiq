@@ -233,6 +233,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: bounceBot 2s infinite;
         }
 
         .n8n-chat-widget .chat-toggle.position-left {
@@ -269,6 +270,16 @@
         .n8n-chat-widget .chat-footer a:hover {
             opacity: 1;
         }
+
+        @keyframes bounceBot {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
     `;
 
     // Load Geist font
@@ -376,6 +387,72 @@
     toggleButton.className = `chat-toggle${config.style.position === 'left' ? ' position-left' : ''}`;
     toggleButton.innerHTML = `
     <img src="/images/uthopon.png" alt="Uthopon" style="width: 60px; height: 60px; border-radius: 50%;" />`;
+
+        // Crear bocadillo
+    // Crear bocadillo con fondo de SVG personalizado
+    const chatTooltip = document.createElement('div');
+    chatTooltip.textContent = '¿Quieres chatear conmigo?';
+
+    chatTooltip.style.position = 'fixed';
+    chatTooltip.style.bottom = '85px';
+    chatTooltip.style.right = config.style.position === 'left' ? 'auto' : '30px';
+    chatTooltip.style.left = config.style.position === 'left' ? '85px' : 'auto';
+
+    chatTooltip.style.padding = '12px 20px';
+    chatTooltip.style.fontSize = '14px';
+    chatTooltip.style.fontWeight = '500';
+    chatTooltip.style.color = '#fff';
+
+    chatTooltip.style.background = '#1e1e1e';
+    chatTooltip.style.border = '2px solid #FF4B4B';
+    chatTooltip.style.borderRadius = '24px';
+    chatTooltip.style.boxShadow = '0 4px 16px rgba(0,0,0,0.4)';
+    chatTooltip.style.zIndex = '1001';
+
+    chatTooltip.style.opacity = '0';
+    chatTooltip.style.transform = 'translateY(10px)';
+    chatTooltip.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+    // Rabo como pseudoelemento simulado (usando otro div)
+    const tail = document.createElement('div');
+    tail.style.position = 'absolute';
+    tail.style.bottom = '-10px';
+    tail.style.right = '26px';
+    tail.style.width = '20px';
+    tail.style.height = '20px';
+    tail.style.background = '#1e1e1e';
+    tail.style.borderLeft = '2px solid #FF4B4B';
+    tail.style.borderBottom = '2px solid #FF4B4B';
+    tail.style.transform = 'rotate(45deg)';
+    tail.style.borderBottomLeftRadius = '4px';
+    tail.style.zIndex = '1000';
+
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'relative';
+    wrapper.appendChild(chatTooltip);
+    wrapper.appendChild(tail);
+    document.body.appendChild(wrapper);
+
+    // Mostrar/Ocultar bocadillo cíclicamente
+    let tooltipVisible = false;
+    let tooltipInterval = setInterval(() => {
+    tooltipVisible = !tooltipVisible;
+
+    if (tooltipVisible) {
+        chatTooltip.style.opacity = '1';
+        chatTooltip.style.transform = 'translateY(0)';
+    } else {
+        chatTooltip.style.opacity = '0';
+        chatTooltip.style.transform = 'translateY(10px)';
+    }
+    }, 5000); // cada 10s cambia de estado (5s visible + 5s oculto)
+
+    // Opcional: detener cuando el chat esté abierto
+    toggleButton.addEventListener('click', () => {
+    clearInterval(tooltipInterval);
+    chatTooltip.remove();
+    });
+
     widgetContainer.appendChild(chatContainer);
     widgetContainer.appendChild(toggleButton);
     document.body.appendChild(widgetContainer);
