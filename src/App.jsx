@@ -17,6 +17,8 @@ import ChatWidgetLoader from './components/ChatBot/ChatWidgetLoader.jsx'
 import Bonos from "./components/Bonos/Bonos";
 import AOS from "aos";
 import { useEffect } from "react";
+import CasosUso from "./components/Banners/CasosUso";
+import BeneficiosWeb from "./components/Banners/BeneficiosWeb.jsx";
 
 function App() {
   // Scroll suave reutilizable
@@ -42,8 +44,10 @@ function App() {
               <Hero scrollToSection={scrollToSection} />
               <Projects />
               <PlanesWeb />
+              <BeneficiosWeb />
               <ServiciosWeb />
               <Automatizaciones />
+              <CasosUso />
               <Bonos />
               <QuienesSomos />
               <Contacto />

@@ -1,78 +1,50 @@
-import './planes.css';
-import automatizacionImg from '../../images/automatizaciones.png'; 
-import { Link} from "react-router-dom";
+import "./planes.css";
+import { Link } from "react-router-dom";
 
 function PlanesAutomatizacion() {
   return (
-    <section className="automatizacion-section" id="automatizaciones">
-      <div className="automatizacion-header" data-aos="fade-up">
-        <span className="automatizacion-subtitle">Automatización con IA</span>
-        <h2>Automatiza tu negocio</h2>
-        <p className="automatizacion-descripcion">
-          Diseñamos <strong>automatizaciones inteligentes</strong> para conectar
-          tus herramientas, eliminar procesos repetitivos y aumentar tu
-          productividad. Diseñamos tu flujo ideal, lo implementamos, lo probamos y lo dejamos
-        funcionando sin que tengas que preocuparte por nada.
+    <section className="planes automatizacion-central" id="automatizaciones">
+      <div className="planes-header" data-aos="fade-up">
+        <span className="planes-subtitle">Automatización con IA</span>
+        <h2>Optimiza tu negocio</h2>
+        <p className="planes-descripcion">
+          Automatizamos tareas repetitivas, conectamos tus herramientas y
+          diseñamos flujos inteligentes adaptados a tu forma de trabajar. Ya sea
+          que vendas productos, ofrezcas servicios o gestiones clientes, podemos
+          ayudarte a ganar tiempo y precisión.
         </p>
       </div>
 
-      <div className="automatizacion-contenido">
-        <div className="automatizacion-texto">
-          <h3>¿Qué tipo de automatizaciones ofrecemos?</h3>
-          <ul className="automatizacion-lista estructura" data-aos="fade-up">
-            <li>
-              <h4>Respuestas automáticas</h4>
-              <p>
-                Cuando alguien llena un formulario o te escribe por WhatsApp,
-                recibe una respuesta personalizada sin que tú hagas nada.
-              </p>
-            </li>
-            <li>
-              <h4>Envío de correos programados</h4>
-              <p>
-                Recordatorios de pagos, mensajes postventa o promociones que se
-                envían solos en el momento justo.
-              </p>
-            </li>
-            <li>
-              <h4>Facturación y reportes automáticos</h4>
-              <p>
-                Genera facturas o reportes en PDF y recíbelos por correo sin
-                mover un dedo.
-              </p>
-            </li>
-            <li>
-              <h4>Conexión entre tus herramientas</h4>
-              <p>
-                Cuando actualizas un dato en Google Sheets o Notion, se
-                sincroniza automáticamente con otras apps que usas.
-              </p>
-            </li>
-            <li>
-              <h4>Seguimiento de clientes</h4>
-              <p>
-                Crea tareas, avisos o correos según lo que hace (o no hace) un
-                cliente en tu web o tienda.
-              </p>
-            </li>
+      <div className="automatizacion-bloques" data-aos="fade-up">
+        <div className="bloque">
+          <h3>¿Qué ganas al automatizar?</h3>
+          <ul>
+            <li>Más tiempo para lo importante</li>
+            <li>Procesos más ágiles y sin errores</li>
+            <li>Mejores respuestas para tus clientes</li>
+            <li>Control y trazabilidad en tiempo real</li>
+            <li>Ahorro económico en tareas operativas</li>
           </ul>
-
-          <div className="automatizacion-extra-card" data-aos="fade-up">
-            
-          </div>
-
-          <div className="planes-boton-container" data-aos="zoom-in">
-            <Link to="/personaliza-tu-plan">
-              <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
-                Personaliza tu flujo
-              </button>
-            </Link>
-          </div>
         </div>
 
-        <div className="automatizacion-imagen" data-aos="fade-left">
-          <img src={automatizacionImg} alt="Automatizaciones Inteligentes" />
+        <div className="bloque">
+          <h3>¿Cómo lo hacemos?</h3>
+          <ul>
+            <li>Analizamos tus procesos y detectamos oportunidades</li>
+            <li>Diseñamos un flujo visual y lo validamos contigo</li>
+            <li>Conectamos tus herramientas favoritas</li>
+            <li>Probamos todo hasta que funcione solo</li>
+            <li>Te damos soporte, mejoras y actualizaciones</li>
+          </ul>
         </div>
+      </div>
+
+      <div className="planes-boton-container" data-aos="zoom-in">
+        <Link to="/personaliza-tu-plan">
+          <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
+            Solicita tu automatización
+          </button>
+        </Link>
       </div>
     </section>
   );
