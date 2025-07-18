@@ -25,8 +25,14 @@
   max-width: 600px;
   margin: 0 auto;
   border: 1px solid var(--gris-claro);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.02);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.bono-simple-table:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
 }
 
 .bono-simple-row {
@@ -34,12 +40,21 @@
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid var(--gris);
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  cursor: default;
 }
 
 .bono-simple-row.header {
   background-color: var(--rojo-primario);
   color: var(--blanco);
   font-weight: bold;
+  cursor: default;
+}
+
+.bono-simple-row:not(.header):hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  transform: translateX(4px);
+  box-shadow: inset 3px 0 0 var(--rojo-primario);
 }
 
 .bono-simple-row:last-child {
