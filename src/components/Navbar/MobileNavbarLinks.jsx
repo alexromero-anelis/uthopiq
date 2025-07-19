@@ -1,6 +1,5 @@
 // components/Navbar/MobileNavbarLinks.jsx
 import { Link } from "react-router-dom";
-import logoUthopiq from "../../images/uthopiq-logo-completo.png";
 
 function MobileNavbarLinks({
   open,
@@ -16,7 +15,6 @@ function MobileNavbarLinks({
 
   return (
     <div className={`navbar-links-container ${open ? "open" : ""}`}>
-      <img src={logoUthopiq} alt="Logo de Uthopiq" />
       <ul className="navbar-links">
         <li><button onClick={() => scrollToSection("inicio")}>Inicio</button></li>
 

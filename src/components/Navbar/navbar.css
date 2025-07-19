@@ -58,8 +58,27 @@
   font-size: 2rem;
   color: var(--blanco);
   cursor: pointer;
-  z-index: 1100;
+  z-index: 1500;
 }
+
+.navbar-hamburguesa .icon {
+  display: inline-block;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  font-size: 2rem;
+}
+
+/* Cuando se abre el menú (muestra la X) */
+.navbar-hamburguesa.cerrar .icon {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Cuando está cerrado (muestra el ☰) */
+.navbar-hamburguesa.abrir .icon {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
 
 /* === OVERLAY CUANDO MENÚ ABIERTO === */
 .overlay {
@@ -131,25 +150,33 @@
   }
 
   .navbar-links-container {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 75%;
-    max-width: 320px;
-    height: 100vh;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     background-color: #151515;
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    transition: left 0.4s ease;
-    display: flex;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem 1.5rem;
-    gap: 2rem;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    animation: slideDown 0.3s ease forwards;
   }
 
   .navbar-links-container.open {
-    left: 0;
+    display: flex;
+  }
+
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .navbar-links-container img {

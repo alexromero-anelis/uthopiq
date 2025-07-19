@@ -53,6 +53,21 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+  const html = document.documentElement;
+
+  if (menuOpen) {
+    document.body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+    html.style.height = "100%";
+  } else {
+    document.body.style.overflow = "";
+    html.style.overflow = "";
+    html.style.height = "";
+  }
+}, [menuOpen]);
+
+
   return (
     <>
       <nav
@@ -84,14 +99,13 @@ function Navbar() {
           </Link>
         </div>
 
-        {!menuOpen && (
-          <button
-            className="navbar-hamburguesa"
-            onClick={() => setMenuOpen(true)}
-          >
-            ☰
-          </button>
-        )}
+        <button
+          className={`navbar-hamburguesa ${menuOpen ? "cerrar" : "abrir"}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+        >
+          <span className="icon">{menuOpen ? "✕" : "☰"}</span>
+        </button>
 
         <MobileNavbarLinks
           open={menuOpen}
