@@ -25,7 +25,7 @@ const ChatWidgetLoader = () => {
 
     // Cargar script externo
     const script = document.createElement('script');
-    script.src = '/chatbot/script.js';
+    script.src = `/chatbot/script.js?v=${Date.now()}`; 
     script.async = true;
     document.body.appendChild(script);
 
