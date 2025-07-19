@@ -123,6 +123,44 @@
   margin: 1rem 0;
 }
 
+.uthopiq-popup {
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 1rem;
+  border: 1px solid #2c2c2c;
+  padding: 2rem;
+  font-family: var(--font-h2);
+  box-shadow: 0 0 20px rgba(255, 75, 75, 0.25);
+}
+
+.uthopiq-title {
+  color: #ff4b4b;
+  font-size: 1.6rem;
+}
+
+.uthopiq-text {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.uthopiq-confirm-button,
+.uthopiq-cancel-button {
+  padding: 0.6rem 1.4rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: 2px solid #ff4b4b;
+  background: transparent;
+  color: #ff4b4b;
+  transition: all 0.3s ease;
+  margin: 0 0.3rem;
+}
+
+.uthopiq-confirm-button:hover,
+.uthopiq-cancel-button:hover {
+  background-color: #ff4b4b;
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .contacto {
     padding: 3rem 1rem 5rem;

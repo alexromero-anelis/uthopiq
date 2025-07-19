@@ -7,6 +7,18 @@ function Contacto() {
   const [captchaToken, setCaptchaToken] = useState(null);
   const [status, setStatus] = useState("");
 
+  // SweetAlert2 personalizado
+  const customSwal = Swal.mixin({
+    customClass: {
+      popup: "uthopiq-popup",
+      confirmButton: "uthopiq-confirm-button",
+      cancelButton: "uthopiq-cancel-button",
+      title: "uthopiq-title",
+      htmlContainer: "uthopiq-text",
+    },
+    buttonsStyling: false,
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -15,55 +27,48 @@ function Contacto() {
     const email = form.email.value.trim();
     const mensaje = form.mensaje.value.trim();
 
-    // Validaciones campo por campo
     if (!nombre) {
-      Swal.fire({
+      customSwal.fire({
         icon: "warning",
         title: "No se puede enviar el mensaje",
         text: "Por favor ingresa tu nombre.",
-        confirmButtonColor: "#e67e22",
       });
       return;
     }
 
     if (!email) {
-      Swal.fire({
+      customSwal.fire({
         icon: "warning",
         title: "No se puede enviar el mensaje",
         text: "Por favor ingresa tu correo electrónico.",
-        confirmButtonColor: "#e67e22",
       });
       return;
     }
 
-    // Validar formato de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      Swal.fire({
+      customSwal.fire({
         icon: "warning",
         title: "Correo inválido",
         text: "Por favor ingresa un correo electrónico válido.",
-        confirmButtonColor: "#e67e22",
       });
       return;
     }
 
     if (!mensaje) {
-      Swal.fire({
+      customSwal.fire({
         icon: "warning",
         title: "No se puede enviar el mensaje",
         text: "Por favor escribe tu mensaje.",
-        confirmButtonColor: "#e67e22",
       });
       return;
     }
 
     if (!captchaToken) {
-      Swal.fire({
+      customSwal.fire({
         icon: "warning",
         title: "Verificación requerida",
         text: "Por favor completa el reCAPTCHA.",
-        confirmButtonColor: "#e67e22",
       });
       return;
     }
@@ -82,29 +87,26 @@ function Contacto() {
       const result = await response.text();
 
       if (result.includes("Mensaje enviado correctamente")) {
-        Swal.fire({
+        customSwal.fire({
           icon: "success",
           title: "Mensaje enviado correctamente",
           text: "Pronto contactaremos contigo",
-          confirmButtonColor: "#00c37e",
         });
         form.reset();
         setCaptchaToken(null);
         setStatus("");
       } else {
-        Swal.fire({
+        customSwal.fire({
           icon: "error",
           title: "Error al enviar",
           text: result,
-          confirmButtonColor: "#e74c3c",
         });
       }
     } catch (error) {
-      Swal.fire({
+      customSwal.fire({
         icon: "error",
         title: "Ocurrió un error",
         text: "Intenta nuevamente en unos minutos",
-        confirmButtonColor: "#e74c3c",
       });
     }
   };

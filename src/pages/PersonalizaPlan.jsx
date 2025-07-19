@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 import ReCAPTCHA from "react-google-recaptcha";
-import './personalizaPlan.css';
-import Navbar from '../components/Navbar/Navbar';
-import Footer from '../components/Footer/Footer';
+import "./personalizaPlan.css";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const serviciosAdicionales = [
   { title: "Blog", price: "Desde 80€" },
   { title: "Multi-idioma", price: "Desde 50€/idioma" },
-  { title: "Alojamiento", price: "Desde 10€" }
+  { title: "Alojamiento", price: "Desde 10€" },
 ];
 
 function PersonalizaPlan() {
-  const [tipoServicio, setTipoServicio] = useState('plan-web');
+  const [tipoServicio, setTipoServicio] = useState("plan-web");
   const [seleccionados, setSeleccionados] = useState([]);
   const [captchaToken, setCaptchaToken] = useState(null);
   const [status, setStatus] = useState("");
@@ -20,6 +20,17 @@ function PersonalizaPlan() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const customSwal = Swal.mixin({
+    customClass: {
+      popup: "uthopiq-popup",
+      confirmButton: "uthopiq-confirm-button",
+      cancelButton: "uthopiq-cancel-button",
+      title: "uthopiq-title",
+      htmlContainer: "uthopiq-text",
+    },
+    buttonsStyling: false,
+  });
 
   const toggleServicio = (servicio) => {
     setSeleccionados((prev) =>
@@ -30,10 +41,11 @@ function PersonalizaPlan() {
   };
 
   const mostrarCampoAutomatizaciones =
-    tipoServicio === 'automatizacion' || seleccionados.includes("Automatizaciones");
+    tipoServicio === "automatizacion" ||
+    seleccionados.includes("Automatizaciones");
 
   const mostrarCampoChatbots =
-    tipoServicio === 'automatizacion' || seleccionados.includes("Chatbots");
+    tipoServicio === "automatizacion" || seleccionados.includes("Chatbots");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,32 +54,29 @@ function PersonalizaPlan() {
     const email = form.email.value.trim();
 
     if (!nombre || !email) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Campos requeridos',
-        text: 'Por favor completa tu nombre y correo electrónico.',
-        confirmButtonColor: '#e67e22'
+      customSwal.fire({
+        icon: "warning",
+        title: "Campos requeridos",
+        text: "Por favor completa tu nombre y correo electrónico.",
       });
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Correo inválido',
-        text: 'Por favor ingresa un correo válido.',
-        confirmButtonColor: '#e67e22'
+      customSwal.fire({
+        icon: "warning",
+        title: "Correo inválido",
+        text: "Por favor ingresa un correo válido.",
       });
       return;
     }
 
     if (!captchaToken) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Verificación requerida',
-        text: 'Completa el reCAPTCHA para continuar.',
-        confirmButtonColor: '#e67e22'
+      customSwal.fire({
+        icon: "warning",
+        title: "Verificación requerida",
+        text: "Completa el reCAPTCHA para continuar.",
       });
       return;
     }
@@ -77,40 +86,37 @@ function PersonalizaPlan() {
     try {
       const formData = new FormData(form);
       formData.append("g-recaptcha-response", captchaToken);
-      formData.append("serviciosAdicionales", seleccionados.join(', '));
+      formData.append("serviciosAdicionales", seleccionados.join(", "));
 
       const res = await fetch("https://uthopiq.com/personalizar-plan.php", {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       const result = await res.text();
 
       if (result.includes("Mensaje enviado correctamente")) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Solicitud enviada',
-          text: 'Nos pondremos en contacto contigo pronto.',
-          confirmButtonColor: '#00c37e'
+        customSwal.fire({
+          icon: "success",
+          title: "Solicitud enviada",
+          text: "Nos pondremos en contacto contigo pronto.",
         });
         form.reset();
         setSeleccionados([]);
         setCaptchaToken(null);
         setStatus("");
       } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
+        customSwal.fire({
+          icon: "error",
+          title: "Error",
           text: result,
-          confirmButtonColor: '#e74c3c'
         });
       }
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error inesperado',
-        text: 'Intenta nuevamente en unos minutos.',
-        confirmButtonColor: '#e74c3c'
+      customSwal.fire({
+        icon: "error",
+        title: "Error inesperado",
+        text: "Intenta nuevamente en unos minutos.",
       });
     }
   };
@@ -121,24 +127,32 @@ function PersonalizaPlan() {
       <div className="personaliza-container">
         <h1>Personaliza tu plan</h1>
         <form className="formulario" onSubmit={handleSubmit}>
-          <label>Nombre:
+          <label>
+            Nombre:
             <input type="text" name="nombre" />
           </label>
 
-          <label>Correo electrónico:
+          <label>
+            Correo electrónico:
             <input type="email" name="email" />
           </label>
 
-          <label>Tipo de servicio:
-            <select name="tipo-servicio" value={tipoServicio} onChange={(e) => setTipoServicio(e.target.value)}>
+          <label>
+            Tipo de servicio:
+            <select
+              name="tipo-servicio"
+              value={tipoServicio}
+              onChange={(e) => setTipoServicio(e.target.value)}
+            >
               <option value="plan-web">Plan web</option>
               <option value="automatizacion">Automatización o chatbot</option>
             </select>
           </label>
 
-          {tipoServicio === 'plan-web' && (
+          {tipoServicio === "plan-web" && (
             <>
-              <label>Tipo de web:
+              <label>
+                Tipo de web:
                 <select name="tipo-web">
                   <option value="landing-basica">Landing Básica</option>
                   <option value="landing-avanzada">Landing Avanzada</option>
@@ -158,7 +172,9 @@ function PersonalizaPlan() {
                       checked={seleccionados.includes(s.title)}
                       onChange={() => toggleServicio(s.title)}
                     />
-                    <span>{s.title} — {s.price}</span>
+                    <span>
+                      {s.title} — {s.price}
+                    </span>
                   </label>
                 ))}
               </div>
@@ -168,14 +184,20 @@ function PersonalizaPlan() {
           {mostrarCampoChatbots && (
             <label>
               Chatbot deseado:
-              <textarea name="chatbots" placeholder="Describe el chatbot que necesitas" />
+              <textarea
+                name="chatbots"
+                placeholder="Describe el chatbot que necesitas"
+              />
             </label>
           )}
 
           {mostrarCampoAutomatizaciones && (
             <label>
               Automatizaciones deseadas:
-              <textarea name="automatizaciones" placeholder="Describe tus necesidades" />
+              <textarea
+                name="automatizaciones"
+                placeholder="Describe tus necesidades"
+              />
             </label>
           )}
 
