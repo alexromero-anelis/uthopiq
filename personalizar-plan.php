@@ -66,6 +66,24 @@ try {
     ";
 
     $mail->send();
+
+    $webhookUrl = 'https://n8n-n8n.jqy3lz.easypanel.host/webhook/94aba7e7-930b-450d-8e59-397db3e4d3fd';
+    $webhookData = [
+        'nombre' => $nombre,
+        'email' => $email,
+        'mensaje' => $mensaje
+    ];
+
+    $context = stream_context_create([
+        'http' => [
+            'method'  => 'POST',
+            'header'  => "Content-Type: application/json",
+            'content' => json_encode($webhookData),
+        ]
+    ]);
+
+    file_get_contents($webhookUrl, false, $context);
+
     echo "Mensaje enviado correctamente.";
 } catch (Exception $e) {
     echo "Error al enviar: {$mail->ErrorInfo}";
