@@ -34,7 +34,7 @@ const ChatWidgetLoader = () => {
     };
   }, []);
 
-  return null; // No renderiza nada en la interfaz
+  return null; 
 };
 
 export default ChatWidgetLoader;
