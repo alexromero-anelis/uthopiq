@@ -4,6 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "./personalizaPlan.css";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import planesData from '../components/Planes/planesData.js';
 
 const serviciosAdicionales = [
   { title: "Blog", price: "Desde 80€" },
@@ -11,8 +12,29 @@ const serviciosAdicionales = [
   { title: "Alojamiento", price: "Desde 10€" },
 ];
 
+// 👇 mapeo slug <-> título del JSON (alineado con tus planesData)
+const optionToTitle = {
+  "landing-basica": "Landing Básica",
+  "landing-avanzada": "Landing Avanzada",
+  "web-basica": "Web Básica",
+  "web-avanzada": "Web Avanzada",
+  "tienda-online": "Tienda Online",
+  "web-a-medida": null, // especial: sin card en JSON, se describe aparte
+};
+
+const titleToOption = Object.fromEntries(
+  Object.entries(optionToTitle)
+    .filter(([, t]) => t) // quita null
+    .map(([k, v]) => [v, k])
+);
+
 function PersonalizaPlan() {
   const [tipoServicio, setTipoServicio] = useState("plan-web");
+
+  // por defecto selecciono el primer plan de tu JSON
+  const defaultOption = titleToOption[planesData[0]?.title] || "landing-basica";
+  const [tipoWeb, setTipoWeb] = useState(defaultOption);
+
   const [seleccionados, setSeleccionados] = useState([]);
   const [captchaToken, setCaptchaToken] = useState(null);
   const [status, setStatus] = useState("");
@@ -88,6 +110,10 @@ function PersonalizaPlan() {
       formData.append("g-recaptcha-response", captchaToken);
       formData.append("serviciosAdicionales", seleccionados.join(", "));
 
+      // 👇 envía el TÍTULO del plan (mejor para tu backend y para humanos)
+      const planTitle = optionToTitle[tipoWeb] || "Web a Medida";
+      formData.set("tipo-web", planTitle);
+
       const res = await fetch("https://uthopiq.com/personalizar-plan.php", {
         method: "POST",
         body: formData,
@@ -105,6 +131,8 @@ function PersonalizaPlan() {
         setSeleccionados([]);
         setCaptchaToken(null);
         setStatus("");
+        setTipoServicio("plan-web");
+        setTipoWeb(defaultOption);
       } else {
         customSwal.fire({
           icon: "error",
@@ -121,11 +149,21 @@ function PersonalizaPlan() {
     }
   };
 
+  // helpers UI
+  const selectedPlanTitle = optionToTitle[tipoWeb]; // puede ser null en web-a-medida
+  const selectedPlan =
+    selectedPlanTitle &&
+    planesData.find((p) => p.title.toLowerCase() === selectedPlanTitle.toLowerCase());
+
+  // plans que existen en el JSON (excluye "Web a Medida")
+  const jsonPlanTitles = new Set(planesData.map((p) => p.title));
+
   return (
     <>
       <Navbar />
       <div className="personaliza-container">
         <h1>Personaliza tu plan</h1>
+
         <form className="formulario" onSubmit={handleSubmit}>
           <label>
             Nombre:
@@ -151,16 +189,60 @@ function PersonalizaPlan() {
 
           {tipoServicio === "plan-web" && (
             <>
-              <label>
-                Tipo de web:
-                <select name="tipo-web">
-                  <option value="landing-basica">Landing Básica</option>
-                  <option value="landing-avanzada">Landing Avanzada</option>
-                  <option value="web-estandar">Web Estándar</option>
-                  <option value="web-avanzada">Web Avanzada</option>
-                  <option value="web-a-medida">Web A Medida</option>
-                </select>
-              </label>
+              {/* Grid de cards para elegir visualmente */}
+              <div className="personaliza-planes-grid">
+                {planesData.map((plan, idx) => {
+                  const optionValue = titleToOption[plan.title]; // undefined si no está mapeado
+                  if (!optionValue) return null; // por seguridad
+                  const isSelected = tipoWeb === optionValue;
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`plan-card-selectable ${isSelected ? "selected" : ""}`}
+                      onClick={() => setTipoWeb(optionValue)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") setTipoWeb(optionValue);
+                      }}
+                    >
+                      {/* usa tu mismo estilo que en CardPlan o directamente reusa el componente si quieres */}
+                      <div className="plan-card-header">
+                        <h3>{plan.title}</h3>
+                      </div>
+                      <ul className="plan-card-features">
+                        {plan.features.slice(0, 6).map((f, i) => (
+                          <li key={i}>{f}</li>
+                        ))}
+                      </ul>
+                      {/* si en planesData tienes className como 'doble-columna' puedes usarlo para estilos */}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Vista detallada del plan seleccionado o mensaje para "a medida" */}
+              <div className="plan-detalle">
+                {selectedPlan ? (
+                  <>
+                    <h4>Características de “{selectedPlan.title}”</h4>
+                    <ul>
+                      {selectedPlan.features.map((f, i) => (
+                        <li key={i}>{f}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <h4>Plan “Web a medida”</h4>
+                    <p>
+                      Dinos qué necesitas (páginas, integraciones, SEO, automatizaciones, área privada,
+                      etc.) y te planteamos una propuesta personalizada.
+                    </p>
+                  </>
+                )}
+              </div>
 
               <div className="servicios-simples">
                 <p>Servicios web adicionales:</p>

@@ -1,7 +1,7 @@
 const planesData = [
   {
     title: "Landing Básica",
-    price: "Desde 200€",
+    /*price: "Desde 200€",*/
     features: [
       "Una sola página para mostrar lo esencial de tu negocio",
       "Diseño profesional y adaptado a tu estilo",
@@ -12,7 +12,7 @@ const planesData = [
   },
   {
     title: "Landing Avanzada",
-    price: "Desde 350€",
+    /*price: "Desde 350€",*/
     features: [
       "Todo lo incluido en la Landing Básica",
       "Elementos interactivos: carruseles, animaciones, filtros, etc.",
@@ -24,7 +24,7 @@ const planesData = [
   },
   {
     title: "Web Básica",
-    price: "Desde 600€",
+    /*price: "Desde 600€",*/
     features: [
       "Incluye todo lo de la Landing Avanzada",
       "Web completa con entre 2 y 5 páginas (Inicio, Sobre mí, Servicios, Contacto, etc.)",
@@ -35,7 +35,7 @@ const planesData = [
   },
   {
     title: "Web Avanzada",
-    price: "Desde 900€",
+    /*price: "Desde 900€",*/
     features: [
       "Incluye todo lo de la Web Básica",
       "Hasta 10 páginas personalizadas para cubrir todo lo que necesites",
@@ -48,7 +48,7 @@ const planesData = [
   },
   {
     title: "Tienda Online",
-    price: "Desde 1200€",
+    /*price: "Desde 1200€",*/
     features: [
       "Hasta 10 productos iniciales cargados (puedes añadir más tú mismo luego)",
       "Panel de administración para gestionar productos, pedidos y stock fácilmente",

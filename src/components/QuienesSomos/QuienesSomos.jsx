@@ -1,6 +1,6 @@
 import "./quienesSomos.css";
 import alejandro from "../../images/alejandro.jpg";
-import tomas from "../../images/tomas.jpeg";
+import tomas from "../../images/tomas.jpg";
 
 function QuienesSomos() {
   return (
