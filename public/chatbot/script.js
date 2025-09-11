@@ -120,6 +120,15 @@
             transform: scale(1.02);
         }
 
+        .n8n-chat-widget .email-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(133, 79, 255, 0.2);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
         .n8n-chat-widget .message-icon {
             width: 20px;
             height: 20px;
@@ -280,6 +289,85 @@
             }
         }
 
+        .n8n-chat-widget .email-wrapper {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+            align-items: stretch;
+            margin-bottom: 16px;
+        }
+
+        .n8n-chat-widget .email-input {
+            padding: 14px 18px;
+            font-size: 15px;
+            border: 1px solid rgba(133, 79, 255, 0.25);
+            border-radius: 10px;
+            background: #f8f8ff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+            color: #1e1e1e;
+            outline: none;
+        }
+
+        .n8n-chat-widget .email-input:focus {
+            border-color: var(--chat--color-primary);
+            box-shadow: 0 0 0 2px rgba(133, 79, 255, 0.15);
+        }
+
+        .n8n-chat-widget .start-chat-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, var(--chat--color-primary), var(--chat--color-secondary));
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            font-family: inherit;
+        }
+
+        .n8n-chat-widget .start-chat-btn:hover {
+            transform: scale(1.03);
+        }
+
+        .typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            }
+
+            .typing-indicator span {
+            width: 6px;
+            height: 6px;
+            background-color: var(--chat--color-font);
+            border-radius: 50%;
+            animation: typing-bounce 1.4s infinite ease-in-out;
+            }
+
+            .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+            }
+            .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+            }
+
+            @keyframes typing-bounce {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.6;
+            }
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            }
     `;
 
     // Load Geist font
@@ -346,21 +434,26 @@
     chatContainer.className = `chat-container${config.style.position === 'left' ? ' position-left' : ''}`;
     
     const newConversationHTML = `
-        <div class="brand-header">
-            <img src="${config.branding.logo}" alt="${config.branding.name}">
-            <span>${config.branding.name}</span>
-            <button class="close-button">X</button>
-        </div>
-        <div class="new-conversation">
-            <h2 class="welcome-text">${config.branding.welcomeText}</h2>
-            <button class="new-chat-btn">
-                <svg class="message-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/>
-                </svg>
-                Envianos un mensaje
-            </button>
-            <p class="response-text">${config.branding.responseTimeText}</p>
-        </div>
+    <div class="brand-header">
+        <img src="${config.branding.logo}" alt="${config.branding.name}">
+        <span>${config.branding.name}</span>
+        <button class="close-button">X</button>
+    </div>
+    <div class="new-conversation">
+    <h2 class="welcome-text">${config.branding.welcomeText}</h2>
+    <div class="email-wrapper">
+        <input type="email" placeholder="tucorreo@ejemplo.com" class="email-input" />
+        <button class="start-chat-btn">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+        </svg>
+        Iniciar chat
+        </button>
+    </div>
+    <p class="response-text">${config.branding.responseTimeText}</p>
+    </div>
     `;
 
     const chatInterfaceHTML = `
@@ -457,60 +550,88 @@
     widgetContainer.appendChild(toggleButton);
     document.body.appendChild(widgetContainer);
 
-    const newChatBtn = chatContainer.querySelector('.new-chat-btn');
+    // --- Selección de elementos
     const chatInterface = chatContainer.querySelector('.chat-interface');
     const messagesContainer = chatContainer.querySelector('.chat-messages');
     const textarea = chatContainer.querySelector('textarea');
     const sendButton = chatContainer.querySelector('button[type="submit"]');
 
+    // NUEVOS: email + botón de inicio
+    const startChatBtn = chatContainer.querySelector('.start-chat-btn');
+    const emailInput = chatContainer.querySelector('.email-input');
+
+    // Utils
     function generateUUID() {
-        return crypto.randomUUID();
+    return (crypto && crypto.randomUUID) ? crypto.randomUUID() : Math.random().toString(36).slice(2);
     }
 
-    async function startNewConversation() {
+    // Iniciar conversación (con correo)
+    async function startChat() {
+        const email = (emailInput?.value || '').trim();
+        if (!email || !email.includes('@')) {
+            alert('Por favor ingresa un correo válido.');
+            return;
+        }
+
         currentSessionId = generateUUID();
-        const data = [{
-            action: "loadPreviousSession",
-            sessionId: currentSessionId,
-            route: config.webhook.route,
-            metadata: {
-                userId: ""
-            }
-        }];
 
         try {
             const response = await fetch(config.webhook.url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify([
+                {
+                action: 'storeEmail',
+                email,
+                sessionId: currentSessionId,
+                route: config.webhook.route
+                }
+            ])
             });
 
-            const responseData = await response.json();
+            const data = await response.json();
+
             chatContainer.querySelector('.brand-header').style.display = 'none';
             chatContainer.querySelector('.new-conversation').style.display = 'none';
             chatInterface.classList.add('active');
 
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'chat-message bot';
+            typingIndicator.innerHTML = `<span class="typing-indicator">
+            <span></span><span></span><span></span>
+            </span>`;
+            messagesContainer.appendChild(typingIndicator);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            await new Promise(resolve => setTimeout(resolve, 2500));
+
+            messagesContainer.removeChild(typingIndicator);
+
             const botMessageDiv = document.createElement('div');
             botMessageDiv.className = 'chat-message bot';
-            botMessageDiv.textContent = Array.isArray(responseData) ? responseData[0].output : responseData.output;
+
+            const responseText = Array.isArray(data)
+            ? data[0]?.output || data[0]?.mensaje || JSON.stringify(data[0])
+            : data?.output || data?.mensaje || JSON.stringify(data);
+
+            botMessageDiv.textContent = responseText;
             messagesContainer.appendChild(botMessageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        } catch (error) {
-            console.error('Error:', error);
+
+        } catch (err) {
+            console.error('Error en el inicio de chat:', err);
         }
     }
 
+
+    // Enviar mensajes
     async function sendMessage(message) {
         const messageData = {
-            action: "sendMessage",
+            action: 'sendMessage',
             sessionId: currentSessionId,
             route: config.webhook.route,
             chatInput: message,
-            metadata: {
-                userId: ""
-            }
+            metadata: { userId: '' }
         };
 
         const userMessageDiv = document.createElement('div');
@@ -521,15 +642,13 @@
 
         try {
             const response = await fetch(config.webhook.url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(messageData)
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(messageData)
             });
-            
+
             const data = await response.json();
-            
+
             const botMessageDiv = document.createElement('div');
             botMessageDiv.className = 'chat-message bot';
             botMessageDiv.textContent = Array.isArray(data) ? data[0].output : data.output;
@@ -540,30 +659,38 @@
         }
     }
 
-    newChatBtn.addEventListener('click', startNewConversation);
-    
+    // --- Listeners
+    if (startChatBtn) {
+    startChatBtn.addEventListener('click', startChat);
+    }
+
+    if (sendButton) {
     sendButton.addEventListener('click', () => {
+        const message = textarea.value.trim();
+        if (message) {
+        sendMessage(message);
+        textarea.value = '';
+        }
+    });
+    }
+
+    if (textarea) {
+    textarea.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
         const message = textarea.value.trim();
         if (message) {
             sendMessage(message);
             textarea.value = '';
         }
-    });
-    
-    textarea.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            const message = textarea.value.trim();
-            if (message) {
-                sendMessage(message);
-                textarea.value = '';
-            }
         }
     });
-    
+    }
+
     toggleButton.addEventListener('click', () => {
-        chatContainer.classList.toggle('open');
+    chatContainer.classList.toggle('open');
     });
+
 
     // Add close button handlers
     const closeButtons = chatContainer.querySelectorAll('.close-button');

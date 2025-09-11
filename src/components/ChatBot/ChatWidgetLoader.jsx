@@ -5,14 +5,14 @@ const ChatWidgetLoader = () => {
     // Configuración del widget
     window.ChatWidgetConfig = {
       webhook: {
-        url: 'https://n8n-n8n.jqy3lz.easypanel.host/webhook/aff220c2-94f7-48a5-9318-a9b2506877f1/chat',
+        url: 'https://n8n-n8n.jqy3lz.easypanel.host/webhook/ab242e0f-d0b5-4562-b3cb-e806e7b28024',
         route: 'general'
       },
       branding: {
         logo: '/images/uthopon.png',
         name: 'Uthopiq',
         welcomeText: 'Hola 👋, ¿en qué podemos ayudarte?',
-        responseTimeText: 'Respondemos rápido 🚀'
+        responseTimeText: ''
       },
       style: {
         primaryColor: '#FF4B4B',
