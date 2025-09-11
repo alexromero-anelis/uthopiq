@@ -506,24 +506,9 @@
     chatTooltip.style.transform = 'translateY(10px)';
     chatTooltip.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 
-    // Rabo como pseudoelemento simulado (usando otro div)
-    const tail = document.createElement('div');
-    tail.style.position = 'absolute';
-    tail.style.bottom = '-10px';
-    tail.style.right = '26px';
-    tail.style.width = '20px';
-    tail.style.height = '20px';
-    tail.style.background = '#1e1e1e';
-    tail.style.borderLeft = '2px solid #FF4B4B';
-    tail.style.borderBottom = '2px solid #FF4B4B';
-    tail.style.transform = 'rotate(45deg)';
-    tail.style.borderBottomLeftRadius = '4px';
-    tail.style.zIndex = '1000';
-
     const wrapper = document.createElement('div');
     wrapper.style.position = 'relative';
     wrapper.appendChild(chatTooltip);
-    wrapper.appendChild(tail);
     document.body.appendChild(wrapper);
 
     // Mostrar/Ocultar bocadillo cíclicamente
