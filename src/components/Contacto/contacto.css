@@ -40,7 +40,7 @@
   margin-right: auto;
 }
 
-.formulario {
+.contacto .formulario {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
@@ -84,7 +84,7 @@
   min-height: 120px;
 }
 
-.formulario button {
+.contacto .formulario button {
   background-color: var(--rojo-primario);
   color: var(--blanco);
   padding: 0.9rem 1.5rem;
@@ -98,7 +98,7 @@
   align-self: center;
 }
 
-.formulario button:hover {
+.contacto .formulario button:hover {
   background-color: #c0392b;
 }
 
@@ -170,7 +170,7 @@
     font-size: 1.8rem;
   }
 
-  .formulario {
+  .contacto .formulario {
     padding: 0 1rem;
   }
 
@@ -183,7 +183,7 @@
     font-size: 0.9rem;
   }
 
-  .formulario button {
+  .contacto .formulario button {
     font-size: 0.95rem;
   }
 
