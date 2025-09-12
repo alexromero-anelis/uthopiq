@@ -1,6 +1,3 @@
-/* =========================================================
-   CONTENEDOR
-   ========================================================= */
 .personaliza-container {
   background-color: var(--negro-fondo);
   color: var(--gris-claro-letras);
@@ -20,7 +17,7 @@
 }
 
 .personaliza-container h1::after {
-  content: '';
+  content: "";
   display: block;
   width: 60px;
   height: 3px;
@@ -29,18 +26,14 @@
   border-radius: 5px;
 }
 
-/* =========================================================
-   FORMULARIO (se amplía para alojar el grid de planes)
-   ========================================================= */
 .formulario {
-  max-width: 960px; /* antes 640px */
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Campos de formulario */
 .formulario label {
   display: flex;
   flex-direction: column;
@@ -59,7 +52,8 @@
   color: var(--blanco);
   font-family: var(--font-p);
   font-size: 0.95rem;
-  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.25s ease;
+  transition: box-shadow 0.3s ease, border 0.3s ease,
+    background-color 0.25s ease;
 }
 
 .formulario input:hover,
@@ -81,7 +75,6 @@
   min-height: 100px;
 }
 
-/* Botón enviar */
 .formulario button {
   background-color: var(--rojo-primario);
   color: var(--blanco);
@@ -105,9 +98,6 @@
   transform: translateY(1px);
 }
 
-/* =========================================================
-   GRID DE CARDS DE PLANES (nuevo)
-   ========================================================= */
 .personaliza-planes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -115,13 +105,17 @@
   margin: 0.5rem 0 0.5rem;
 }
 
-/* Card clicable */
+.personaliza-planes-grid .plan-card-selectable.span-2 {
+  grid-column: span 2;
+}
+
 .plan-card-selectable {
   background: #232323;
   border: 1.5px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 1.1rem 1rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
   cursor: pointer;
   outline: none;
 }
@@ -129,7 +123,7 @@
 .plan-card-selectable:hover {
   transform: translateY(-2px);
   border-color: var(--rojo-primario);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   background-color: #272727;
 }
 
@@ -144,7 +138,6 @@
   transform: translateY(-2px);
 }
 
-/* Cabecera y lista de features dentro de la card */
 .plan-card-header h3 {
   margin: 0 0 0.75rem;
   color: var(--blanco);
@@ -175,12 +168,9 @@
   color: var(--rojo-primario);
 }
 
-/* =========================================================
-   DETALLE DEL PLAN SELECCIONADO (nuevo)
-   ========================================================= */
 .plan-detalle {
   background: #1b1b1b;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
   padding: 1.1rem 1rem;
   margin: 0.25rem 0 0.5rem;
@@ -204,9 +194,6 @@
   line-height: 1.5;
 }
 
-/* =========================================================
-   SERVICIOS ADICIONALES
-   ========================================================= */
 .servicios-simples {
   margin-top: 0.5rem;
   padding: 1rem;
@@ -250,18 +237,12 @@
   flex: 1;
 }
 
-/* =========================================================
-   reCAPTCHA
-   ========================================================= */
 .recaptcha-wrapper {
   display: flex;
   justify-content: center;
   margin: 1rem 0;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 @media (max-width: 992px) {
   .formulario {
     max-width: 820px;
@@ -299,8 +280,23 @@
   }
 
   .personaliza-planes-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.9rem;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .plan-card-selectable {
+    flex: 0 0 min(85vw, 340px);
+    scroll-snap-align: start;
+  }
+
+  .personaliza-planes-grid .plan-card-selectable.span-2 {
+    grid-column: auto;
+    flex: 0 0 min(85vw, 340px);
   }
 
   .plan-card-header h3 {
@@ -311,10 +307,6 @@
     font-size: 0.9rem;
   }
 
-  .plan-detalle h4 {
-    font-size: 1rem;
-  }
-
   .servicios-simples p {
     font-size: 0.95rem;
   }
@@ -322,5 +314,34 @@
   .checkbox-simple {
     font-size: 0.85rem;
     padding: 0.5rem 0.75rem;
+  }
+
+  .personaliza-planes-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  .personaliza-planes-grid::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 8px;
+  }
+  .personaliza-planes-grid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .personaliza-planes-grid {
+    padding-top: 4px;
+  }
+}
+
+@media (max-width: 415px) {
+  .plan-card-selectable {
+    flex: 0 0 75vw;
+  }
+
+  .plan-card-header h3 {
+    font-size: 1rem;
+  }
+
+  .plan-card-features li {
+    font-size: 0.85rem;
   }
 }

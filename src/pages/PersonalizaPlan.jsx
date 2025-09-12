@@ -4,7 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "./personalizaPlan.css";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import planesData from '../components/Planes/planesData.js';
+import planesData from "../components/Planes/planesData.js";
 
 const serviciosAdicionales = [
   { title: "Blog", price: "Desde 80€" },
@@ -12,26 +12,24 @@ const serviciosAdicionales = [
   { title: "Alojamiento", price: "Desde 10€" },
 ];
 
-// 👇 mapeo slug <-> título del JSON (alineado con tus planesData)
 const optionToTitle = {
   "landing-basica": "Landing Básica",
   "landing-avanzada": "Landing Avanzada",
   "web-basica": "Web Básica",
   "web-avanzada": "Web Avanzada",
   "tienda-online": "Tienda Online",
-  "web-a-medida": null, // especial: sin card en JSON, se describe aparte
+  "web-a-medida": null,
 };
 
 const titleToOption = Object.fromEntries(
   Object.entries(optionToTitle)
-    .filter(([, t]) => t) // quita null
+    .filter(([, t]) => t)
     .map(([k, v]) => [v, k])
 );
 
 function PersonalizaPlan() {
   const [tipoServicio, setTipoServicio] = useState("plan-web");
 
-  // por defecto selecciono el primer plan de tu JSON
   const defaultOption = titleToOption[planesData[0]?.title] || "landing-basica";
   const [tipoWeb, setTipoWeb] = useState(defaultOption);
 
@@ -110,7 +108,6 @@ function PersonalizaPlan() {
       formData.append("g-recaptcha-response", captchaToken);
       formData.append("serviciosAdicionales", seleccionados.join(", "));
 
-      // 👇 envía el TÍTULO del plan (mejor para tu backend y para humanos)
       const planTitle = optionToTitle[tipoWeb] || "Web a Medida";
       formData.set("tipo-web", planTitle);
 
@@ -149,13 +146,13 @@ function PersonalizaPlan() {
     }
   };
 
-  // helpers UI
-  const selectedPlanTitle = optionToTitle[tipoWeb]; // puede ser null en web-a-medida
+  const selectedPlanTitle = optionToTitle[tipoWeb]; 
   const selectedPlan =
     selectedPlanTitle &&
-    planesData.find((p) => p.title.toLowerCase() === selectedPlanTitle.toLowerCase());
+    planesData.find(
+      (p) => p.title.toLowerCase() === selectedPlanTitle.toLowerCase()
+    );
 
-  // plans que existen en el JSON (excluye "Web a Medida")
   const jsonPlanTitles = new Set(planesData.map((p) => p.title));
 
   return (
@@ -189,25 +186,26 @@ function PersonalizaPlan() {
 
           {tipoServicio === "plan-web" && (
             <>
-              {/* Grid de cards para elegir visualmente */}
               <div className="personaliza-planes-grid">
                 {planesData.map((plan, idx) => {
-                  const optionValue = titleToOption[plan.title]; // undefined si no está mapeado
-                  if (!optionValue) return null; // por seguridad
+                  const optionValue = titleToOption[plan.title]; 
+                  if (!optionValue) return null; 
                   const isSelected = tipoWeb === optionValue;
 
                   return (
                     <div
                       key={idx}
-                      className={`plan-card-selectable ${isSelected ? "selected" : ""}`}
+                      className={`plan-card-selectable ${
+                        isSelected ? "selected" : ""
+                      } ${plan.title === "Tienda Online" ? "span-2" : ""}`}
                       onClick={() => setTipoWeb(optionValue)}
                       role="button"
                       tabIndex={0}
                       onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") setTipoWeb(optionValue);
+                        if (e.key === "Enter" || e.key === " ")
+                          setTipoWeb(optionValue);
                       }}
                     >
-                      {/* usa tu mismo estilo que en CardPlan o directamente reusa el componente si quieres */}
                       <div className="plan-card-header">
                         <h3>{plan.title}</h3>
                       </div>
@@ -216,32 +214,9 @@ function PersonalizaPlan() {
                           <li key={i}>{f}</li>
                         ))}
                       </ul>
-                      {/* si en planesData tienes className como 'doble-columna' puedes usarlo para estilos */}
                     </div>
                   );
                 })}
-              </div>
-
-              {/* Vista detallada del plan seleccionado o mensaje para "a medida" */}
-              <div className="plan-detalle">
-                {selectedPlan ? (
-                  <>
-                    <h4>Características de “{selectedPlan.title}”</h4>
-                    <ul>
-                      {selectedPlan.features.map((f, i) => (
-                        <li key={i}>{f}</li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <>
-                    <h4>Plan “Web a medida”</h4>
-                    <p>
-                      Dinos qué necesitas (páginas, integraciones, SEO, automatizaciones, área privada,
-                      etc.) y te planteamos una propuesta personalizada.
-                    </p>
-                  </>
-                )}
               </div>
 
               <div className="servicios-simples">
