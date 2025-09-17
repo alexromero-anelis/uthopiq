@@ -9,19 +9,19 @@ function BeneficiosWeb() {
         </h2>
         <ul className="banner-beneficios-lista">
           <li>
-            <span>✔</span> Aumenta tu visibilidad en Google y redes sociales
+            <span>✔</span> Aumenta la visibilidad de tu negocio
           </li>
           <li>
-            <span>✔</span> Genera confianza con una imagen profesional
-          </li>
-          <li>
-            <span>✔</span> Recibe solicitudes o ventas las 24/7
+            <span>✔</span> Da una imagen profesional a tu público
           </li>
           <li>
             <span>✔</span> Muestra tus productos o servicios de forma clara
           </li>
           <li>
-            <span>✔</span> Automatiza tareas como reservas, cobros o contacto
+            <span>✔</span> Contacta y vende durante las 24 horas del día
+          </li>
+          <li>
+            <span>✔</span> Facilita tareas como reservas o cobros 
           </li>
         </ul>
       </div>
