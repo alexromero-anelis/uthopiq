@@ -4,6 +4,24 @@ import automatizacionData from "./automatizacionData";
 import { Link } from "react-router-dom";
 
 function PlanesAutomatizacion() {
+  const scrollToSection = (id) => {
+    const goToSection = () => {
+      const interval = setInterval(() => {
+        const section = document.getElementById(id);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+          clearInterval(interval);
+        }
+      }, 100);
+    };
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(goToSection, 200);
+    } else {
+      goToSection();
+    }
+  };
   return (
     <section className="planes automatizacion-central" id="automatizaciones">
       <div className="planes-header" data-aos="fade-up">
@@ -22,11 +40,12 @@ function PlanesAutomatizacion() {
       </div>
 
       <div className="planes-boton-container" data-aos="zoom-in">
-        <Link to="/personaliza-tu-plan">
-          <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
-            Solicita tu automatización
-          </button>
-        </Link>
+        <button
+          className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2"
+          onClick={() => scrollToSection("contacto")}
+        >
+          Solicita tu automatización
+        </button>
       </div>
     </section>
   );
