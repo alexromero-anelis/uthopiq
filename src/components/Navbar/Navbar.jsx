@@ -13,7 +13,7 @@ function Navbar() {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const enFormulario = location.pathname === "/pagina-proyectos";
+  const enFormulario = location.pathname === "/proyectos";
 
   const cerrarMenu = () => {
     setMenuOpen(false);

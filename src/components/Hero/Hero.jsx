@@ -24,14 +24,9 @@ function Hero({ scrollToSection })
 
                     {/* Botones CTA */}
                     <div className="hero-buttons flex flex-col sm:flex-row gap-3 justify-center mb-12">
-                    <button className="cta-button px-6 py-3 rounded-md font-medium text-base" onClick={() => scrollToSection("contacto")}>
+                    <button className="cta-button-outline px-6 py-3 rounded-md font-medium text-base" onClick={() => scrollToSection("contacto")}>
                         Contáctanos ahora
                     </button>
-                    <Link to="/personaliza-tu-plan">
-                        <button className="cta-button-outline px-6 py-3 rounded-md font-medium text-base border-2">
-                            Personaliza tu plan
-                        </button>
-                    </Link>
                     </div>
                 </div>
 

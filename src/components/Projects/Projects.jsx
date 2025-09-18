@@ -45,7 +45,7 @@ function Projects() {
 
         <div className="proyectos-boton-ver-todos" data-aos="fade-up">
           <Link
-            to="/pagina-proyectos"
+            to="/proyectos"
             className="cta-button-outline ver-todos-btn"
           >
             Ver todos
