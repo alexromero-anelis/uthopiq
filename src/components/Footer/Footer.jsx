@@ -20,7 +20,7 @@ function Footer() {
 
     if (location.pathname !== "/") {
       navigate("/");
-      setTimeout(goToSection, 200); // da tiempo a montar el DOM
+      setTimeout(goToSection, 200);
     } else {
       goToSection();
     }

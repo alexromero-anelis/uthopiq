@@ -28,8 +28,7 @@ function QuienesSomos() {
             </a>
           </h3>
           <p>
-            Graduado en Desarrollo de Aplicaciones Multiplataforma, con una
-            fuerte pasión por el desarrollo web y la automatización de procesos.
+            Con una fuerte pasión por el desarrollo web y la automatización de procesos.
             Cuenta con experiencia en ambas áreas, habiendo desarrollado
             múltiples proyectos que integran herramientas como n8n y chatbots
             personalizados para mejorar la eficiencia y la experiencia del
@@ -50,8 +49,7 @@ function QuienesSomos() {
             </a>
           </h3>
           <p>
-            Graduado en Desarrollo de Aplicaciones Multiplataforma, con
-            experiencia previa como desarrollador backend. Actualmente enfocado
+            Con experiencia previa como desarrollador backend. Actualmente enfocado
             en el desarrollo web y las automatizaciones, áreas que le apasionan
             profundamente. Combina su base técnica con una gran curiosidad por
             resolver problemas reales, creando soluciones que optimizan procesos
