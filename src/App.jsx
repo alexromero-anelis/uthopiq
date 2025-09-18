@@ -13,7 +13,7 @@ import Contacto from './components/Contacto/Contacto.jsx';
 import QuienesSomos from './components/QuienesSomos/QuienesSomos.jsx';
 import PersonalizaPlan from './pages/PersonalizaPlan.jsx';
 import PaginaProyectos from './pages/ProyectosPage.jsx';
-import ChatWidgetLoader from './components/ChatBot/ChatWidgetLoader.jsx'
+// import ChatWidgetLoader from './components/ChatBot/ChatWidgetLoader.jsx'
 import Bonos from "./components/Bonos/Bonos";
 import AOS from "aos";
 import { useEffect } from "react";
@@ -52,7 +52,7 @@ function App() {
               <QuienesSomos />
               <Contacto />
               <Footer />
-              <ChatWidgetLoader />
+              {/* <ChatWidgetLoader /> */}
             </>
           }
         />
