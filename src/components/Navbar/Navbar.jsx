@@ -20,6 +20,27 @@ function Navbar() {
     setOpenSubmenu(null);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+
+    const goTop = () => {
+      setTimeout(scrollToTop, 0);
+    };
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(goTop, 200);
+    } else {
+      goTop();
+    }
+
+    cerrarMenu();
+  };
+
   const scrollToSection = (id) => {
     const goToSection = () => {
       const interval = setInterval(() => {
@@ -65,14 +86,11 @@ function Navbar() {
   }
 }, [menuOpen]);
 
-
   return (
     <>
-      <nav
-        className={`navbar ${scrolled ? "navbar-solid" : "navbar-transparent"}`}
-      >
+      <nav className={`navbar ${scrolled ? "navbar-solid" : "navbar-transparent"}`}>
         <div className="navbar-left">
-          <Link to="https://uthopiq.com/" aria-label="Ir a inicio">
+          <Link to="/" aria-label="Ir al inicio" onClick={handleLogoClick}>
             <div className="logo-container">
               <img src={imagenUthopon} alt="Logo Uthopiq" className="logo" />
             </div>
