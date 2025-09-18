@@ -1,6 +1,6 @@
 const automatizacionData = [
   {
-    title: "Automatización de Tareas",
+    title: "Automatizaciones",
     description:
       "Flujos automáticos que conectan tus herramientas y eliminan procesos repetitivos en tu negocio.",
     features: [

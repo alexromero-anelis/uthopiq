@@ -7,12 +7,6 @@
   text-align: center;
 }
 
-.contacto-logo {
-  width: 100px;
-  margin: 0 auto 1.5rem;
-  display: block;
-}
-
 .contacto h2 {
   font-size: 2.5rem;
   font-family: var(--font-h2);
@@ -49,37 +43,50 @@
   text-align: left;
 }
 
-.campo {
+.formulario {
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
 }
 
-.campo label {
-  margin-bottom: 0.5rem;
+.formulario label {
+  display: flex;
+  flex-direction: column;
   font-size: 0.95rem;
   color: var(--gris-claro-letras);
 }
 
-.campo input,
-.campo textarea {
+.formulario input,
+.formulario select,
+.formulario textarea {
+  margin-top: 0.5rem;
   padding: 0.75rem 1rem;
   border: 1px solid #333;
   border-radius: 8px;
   background-color: var(--gris-oscuro);
   color: var(--blanco);
-  font-size: 0.95rem;
   font-family: var(--font-p);
-  transition: border 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.95rem;
+  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.25s ease;
 }
 
-.campo input:focus,
-.campo textarea:focus {
+.formulario input:hover,
+.formulario select:hover,
+.formulario textarea:hover {
+  background-color: #2a2a2a;
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
   outline: none;
   border-color: var(--rojo-primario);
   box-shadow: 0 0 0 2px rgba(255, 75, 75, 0.4);
 }
 
-.campo textarea {
+.formulario textarea {
   resize: vertical;
   min-height: 120px;
 }
@@ -172,15 +179,6 @@
 
   .contacto .formulario {
     padding: 0 1rem;
-  }
-
-  .campo label {
-    font-size: 0.9rem;
-  }
-
-  .campo input,
-  .campo textarea {
-    font-size: 0.9rem;
   }
 
   .contacto .formulario button {

@@ -56,13 +56,13 @@ function Footer() {
         </div>
 
         <div>
-          <h3 className="footer-title">Planes Web</h3>
+          <h3 className="footer-title">Nuestros Servicios</h3>
           <ul className="footer-column">
-            <li>Landing Básica</li>
-            <li>Landing Avanzada</li>
-            <li>Web Estándar</li>
-            <li>Web Avanzada</li>
+            <li>Landing</li>
+            <li>Tienda Online</li>
             <li>Web a Medida</li>
+            <li>Automatizaciones</li>
+            <li>Chatbots inteligentes</li>
           </ul>
         </div>
 
