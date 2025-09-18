@@ -13,9 +13,7 @@ function Navbar() {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const enFormulario =
-    location.pathname === "/personaliza-tu-plan" ||
-    location.pathname === "/pagina-proyectos";
+  const enFormulario = location.pathname === "/pagina-proyectos";
 
   const cerrarMenu = () => {
     setMenuOpen(false);
@@ -74,7 +72,7 @@ function Navbar() {
         className={`navbar ${scrolled ? "navbar-solid" : "navbar-transparent"}`}
       >
         <div className="navbar-left">
-          <Link to="/" aria-label="Ir a inicio">
+          <Link to="https://uthopiq.com/" aria-label="Ir a inicio">
             <div className="logo-container">
               <img src={imagenUthopon} alt="Logo Uthopiq" className="logo" />
             </div>
@@ -89,14 +87,14 @@ function Navbar() {
         </div>
 
         <div className="navbar-right">
-          <Link
-            to={enFormulario ? "/" : "/personaliza-tu-plan"}
-            className="navbar-cta-desktop"
-          >
-            <button className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2">
-              {enFormulario ? "Volver al inicio" : "Personaliza tu plan"}
+          <div className="navbar-cta-desktop">
+            <button
+              className="cta-button-outline px-8 py-4 rounded-lg font-medium text-lg border-2"
+              onClick={() => scrollToSection("contacto")}
+            >
+              Coméntanos tu idea
             </button>
-          </Link>
+          </div>
         </div>
 
         <button

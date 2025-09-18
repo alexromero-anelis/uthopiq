@@ -140,7 +140,24 @@
 /* ====================================================== */
 /* ============= PARA MÓVIL Y TABLETS ======================== */
 /* ====================================================== */
-@media screen and (max-width: 1272px) {
+@media screen and (max-width: 1320px) {
+  .navbar-cta-mobile .cta-button-outline {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 2rem; 
+    border-radius: 12px;  
+    background: transparent;
+    color: var(--rojo-primario);
+    border: 2px solid var(--rojo-primario);
+    font-family: var(--font-p);
+    transition: all 0.3s ease;
+  }
+  .navbar-cta-mobile .cta-button-outline:hover {
+    background-color: var(--blanco);
+    color: var(--negro-fondo);
+    border-color: transparent;
+  }
   .navbar-links-desktop {
     display: none;
   }
@@ -297,7 +314,7 @@
 /* ====================================================== */
 /* ============= SOLO PARA ESCRITORIO =================== */
 /* ====================================================== */
-@media screen and (min-width: 1273px) {
+@media screen and (min-width: 1321px) {
 
   .navbar-left {
     padding-bottom: 1.2rem;
