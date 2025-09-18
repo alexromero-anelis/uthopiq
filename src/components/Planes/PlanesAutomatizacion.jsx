@@ -1,4 +1,6 @@
 import "./planes.css";
+import CardPlan from "./CardPlan/CardPlan";
+import automatizacionData from "./automatizacionData";
 import { Link } from "react-router-dom";
 
 function PlanesAutomatizacion() {
@@ -8,35 +10,15 @@ function PlanesAutomatizacion() {
         <span className="planes-subtitle">Optimiza tu negocio</span>
         <h2>Automatización con IA</h2>
         <p className="planes-descripcion">
-          Automatizamos tareas repetitivas, conectamos tus herramientas y
-          diseñamos flujos inteligentes adaptados a tu forma de trabajar. Ya sea
-          que vendas productos, ofrezcas servicios o gestiones clientes, podemos
-          ayudarte a ganar tiempo y precisión.
+          Descubre cómo la inteligencia artificial puede ayudarte a ahorrar
+          tiempo, reducir costes y mejorar la experiencia de tus clientes.
         </p>
       </div>
 
-      <div className="automatizacion-bloques" data-aos="fade-up">
-        <div className="bloque">
-          <h3>¿Qué ganas al automatizar?</h3>
-          <ul>
-            <li>Ahorro económico</li>
-            <li>Más tiempo para lo importante</li>
-            <li>Elimina tareas repetitivas</li>
-            <li>Procesos más eficientes</li>
-            <li>Respuestas instantáneas a clientes</li>
-          </ul>
-        </div>
-
-        <div className="bloque">
-          <h3>¿Cómo lo hacemos?</h3>
-          <ul>
-            <li>Analizamos tus procesos y proponemos soluciones</li>
-            <li>Diseñamos un flujo visual y lo validamos contigo</li>
-            <li>Conectamos las herramientas necesarias</li>
-            <li>Realizamos pruebas estrictas del flujo</li>
-            <li>Entrega, soporte, mejoras y actualizaciones</li>
-          </ul>
-        </div>
+      <div className="planes-grid" data-aos="fade-up">
+        {automatizacionData.map((plan, index) => (
+          <CardPlan key={index} {...plan} />
+        ))}
       </div>
 
       <div className="planes-boton-container" data-aos="zoom-in">

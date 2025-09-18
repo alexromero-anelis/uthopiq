@@ -13,7 +13,7 @@ import QuienesSomos from './components/QuienesSomos/QuienesSomos.jsx';
 import PersonalizaPlan from './pages/PersonalizaPlan.jsx';
 import PaginaProyectos from './pages/ProyectosPage.jsx';
 // import ChatWidgetLoader from './components/ChatBot/ChatWidgetLoader.jsx'
-import Bonos from "./components/Bonos/Bonos";
+import ComoLoHacemos from "./components/ComoLoHacemos/ComoLoHacemos.jsx";
 import AOS from "aos";
 import { useEffect } from "react";
 import CasosUso from "./components/Banners/CasosUso";
@@ -46,7 +46,7 @@ function App() {
               <BeneficiosWeb />
               <Automatizaciones />
               <CasosUso />
-              <Bonos />
+              <ComoLoHacemos />
               <QuienesSomos />
               <Contacto />
               <Footer />
