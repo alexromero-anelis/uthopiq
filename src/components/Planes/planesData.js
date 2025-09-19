@@ -14,7 +14,7 @@ const planesData = [
     description:
       "Ecommerce para vender productos/servicios con pagos, envíos e integraciones listas para usar.",
     features: [
-      "Qué es: una tienda online gestionada en Shopify.",
+      "Qué es: una tienda online gestionada en Wordpress con WooCommerce.",
       "Cuándo elegirla: para lanzar y escalar ventas online de forma rápida y fiable.",
       "Objetivo: aumentar tus ventas online con pagos y envíos integrados."
     ]
