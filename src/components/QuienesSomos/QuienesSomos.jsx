@@ -9,8 +9,8 @@ function QuienesSomos() {
 
       <p className="quienes-intro" data-aos="fade-up">
         En <strong>Uthopiq</strong> creemos en hacer el mundo digital más
-        accesible, profesional y automatizado. Creamos páginas web con WordPress
-        adaptadas a cada negocio, y conectamos procesos con automatizaciones y
+        accesible, profesional y automatizado. Creamos páginas web adaptadas 
+        a cada negocio, y conectamos procesos con automatizaciones y
         chatbots que ahorran tiempo y dinero. Somos un equipo joven, técnico y
         con muchas ganas de transformar ideas en soluciones prácticas.
       </p>
