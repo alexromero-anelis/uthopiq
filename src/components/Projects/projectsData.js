@@ -1,84 +1,67 @@
-import imgBot from '/images/uthopon.png';
+import distrito21 from '/images/distrito21-img.png';
+import athleticapro from '/images/athleticapro.png';
+import neurovida from '/images/neurovida.png';
+import asistente from '/images/uthopiq-asistente.png'; 
+import facturas from '/images/automatizacion_facturas_sin_texto.png'; 
+import notificaciones from '/images/notificaciones_tiempo_real_v2.png'; 
+import scraper from '/images/scraper_precios.png'; 
+import publicaciones from '/images/bot_publicacion_redes_v2.png'; 
 
 const projectsData = [
-  // {
-  //   title: 'Portfolio Web',
-  //   description: 'Un portfolio personal hecho con React y CSS.',
-  //   image:   ,
-  //   tags: ['desarrollo web']
-  // },
-  // {
-  //   title: 'E-commerce App',
-  //   description: 'Tienda online con carrito y pasarela de pagos.',
-  //   image: imgBot,
-  //   tags: ['desarrollo web']
-  // },
-  // {
-  //   title: 'Bot de Telegram',
-  //   description: 'Un bot que automatiza respuestas y comandos.',
-  //   image: imgBot,
-  //   tags: ['automatizacion']
-  // },
-  // {
-  //   title: 'Scraper de Precios',
-  //   description: 'Scraper que recoge precios de productos online.',
-  //   image: imgBot,
-  //   tags: ['automatizacion']
-  // },
-  // {
-  //   title: 'Dashboard Admin',
-  //   description: 'Panel de administración con estadísticas en tiempo real.',
-  //   image: imgBot,
-  //   tags: ['desarrollo web']
-  // },
-  // {
-  //   title: 'Notificador de Ofertas',
-  //   description: 'Sistema que notifica cuando hay descuentos.',
-  //   image: imgBot,
-  //   tags: ['desarrollo web', 'automatizacion']
-  // },
-  // {
-  //   title: 'Gestor de Tareas',
-  //   description: 'App de productividad para organizar tareas diarias.',
-  //   image: imgBot,
-  //   tags: ['desarrollo web']
-  // },
-  // {
-  //   title: 'Automatizador de Backups',
-  //   description: 'Script que crea respaldos automáticos en la nube.',
-  //   image: imgBot,
-  //   tags: ['automatizacion']
-  // },
-  // {
-  //   title: 'Landing Page Producto',
-  //   description: 'Sitio de presentación de un producto con formularios.',
-  //   image: imgBot,
-  //   tags: ['desarrollo web']
-  // },
-  // {
-  //   title: 'Sistema de Alerta por Email',
-  //   description: 'Envía alertas automáticas ante eventos críticos.',
-  //   image: imgBot,
-  //   tags: ['automatizacion']
-  // },
-  // {
-  //   title: 'Web de Eventos',
-  //   description: 'Portal para listar y registrar eventos o conferencias.',
-  //   image: imgBot,
-  //   tags: ['desarrollo web']
-  // },
-  // {
-  //   title: 'Bot de Publicación',
-  //   description: 'Publica contenido en redes sociales automáticamente.',
-  //   image: imgBot,
-  //   tags: ['automatizacion']
-  // },
-  // {
-  //   title: 'Monitor de Estado Web',
-  //   description: 'Verifica el uptime de sitios y envía reportes.',
-  //   image: imgBot,
-  //   tags: ['automatizacion', 'desarrollo web']
-  // }
+  // --- WEBS DEMO ---
+  {
+    title: 'Distrito 21',
+    image: distrito21,
+    tags: ['tienda online'],
+    link: 'https://distrito21.uthopiq.com/',
+    demo: true
+  },
+  {
+    title: 'Athletica Pro',
+    image: athleticapro,
+    tags: ['tienda online'],
+    link: 'https://athleticapro.uthopiq.com/',
+    demo: true
+  },
+  {
+    title: 'Neurovida',
+    image: neurovida,
+    tags: ['landing'],
+    link: 'https://neurovida.uthopiq.com/',
+    demo: true
+  },
+
+  // --- AUTOMATIZACIONES DEMO ---
+  {
+    title: 'Chatbot de Atención al Cliente',
+    image: asistente,
+    tags: ['chatbot'],
+    demo: true
+  },
+  {
+    title: 'Automatización de Facturas',
+    image: facturas,
+    tags: ['automatizacion'],
+    demo: true
+  },
+  {
+    title: 'Notificaciones en Tiempo Real',
+    image: notificaciones,
+    tags: ['automatizacion'],
+    demo: true
+  },
+  {
+    title: 'Scraper de Precios Competencia',
+    image: scraper,
+    tags: ['automatizacion'],
+    demo: true
+  },
+  {
+    title: 'Bot de Publicación en Redes Sociales',
+    image: publicaciones,
+    tags: ['chatbot', 'automatizacion'],
+    demo: true
+  }
 ];
 
 export default projectsData;

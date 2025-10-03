@@ -1,21 +1,42 @@
 import './cardProjects.css';
 
-// Al card de los proyectos se le pasará una imagen, titulo, descripción y etiquetas
-function CardProjects({ title, description, image, tags = [] }) {
-    return (
-        <div className="card-project">
-            <img src={image} alt={title} />
-            <h4>{title}</h4>
-            <p>{description}</p>
-            <div className="tags">
-                {tags.map((tag, index) => (
-                    <span key={index} className="tag">
-                        #{tag}
-                    </span>
-                ))}
-            </div>
+function isAutomationByTags(tags = []) {
+  return tags.some(t => t === 'automatizacion' || t === 'chatbot');
+}
+
+function CardProjects({ title, image, tags = [], link, demo }) {
+  const showVisit = !!link && !isAutomationByTags(tags);
+
+  return (
+    <div className="card-project" tabIndex={0}>
+      <div className="card-project-media">
+        <img src={image} alt={title} loading="lazy" />
+        {demo && <div className="demo-label">DEMO</div>}
+      </div>
+      
+      <h4 className="card-project-title">{title}</h4>
+
+      <div className="card-project-footer">
+        <div className="tags">
+          {tags.map((tag, i) => (
+            <span key={i} className="tag">#{tag}</span>
+          ))}
         </div>
-    );
+
+        {showVisit && (
+          <a
+            className="visit-btn"
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visitar web de ${title}`}
+          >
+            Visitar web
+          </a>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default CardProjects;

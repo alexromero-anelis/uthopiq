@@ -1,16 +1,15 @@
 import "./projects.css";
 import Slider from "./Slider/Slider";
 import allProjects from "./projectsData";
+import { Link } from "react-router-dom";
 
-import { Link } from "react-router-dom"; // Asegúrate de importar esto
+function isAutomation(p) {
+  return p.tags?.some(t => t === "automatizacion" || t === "chatbot");
+}
 
 function Projects() {
-  const webProjects = allProjects.filter((p) =>
-    p.tags.includes("desarrollo web")
-  );
-  const automationProjects = allProjects.filter((p) =>
-    p.tags.includes("automatizacion")
-  );
+  const webProjects = allProjects.filter(p => !isAutomation(p));
+  const automationProjects = allProjects.filter(p => isAutomation(p));
 
   return (
     <>
@@ -44,10 +43,7 @@ function Projects() {
         </div>
 
         <div className="proyectos-boton-ver-todos" data-aos="fade-up">
-          <Link
-            to="/proyectos"
-            className="cta-button-outline ver-todos-btn"
-          >
+          <Link to="/proyectos" className="cta-button-outline ver-todos-btn">
             Ver todos
           </Link>
         </div>
