@@ -1,61 +1,85 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Cargar configuración segura
+header('Content-Type: application/json; charset=UTF-8');
+
 $config = require __DIR__ . '/config.php';
 
 require __DIR__ . '/php/PHPMailer/PHPMailer.php';
 require __DIR__ . '/php/PHPMailer/Exception.php';
 require __DIR__ . '/php/PHPMailer/SMTP.php';
 
-// Validar método
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    exit("Acceso no permitido.");
+function json_end($success, $message, $code = 200) {
+    http_response_code($code);
+    echo json_encode(['success' => $success, 'message' => $message], JSON_UNESCAPED_UNICODE);
+    exit;
 }
 
-// Validar reCAPTCHA
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    json_end(false, "Acceso no permitido.", 405);
+}
+
+// reCAPTCHA
 $recaptchaToken = $_POST['g-recaptcha-response'] ?? '';
-if (!$recaptchaToken) exit("reCAPTCHA no detectado.");
+if (!$recaptchaToken) json_end(false, "reCAPTCHA no detectado.", 400);
 
 $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
-$response = file_get_contents(
-    $verifyUrl . '?secret=' . $config['RECAPTCHA_SECRET'] . '&response=' . $recaptchaToken
-);
-$responseKeys = json_decode($response, true);
 
-if (!$responseKeys["success"]) {
-    exit("Verificación reCAPTCHA fallida.");
+$ch = curl_init($verifyUrl);
+curl_setopt_array($ch, [
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => http_build_query([
+        'secret' => $config['RECAPTCHA_SECRET'],
+        'response' => $recaptchaToken
+    ]),
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CONNECTTIMEOUT => 4,
+    CURLOPT_TIMEOUT => 6
+]);
+$resp = curl_exec($ch);
+$curlErr = curl_error($ch);
+curl_close($ch);
+
+if ($resp === false) {
+    json_end(false, "No se pudo verificar reCAPTCHA: $curlErr", 502);
 }
 
-// Sanitizar inputs
-$nombre = strip_tags(trim($_POST["nombre"] ?? ''));
-$email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
+$responseKeys = json_decode($resp, true);
+if (!($responseKeys['success'] ?? false)) {
+    json_end(false, "Verificación reCAPTCHA fallida.", 400);
+}
+
+// Sanitizar
+$nombre  = strip_tags(trim($_POST["nombre"] ?? ''));
+$email   = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
 $mensaje = htmlspecialchars(trim($_POST["mensaje"] ?? ''), ENT_QUOTES, 'UTF-8');
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    exit("Correo electrónico no válido.");
+if (!$nombre || !$email || !$mensaje) json_end(false, "Campos incompletos.", 400);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) json_end(false, "Correo electrónico no válido.", 400);
+if (strlen($nombre) > 100 || strlen($email) > 100 || strlen($mensaje) > 2000) {
+    json_end(false, "Los campos exceden la longitud permitida.", 400);
 }
 
-if (strlen($nombre) > 100 || strlen($email) > 100 || strlen($mensaje) > 1000) {
-    exit("Los campos exceden la longitud permitida.");
-}
-
-// Enviar correo
 $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->Host = $config['SMTP_HOST'];
-    $mail->SMTPAuth = true;
-    $mail->Username = $config['SMTP_USER'];
-    $mail->Password = $config['SMTP_PASS'];
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = $config['SMTP_PORT'];
+    $mail->Host       = $config['SMTP_HOST'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $config['SMTP_USER'];
+    $mail->Password   = $config['SMTP_PASS'];
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = (int)$config['SMTP_PORT'];
+
+    // Mejora de tiempos
+    $mail->Timeout        = 10;  
+    $mail->SMTPKeepAlive  = false;
+    $mail->SMTPAutoTLS    = true;
+    $mail->CharSet        = 'UTF-8';
 
     $mail->setFrom($config['SMTP_FROM'], $config['SMTP_NAME']);
     $mail->addAddress($config['SMTP_FROM']);
@@ -68,26 +92,11 @@ try {
         <strong>Email:</strong> {$email}<br>
         <strong>Mensaje:</strong><br>" . nl2br($mensaje);
 
+    $mail->AltBody = "Nombre: {$nombre}\nEmail: {$email}\nMensaje:\n{$mensaje}";
+
     $mail->send();
 
-    $webhookUrl = 'https://n8n-n8n.jqy3lz.easypanel.host/webhook/94aba7e7-930b-450d-8e59-397db3e4d3fd';
-    $webhookData = [
-        'nombre' => $nombre,
-        'email' => $email,
-        'mensaje' => $mensaje
-    ];
-
-    $context = stream_context_create([
-        'http' => [
-            'method'  => 'POST',
-            'header'  => "Content-Type: application/json",
-            'content' => json_encode($webhookData),
-        ]
-    ]);
-
-    file_get_contents($webhookUrl, false, $context);
-
-    echo "Mensaje enviado correctamente.";
+    json_end(true, "Mensaje enviado correctamente.");
 } catch (Exception $e) {
-    echo "Error al enviar: {$mail->ErrorInfo}";
+    json_end(false, "Error al enviar: " . $mail->ErrorInfo, 500);
 }
