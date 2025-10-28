@@ -46,7 +46,7 @@ export default function CoverflowSection() {
   return (
     <section className="agents" id="team">
       <div className="agents-header" data-aos="fade-up">
-        <h2>Conoce a nuestros agentes</h2>
+        <h2>Nuestros Agentes</h2>
         <p className="agents-descripcion">
           Cada agente tiene una misión: hacer tu trabajo más fácil y eficiente.
         </p>

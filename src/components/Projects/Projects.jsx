@@ -14,7 +14,7 @@ function Projects() {
   return (
     <>
       <div className="proyectos" id="proyectos">
-        <h2 data-aos="fade-up">Proyectos realizados</h2>
+        <h2 data-aos="fade-up">Proyectos Realizados</h2>
         <p className="proyectos-subtitulo" data-aos="fade-up">
           Aquí algunos ejemplos de soluciones que hemos desarrollado en diseño
           web y automatización.

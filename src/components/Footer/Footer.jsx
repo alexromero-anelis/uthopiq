@@ -73,11 +73,6 @@ function Footer() {
               <button onClick={() => scrollToSection("inicio")}>Inicio</button>
             </li>
             <li>
-              <button onClick={() => scrollToSection("proyectos")}>
-                Proyectos
-              </button>
-            </li>
-            <li>
               <button onClick={() => scrollToSection("web")}>Web</button>
             </li>
             <li>
