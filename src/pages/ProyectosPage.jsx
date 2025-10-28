@@ -9,9 +9,7 @@ const CATEGORIES = [
   { key: 'todos', label: 'Todos' },
   { key: 'landing', label: 'Landing' },
   { key: 'tienda online', label: 'Tienda online' },
-  { key: 'web a medida', label: 'Web a medida' },
-  { key: 'automatizacion', label: 'Automatización' },
-  { key: 'chatbot', label: 'Chatbot' },
+  { key: 'web a medida', label: 'Web a medida' }
 ];
 
 function ProyectosPage() {

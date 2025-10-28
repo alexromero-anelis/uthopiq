@@ -1,5 +1,5 @@
 import { Instagram, Linkedin, Mail, MapPin } from "lucide-react";
-import logo from "/images/uthopon.png";
+import logo from "/images/logo/uthopon.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./footer.css";
 

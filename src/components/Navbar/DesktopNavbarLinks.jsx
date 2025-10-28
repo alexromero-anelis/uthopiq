@@ -3,11 +3,6 @@
 function DesktopNavbarLinks({ scrollToSection }) {
   return (
     <ul className="navbar-links-desktop">
-      <li className="dropdown">
-        <button className="dropdown-toggle" onClick={() => scrollToSection("proyectos")}>
-          Proyectos
-        </button>
-      </li>
 
       <li className="dropdown">
         <button className="dropdown-toggle" onClick={() => scrollToSection("web")}>

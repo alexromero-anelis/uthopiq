@@ -2,7 +2,7 @@
   background-color: var(--negro);
   color: var(--blanco);
   font-family: var(--font-p);
-  padding: 1rem 0rem;
+  padding: 4rem 2rem;
   text-align: center;
 }
 
@@ -48,11 +48,6 @@
   padding-left: 1rem;
   text-align: left;
   margin-left: 1.5rem;
-}
-
-.proyectos-boton-ver-todos {
-  margin-top: 2rem;
-  margin-bottom: 3rem;
 }
 
 .ver-todos-btn {

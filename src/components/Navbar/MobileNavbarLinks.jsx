@@ -9,7 +9,6 @@ function MobileNavbarLinks({
   return (
     <div className={`navbar-links-container ${open ? "open" : ""}`}>
       <ul className="navbar-links">
-        <li><button onClick={() => { scrollToSection("proyectos"); cerrarMenu(); }}>Proyectos</button></li>
         <li><button onClick={() => { scrollToSection("web"); cerrarMenu(); }}>Web</button>
         </li>
         <li><button onClick={() => scrollToSection("automatizaciones")}>Automatizaciones</button></li>
