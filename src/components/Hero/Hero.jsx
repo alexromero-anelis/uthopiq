@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Hero({ scrollToSection }) {
   return (
-    <section className="hero-wrapper" id="inicio">
+    <div className="hero-wrapper" id="inicio">
       <FondoAnimado />
 
       <div className="hero-container container mx-auto px-4 min-h-screen flex flex-col justify-center relative z-10 mt-28 sm:mt-0">
@@ -26,14 +26,14 @@ function Hero({ scrollToSection }) {
           <div className="hero-buttons flex flex-col sm:flex-row gap-3 justify-center mb-12">
             <button
               className="cta-button-outline px-6 py-3 rounded-md font-medium text-base"
-              onClick={() => scrollToSection?.("contacto")}
+              onClick={() => scrollToSection("contacto")}
             >
               Contáctanos ahora
             </button>
           </div>
         </div>
 
-        {/* Beneficios */}
+        {/* Beneficios de la agencia */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12 text-center px-4">
           <div className="flex flex-col items-center">
             <h3 className="benefit-title text-lg sm:text-xl mb-2">
@@ -64,7 +64,7 @@ function Hero({ scrollToSection }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

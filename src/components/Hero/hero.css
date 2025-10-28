@@ -1,104 +1,160 @@
-/* Estructura base */
 .hero-wrapper {
-  position: relative;
-  min-height: 100svh;
-  background: #000;
-}
-.hero-container {
-  position: relative;
-  z-index: 1;
+  background-color: var(--negro-fondo);
+  color: var(--blanco);
+  padding-top: 80px;
 }
 
-/* Tipos/colores: usan tu global.css */
 .hero-title-white {
   color: var(--blanco);
   font-family: var(--font-h2);
 }
+
 .hero-title-red {
   color: var(--rojo-primario);
   font-family: var(--font-h2);
 }
+
 .hero-subtitle {
-  color: var(--blanco);
-  font-family: var(--font-p);
-}
-.benefit-title {
-  color: var(--blanco);
-  font-family: var(--font-h2);
-}
-.benefit-text {
-  color: var(--gris-claro);
+  color: var(--gris-claro-letras);
   font-family: var(--font-p);
 }
 
-/* CTA */
-.cta-button-outline {
-  border: 1px solid var(--rojo-primario);
-  color: var(--rojo-primario);
-  background: transparent;
+.cta-button {
+  background-color: var(--rojo-primario);
+  color: var(--blanco);
   font-family: var(--font-p);
-  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(255, 75, 75, 0.3);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.cta-button-outline {
+  border-color: var(--rojo-primario);
+  color: var(--rojo-primario);
+  background-color: transparent;
+  font-family: var(--font-p);
+  transition: all 0.4s ease;
+}
+
 .cta-button-outline:hover {
-  background: var(--blanco);
+  background-color: var(--blanco);
   color: var(--gris-oscuro);
   border-color: var(--blanco);
 }
 
-/* Fondo */
-.net-bg {
-  position: absolute;
-  inset: 0;
-  background: #000;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
+.benefit-title {
+  color: var(--blanco);
+  font-family: var(--font-h2);
 }
-.net-svg {
+
+.benefit-text {
+  color: var(--gris-claro);
+  font-family: var(--font-p);
+  max-width: 90%;
+  text-align: center;
+}
+
+.arrow-down {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Fondo Animado */
+.tech-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 50, 50, 0.05),
+    transparent 70%
+  );
 }
 
-/* === Runner rojo que recorre los hexágonos — versión sutil === */
-/* Color desde variable global, trazo fino y muy espaciado */
-.hex-run {
-  stroke: var(--rojo-primario);
-  stroke-width: 0.8;
-  stroke-linecap: round;
-
-  /* Mucho espacio -> pocos acentos rojos visibles */
-  stroke-dasharray: 4 40;
-  opacity: 0.18; /* rojo MUY contenido */
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 75, 75, 0.12);
+  animation: float 8s ease-in-out infinite;
 }
 
-/* Distintas duraciones para que no se note patrón repetitivo */
-.hex-run.r1 {
-  animation: hexrun 6s linear infinite;
-}
-.hex-run.r2 {
-  animation: hexrun 8s linear infinite;
-}
-.hex-run.r3 {
-  animation: hexrun 10s linear infinite;
+.tech-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 75, 75, 0.2);
+  border-radius: 50%;
+  animation: pulse 10s infinite ease-in-out alternate;
 }
 
-@keyframes hexrun {
-  to {
-    stroke-dashoffset: -84;
+.circuit-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 75, 75, 0.3), transparent);
+  animation: moveLine 5s linear infinite;
+}
+
+.tech-hexagon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 75, 75, 0.07);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  animation: floatHex 12s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-/* Legibilidad en móviles muy pequeños */
-@media (max-width: 360px) {
-  .hero-container {
-    padding-inline: 14px;
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.3;
   }
 }
 
-/* Accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-  .hex-run {
-    animation: none !important;
+@keyframes moveLine {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes floatHex {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(15deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
 }
