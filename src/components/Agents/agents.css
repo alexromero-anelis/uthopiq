@@ -1,7 +1,7 @@
-/* ===================== SECCIÓN (estilo como .planes) ===================== */
+/* ===== SECCIÓN ===== */
 .agents {
-  background-color: var(--negro-fondo);
-  color: var(--gris-claro-letras);
+  background: var(--negro-fondo);
+  color: var(--gris-claro);
   font-family: var(--font-p);
   padding: 4rem 2rem;
 }
@@ -12,16 +12,6 @@
   margin: 0 auto 3rem;
 }
 
-.agents-subtitle {
-  font-size: 1rem;
-  color: var(--rojo-primario);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
 .agents-header h2 {
   font-size: 2.5rem;
   color: var(--blanco);
@@ -29,25 +19,20 @@
   margin-bottom: 2rem;
   position: relative;
 }
-
 .agents-header h2::after {
-  content: '';
+  content: "";
   display: block;
-  width: 80px;
-  height: 3px;
-  background-color: var(--rojo-primario);
-  margin: 0.5rem auto 0;
+  width: 80px; height: 3px;
+  background: var(--rojo-primario);
+  margin: .5rem auto 0;
   border-radius: 5px;
 }
 
 .agents-descripcion {
-  font-size: 0.9rem;
-  color: var(--gris-claro);
+  font-size: .9rem;
   line-height: 1.6;
-  font-family: var(--font-p);
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .agents-boton-container {
@@ -56,8 +41,7 @@
   margin-top: 3rem;
 }
 
-
-/* ===================== COVERFLOW LAYOUT ===================== */
+/* ===== COVERFLOW ===== */
 .agents-carousel { position: relative; }
 
 .agents-stage {
@@ -71,30 +55,19 @@
 
 .agents-track {
   position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;              /* centra el origen */
-  align-items: center;
-  justify-content: center;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center; justify-content: center;
 }
 
-.agent-slot {
-  position: absolute;
-  user-select: none;
-  /* el click está en .agent-card */
-}
+.agent-slot { position: absolute; user-select: none; }
 
-
-/* ===================== CARD (flip completo sin bordes dobles) ===================== */
-/* El contenedor NO tiene “piel”; solo define tamaño y 3D */
+/* ===== CARD ===== */
 .agent-card {
-  width: 280px;
-  height: 400px;
+  width: 280px; height: 400px;
   border-radius: 18px;
-  overflow: visible;              /* no cortar durante la rotación */
-  perspective: 1200px;            /* contexto 3D local */
+  perspective: 1200px;
   cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
 .card-inner {
@@ -103,105 +76,85 @@
   transform-style: preserve-3d;
   transition: transform .7s cubic-bezier(.2,.7,.2,1.02);
 }
-
 .agent-card.is-flipped .card-inner { transform: rotateY(180deg); }
 
-/* Caras */
 .agent-face {
   position: absolute; inset: 0;
-  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   border-radius: 18px;
   overflow: hidden;
 }
 .agent-back { transform: rotateY(180deg); }
 
-/* “Piel” idéntica en ambas caras: fondo, borde y sombra */
+/* piel base */
 .surface {
   position: absolute; inset: 0;
   border-radius: 18px;
-  background: rgba(23,23,23,0.45);
-  /* sombra más baja, con caída vertical */
+  background: rgba(23,23,23,.45);
   box-shadow:
-    0 18px 35px -15px rgba(0, 0, 0, 0.75),
-    0 5px 15px -8px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255,255,255,0.06);
-  transform: translateZ(0);
-  will-change: transform, opacity;
+    0 18px 35px -15px rgba(0,0,0,.75),
+    0 5px 15px -8px rgba(0,0,0,.5),
+    0 0 8px rgba(255,255,255,.08);
+  border: 2px solid rgba(255,255,255,.14);
+  z-index: 0;
 }
 
-/* ACTIVO: usa el acento del bot */
 .agent-card.is-active .surface {
   box-shadow:
     0 0 0 1px rgba(0,0,0,.25) inset,
-    0 25px 45px -20px rgba(0,0,0,0.85),
+    0 25px 45px -20px rgba(0,0,0,.85),
     0 8px 25px -15px color-mix(in srgb, var(--accent, var(--rojo-primario)) 35%, transparent);
-  border-color: color-mix(in srgb, var(--accent, var(--rojo-primario)) 25%, rgba(255,255,255,.06));
+  border-color: color-mix(in srgb, var(--accent, var(--rojo-primario)) 45%, rgba(255,255,255,.14));
 }
 
-/* ↓↓↓ Cambio: no escalar en hover para no re-samplear la textura */
-.agent-card:hover { transform: scale(1); }
-
-/* Frente (imagen + degradado + textos) */
+/* frente (img + sombra + texto) */
 .agent-img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
-  display: block;
-
-  /* ↓↓↓ Ayudas de nitidez durante transforms 3D */
+  position: relative;
+  z-index: 1;
   transform: translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  image-rendering: auto; /* comportamiento estándar */
 }
 
 .agent-gradient {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, var(--negro-fondo) 10%, rgba(0,0,0,0.5) 50%, transparent 100%);
+  z-index: 2;               /* encima de la imagen */
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.85) 10%,
+    rgba(0,0,0,.5) 60%,
+    transparent 100%
+  );
   pointer-events: none;
 }
 
 .agent-info {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
+  position: absolute; left: 0; right: 0; bottom: 0;
   padding: 1.25rem 1.5rem;
   text-align: center;
+  z-index: 3;               /* encima del degradado */
 }
-
 .agent-name {
   color: var(--blanco);
   font-family: var(--font-h2);
   font-size: 1.6rem;
   margin: 0 0 .5rem;
-  text-shadow: 0 1px 10px rgba(0,0,0,.4);
 }
-
 .agent-role {
   color: var(--rojo-primario);
   font-weight: 600;
   font-size: .9rem;
 }
 
-/* Dorso (contenido de descripción) */
-/* === PERSONALIZABLE POR VARIABLES ===
-   --accent: color principal del bot
-   --backA/B/C: tonos del gradiente del dorso
-*/
+/* dorso */
 .surface-back {
   background: radial-gradient(
     120% 120% at 50% 0%,
-    color-mix(in srgb, var(--accent, #22c55e) 30%, var(--backA, rgba(19,35,32,0.55))) 0%,
-    var(--backB, rgba(10,16,16,0.6)) 60%,
-    var(--backC, rgba(9,14,14,0.7)) 100%
+    color-mix(in srgb, var(--accent,#22c55e) 30%, var(--backA, rgba(19,35,32,.55))) 0%,
+    var(--backB, rgba(10,16,16,.6)) 60%,
+    var(--backC, rgba(9,14,14,.7)) 100%
   );
-  border: 3px solid color-mix(in srgb, var(--accent, #22c55e) 35%, transparent);
-}
-
-.agent-back-role {
-  color: var(--accent, #22c55e);
-  font-weight: 700;
-  margin-bottom: 1rem;
+  border: 3px solid color-mix(in srgb, var(--accent,#22c55e) 35%, transparent);
 }
 
 .agent-back-content {
@@ -209,31 +162,20 @@
   display: grid; place-items: center;
   padding: 2rem; text-align: center;
 }
-
 .agent-back-title {
   color: var(--blanco);
   font-family: var(--font-h2);
   font-size: 1.8rem;
   margin-bottom: .4rem;
 }
+.agent-back-role { color: var(--accent,#22c55e); font-weight: 700; margin-bottom: 1rem; }
+.agent-back-desc  { color: var(--blanco); line-height: 1.6; max-width: 420px; }
 
-.agent-back-desc  {
-  color: var(--gris-claro-letras);
-  font-family: var(--font-p);
-  line-height: 1.6;
-  max-width: 420px;
-}
-
-
-/* ===================== CONTROLES ===================== */
+/* controles */
 .agents-controls {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
+  display: flex; gap: 1rem; align-items: center; justify-content: center;
   margin-top: 2rem;
 }
-
 .icon-btn {
   width: 40px; height: 40px;
   border-radius: 999px;
@@ -245,19 +187,16 @@
 }
 .icon-btn:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.25); }
 
-/* Dots */
 .agents-dots { display: flex; gap: .5rem; align-items: center; }
 .dot {
   width: 8px; height: 8px; border-radius: 999px;
-  background: rgba(255,255,255,.3);
-  border: 0;
+  background: rgba(255,255,255,.3); border: 0;
   transition: width .25s ease, background .25s ease;
 }
 .dot--active { width: 32px; background: var(--rojo-primario); }
 
-
-/* ===================== RESPONSIVE ===================== */
+/* responsive */
 @media (max-width: 768px) {
-  .agents { padding: 3rem 0rem; }
+  .agents { padding: 3rem 0; }
   .agents-header h2 { font-size: 1.8rem; }
 }
