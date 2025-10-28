@@ -21,23 +21,11 @@ function Projects() {
         </p>
 
         <div className="proyectos-web" data-aos="fade-up">
-          <h3>Desarrollo Web</h3>
           {webProjects.length > 0 ? (
             <Slider projects={webProjects} />
           ) : (
             <p className="proyectos-aviso">
               Pronto añadiremos proyectos de desarrollo web.
-            </p>
-          )}
-        </div>
-
-        <div className="proyectos-automatizacion" data-aos="fade-up">
-          <h3>Automatizaciones</h3>
-          {automationProjects.length > 0 ? (
-            <Slider projects={automationProjects} />
-          ) : (
-            <p className="proyectos-aviso">
-              Estamos preparando automatizaciones que pronto verás aquí.
             </p>
           )}
         </div>

@@ -1,7 +1,7 @@
 // components/Navbar/Navbar.jsx
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import imagenUthopon from "../../images/uthopiq-logo-completo.png";
+import imagenUthopon from "/images/logo/LOGO_CORPORATIVO_OSCURO_NO_BG(1).png";
 import DesktopNavbarLinks from "./DesktopNavbarLinks";
 import MobileNavbarLinks from "./MobileNavbarLinks";
 import "./navbar.css";
