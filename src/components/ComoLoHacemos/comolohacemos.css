@@ -1,7 +1,7 @@
 .como-lo-hacemos {
-  background: var(--negro-fondo);
+  background: var(--negro);
   padding: 4rem 2rem;
-  color: var(--gris-claro-letras);
+  color: var(--blanco);
   text-align: center;
 }
 

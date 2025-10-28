@@ -2,7 +2,7 @@
 
 .planes {
   background-color: #1f1f1f;
-  color: var(--gris-claro-letras);
+  color: var(--blanco);
   font-family: var(--font-p);
   padding: 4rem 2rem;
 }
@@ -77,7 +77,7 @@
 
 .cta-button-outline:hover {
   background-color: var(--blanco);
-    color: var(--negro-fondo);
+    color: var(--negro);
     border-color: var(--blanco);
     font-weight: 200;
 }
@@ -118,7 +118,7 @@
   line-height: 1.6;
   position: relative;
   padding-left: 1.2rem;
-  color: var(--gris-claro-letras);
+  color: var(--blanco);
 }
 
 .automatizacion-central .bloque ul li::before {

@@ -1,6 +1,6 @@
 .proyectos {
-  background-color: var(--negro-fondo);
-  color: var(--gris-claro-letras);
+  background-color: var(--negro);
+  color: var(--blanco);
   font-family: var(--font-p);
   padding: 1rem 0rem;
   text-align: center;
@@ -70,7 +70,7 @@
 .ver-todos-btn:hover {
   background-color: var(--blanco);
   border-color: transparent;
-  color: var(--negro-fondo);
+  color: var(--negro);
   
 }
 

@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body{
-    background-color:var(--negro-fondo);
+    background-color:var(--negro);
 }
 
 html {

@@ -3,7 +3,7 @@
   --pad: 1rem;
 
   background: linear-gradient(180deg, var(--gris-oscuro) 0%, #1a1a1a 100%);
-  color: var(--gris-claro-letras);
+  color: var(--blanco);
   border-radius: var(--radius);
   padding: var(--pad);
   box-shadow: 0 6px 18px rgba(255, 75, 75, 0.12);
@@ -37,7 +37,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--negro-fondo);
+  background: var(--negro);
 }
 
 .card-project img {
