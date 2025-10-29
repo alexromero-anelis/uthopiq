@@ -1,56 +1,94 @@
-/* ---- CONTENEDOR HERO ---- */
+/* Paleta base */
+:root {
+  --negro: #000000;
+  --blanco: #ffffff;
+  --rojo-primario: #ff4b4b;
+  --gris-texto: #d6d6d6;
+  --gris-suave: #9ea0a4;
+}
+
+/* Wrapper para fijar el canvas detrás */
 .hero-wrapper {
   position: relative;
-  background-color: var(--negro); /* negro oscuro global */
-  color: var(--blanco);
-  padding-top: 80px;
-  overflow: hidden;
+  background: var(--negro);
+  overflow: clip; /* evita scroll por el canvas */
+}
+
+/* Canvas de fondo, cubriendo toda la sección */
+.tech-bg-canvas {
+  position: fixed;        /* fijo para cubrir toda la pantalla y reciclar frames */
+  inset: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* Contenedor principal por delante del canvas */
+.hero-container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Títulos */
+.hero-title {
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .hero-title-white {
   color: var(--blanco);
-  font-family: var(--font-h2);
-}
-.hero-title-red {
-  color: var(--rojo-primario);
-  font-family: var(--font-h2);
-}
-.hero-subtitle {
-  color: var(--gris-claro-letras, #b3b3b3);
-  font-family: var(--font-p);
 }
 
-/* CTA */
-.cta-button-outline {
-  border: 2px solid var(--rojo-primario);
+.hero-title-red {
   color: var(--rojo-primario);
+}
+
+/* Subtítulo */
+.hero-subtitle {
+  color: var(--gris-texto);
+  text-wrap: balance;
+}
+
+/* Botón CTA */
+.cta-button-outline {
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--blanco);
   background: transparent;
-  font-family: var(--font-p);
-  transition: all 0.25s ease;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
 }
 .cta-button-outline:hover {
-  background: var(--rojo-primario);
-  color: var(--blanco);
-  box-shadow: 0 0 16px rgba(255, 75, 75, 0.55);
+  border-color: var(--rojo-primario);
+  background: rgba(255,75,75,0.08);
+  transform: translateY(-1px);
+}
+.cta-button-outline:active {
+  transform: translateY(0);
 }
 
 /* Beneficios */
 .benefit-title {
   color: var(--blanco);
-  font-family: var(--font-h2);
-}
-.benefit-text {
-  color: var(--gris-claro);
-  font-family: var(--font-p);
-  max-width: 90%;
-  text-align: center;
+  font-weight: 700;
 }
 
-/* ---- CANVAS DE FONDO ---- */
-.tech-bg-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0; /* El contenido del hero debe ir por encima (usa z-10) */
-  pointer-events: none;
-  background: #000;
+.benefit-text {
+  color: var(--gris-suave);
+  max-width: 52ch;
+}
+
+/* Utilidades */
+.hero-buttons { z-index: 10; }
+
+/* Ajustes de spacing en pantallas pequeñas */
+@media (max-width: 640px) {
+  .hero-wrapper { padding-top: 4rem; }
+}
+
+/* Accesibilidad: foco visible en CTA si navegan con teclado */
+.cta-button-outline:focus-visible {
+  outline: 2px solid var(--rojo-primario);
+  outline-offset: 2px;
 }

@@ -1,6 +1,5 @@
 import FondoAnimado from "./FondoAnimado.jsx";
 import "./hero.css";
-import { Link } from "react-router-dom";
 
 function Hero({ scrollToSection }) {
   return (
