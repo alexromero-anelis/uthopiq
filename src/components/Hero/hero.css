@@ -1,141 +1,56 @@
+/* ---- CONTENEDOR HERO ---- */
 .hero-wrapper {
   position: relative;
-  background-color: var(--negro);
+  background-color: var(--negro); /* negro oscuro global */
   color: var(--blanco);
   padding-top: 80px;
   overflow: hidden;
 }
 
-/* ---- FONDO OSCURO TECNOLÓGICO ---- */
-.tech-bg-dark {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      circle at 30% 70%,
-      rgba(255, 75, 75, 0.05),
-      transparent 60%
-    ),
-    linear-gradient(180deg, #0d0d0d 0%, #000 100%);
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Líneas de datos */
-.tech-line {
-  position: absolute;
-  width: 140px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    var(--rojo-primario),
-    transparent
-  );
-  opacity: 0.15;
-  animation: lineMove 6s linear infinite;
-}
-
-@keyframes lineMove {
-  0% {
-    transform: translateX(-200px);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.3;
-  }
-  80% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateX(200px);
-    opacity: 0;
-  }
-}
-
-/* Partículas */
-.tech-particle-dark {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.3;
-  filter: blur(1px);
-  animation: particleFloat 10s ease-in-out infinite;
-}
-
-@keyframes particleFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translateY(-10px);
-    opacity: 0.5;
-  }
-}
-
-/* Hexágonos con brillo */
-.tech-hex-dark {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  background: rgba(255, 75, 75, 0.05);
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  box-shadow: 0 0 8px rgba(255, 75, 75, 0.1);
-  animation: hexGlow 8s ease-in-out infinite;
-}
-
-@keyframes hexGlow {
-  0%,
-  100% {
-    transform: rotate(0deg) scale(1);
-    opacity: 0.15;
-  }
-  50% {
-    transform: rotate(15deg) scale(1.1);
-    opacity: 0.4;
-  }
-}
-
-/* ---- TIPOGRAFÍA Y ESTILO ---- */
 .hero-title-white {
   color: var(--blanco);
   font-family: var(--font-h2);
 }
-
 .hero-title-red {
   color: var(--rojo-primario);
   font-family: var(--font-h2);
 }
-
 .hero-subtitle {
   color: var(--gris-claro-letras, #b3b3b3);
   font-family: var(--font-p);
 }
 
+/* CTA */
 .cta-button-outline {
   border: 2px solid var(--rojo-primario);
   color: var(--rojo-primario);
-  background-color: transparent;
+  background: transparent;
   font-family: var(--font-p);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
-
 .cta-button-outline:hover {
-  background-color: var(--rojo-primario);
+  background: var(--rojo-primario);
   color: var(--blanco);
-  box-shadow: 0 0 12px rgba(255, 75, 75, 0.5);
+  box-shadow: 0 0 16px rgba(255, 75, 75, 0.55);
 }
 
+/* Beneficios */
 .benefit-title {
   color: var(--blanco);
   font-family: var(--font-h2);
 }
-
 .benefit-text {
   color: var(--gris-claro);
   font-family: var(--font-p);
   max-width: 90%;
   text-align: center;
+}
+
+/* ---- CANVAS DE FONDO ---- */
+.tech-bg-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* El contenido del hero debe ir por encima (usa z-10) */
+  pointer-events: none;
+  background: #000;
 }
