@@ -7,116 +7,90 @@ export default function FondoAnimado() {
   const [elements, setElements] = useState([]);
 
   useEffect(() => {
-    const createElements = () => {
-      const newElements = [];
+    const newElements = [];
 
-      for (let i = 0; i < 8; i++) {
-        newElements.push({
-          id: `bubble-${i}`,
-          type: "bubble",
-          left: Math.random() * 100,
-          top: Math.random() * 100,
-          size: Math.random() * 60 + 20,
-          delay: Math.random() * 6,
-        });
-      }
+    // Líneas luminosas que se mueven
+    for (let i = 0; i < 8; i++) {
+      newElements.push({
+        id: `line-${i}`,
+        type: "line",
+        top: Math.random() * 100,
+        delay: Math.random() * 6,
+      });
+    }
 
-      for (let i = 0; i < 15; i++) {
-        newElements.push({
-          id: `particle-${i}`,
-          type: "particle",
-          top: Math.random() * 100,
-          delay: Math.random() * 15,
-        });
-      }
+    // Partículas rojas y blancas
+    for (let i = 0; i < 25; i++) {
+      const isRed = Math.random() < 0.3;
+      newElements.push({
+        id: `particle-${i}`,
+        type: "particle",
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        color: isRed ? "var(--rojo-primario)" : "rgba(255,255,255,0.4)",
+        delay: Math.random() * 8,
+      });
+    }
 
-      for (let i = 0; i < 5; i++) {
-        newElements.push({
-          id: `line-${i}`,
-          type: "line",
-          top: Math.random() * 100,
-          width: Math.random() * 200 + 100,
-          delay: Math.random() * 4,
-        });
-      }
+    // Destellos hexagonales suaves
+    for (let i = 0; i < 6; i++) {
+      newElements.push({
+        id: `hex-${i}`,
+        type: "hex",
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        delay: Math.random() * 5,
+      });
+    }
 
-      for (let i = 0; i < 6; i++) {
-        newElements.push({
-          id: `hex-${i}`,
-          type: "hexagon",
-          left: Math.random() * 100,
-          top: Math.random() * 100,
-          delay: Math.random() * 3,
-        });
-      }
-
-      setElements(newElements);
-    };
-
-    createElements();
+    setElements(newElements);
   }, []);
 
   return (
-    <div className="tech-bg">
-      {elements.map((element) => {
-        if (element.type === "bubble") {
+    <div className="tech-bg-dark">
+      {elements.map((el) => {
+        if (el.type === "line") {
           return (
             <div
-              key={element.id}
-              className="floating-element"
+              key={el.id}
+              className="tech-line"
               style={{
-                left: `${element.left}%`,
-                top: `${element.top}%`,
-                width: `${element.size}px`,
-                height: `${element.size}px`,
-                animationDelay: `${element.delay}s`,
+                top: `${el.top}%`,
+                animationDelay: `${el.delay}s`,
               }}
             />
           );
         }
-
-        if (element.type === "particle") {
+        if (el.type === "particle") {
           return (
             <div
-              key={element.id}
-              className="tech-particle"
+              key={el.id}
+              className="tech-particle-dark"
               style={{
-                top: `${element.top}%`,
-                animationDelay: `${element.delay}s`,
+                top: `${el.top}%`,
+                left: `${el.left}%`,
+                width: `${el.size}px`,
+                height: `${el.size}px`,
+                backgroundColor: el.color,
+                animationDelay: `${el.delay}s`,
               }}
             />
           );
         }
-
-        if (element.type === "line") {
+        if (el.type === "hex") {
           return (
             <div
-              key={element.id}
-              className="circuit-line"
+              key={el.id}
+              className="tech-hex-dark"
               style={{
-                top: `${element.top}%`,
-                width: `${element.width}px`,
-                left: `${Math.random() * 50}%`,
-                animationDelay: `${element.delay}s`,
+                left: `${el.left}%`,
+                top: `${el.top}%`,
+                animationDelay: `${el.delay}s`,
               }}
             />
           );
         }
-
-        if (element.type === "hexagon") {
-          return (
-            <div
-              key={element.id}
-              className="tech-hexagon"
-              style={{
-                left: `${element.left}%`,
-                top: `${element.top}%`,
-                animationDelay: `${element.delay}s`,
-              }}
-            />
-          );
-        }
-
         return null;
       })}
     </div>
