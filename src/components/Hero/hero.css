@@ -10,7 +10,6 @@
 /* Wrapper para fijar el canvas detrás */
 .hero-wrapper {
   position: relative;
-  background: var(--negro);
   overflow: clip; /* evita scroll por el canvas */
 }
 

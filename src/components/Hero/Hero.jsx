@@ -1,10 +1,8 @@
-import FondoAnimado from "./FondoAnimado.jsx";
 import "./hero.css";
 
 function Hero({ scrollToSection }) {
   return (
     <div className="hero-wrapper" id="inicio">
-      <FondoAnimado />
 
       <div className="hero-container container mx-auto px-4 min-h-screen flex flex-col justify-center relative z-10 mt-28 sm:mt-0">
         {/* Hero Section */}
