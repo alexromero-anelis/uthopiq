@@ -30,7 +30,7 @@ html {
   scroll-margin-top: 100px;
 }
 
-/* Canvas global detrás de todo */
+/* Canvas global detrás de todo (hint de rendimiento extra) */
 .site-bg-canvas {
   position: fixed;
   inset: 0;
@@ -40,4 +40,9 @@ html {
   pointer-events: none;
   display: block;
   background: #000;
+
+  /* rendimiento/pintado */
+  contain: strict; /* limita el área de layout/paint */
+  will-change: transform; /* ayuda a compositor */
+  image-rendering: auto; /* no pixelar los puntos pequeñitos */
 }

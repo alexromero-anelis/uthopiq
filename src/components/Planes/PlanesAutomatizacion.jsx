@@ -1,7 +1,6 @@
 import "./planes.css";
 import CardPlan from "./CardPlan/CardPlan";
 import automatizacionData from "./automatizacionData";
-import { Link } from "react-router-dom";
 
 function PlanesAutomatizacion() {
   const scrollToSection = (id) => {

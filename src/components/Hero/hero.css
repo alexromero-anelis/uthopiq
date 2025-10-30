@@ -33,21 +33,22 @@
 /* Títulos */
 .hero-title {
   line-height: 1.1;
-  font-weight: 800;
   letter-spacing: -0.02em;
 }
 
 .hero-title-white {
   color: var(--blanco);
+  font-family: var(--font-h2);
 }
 
 .hero-title-red {
   color: var(--rojo-primario);
+  font-family: var(--font-h2);
 }
 
 /* Subtítulo */
 .hero-subtitle {
-  color: var(--gris-texto);
+  color: var(--blanco);
   text-wrap: balance;
 }
 

@@ -1,154 +1,209 @@
+/* ===== estructura general ===== */
 .contacto {
-  color: var(--blanco);
-  font-family: var(--font-p);
-  padding: 4rem 2rem 2rem;
-  min-height: 100vh;
+  color: var(--blanco, #fff);
+  padding: clamp(2.5rem, 5vw, 5.5rem) 1rem;
+  background: transparent;
+}
+.contacto-head {
   text-align: center;
-}
-
-.contacto h2 {
-  font-size: 2.5rem;
-  font-family: var(--font-h2);
-  color: var(--blanco);
   margin-bottom: 1rem;
-  position: relative;
 }
-
+.contacto h2 {
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+  font-family: var(--font-h2);
+  margin: 0;
+}
 .contacto h2::after {
-  content: '';
+  content: "";
   display: block;
-  width: 60px;
+  width: 68px;
   height: 3px;
-  background-color: var(--rojo-primario);
-  margin: 0.4rem auto 1.5rem;
-  border-radius: 5px;
+  background: var(--rojo-primario, #ff4b4b);
+  margin: 0.6rem auto 1rem;
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(255, 75, 75, 0.35);
 }
-
 .contacto-sub {
+  color: var(--blanco, #cfcfcf);
+  max-width: 760px;
+  margin: 0 auto 1rem;
+  font-size: clamp(0.95rem, 1.6vw, 1rem);
+}
+
+/* ===== reutiliza tu card ===== */
+/* Aplica el mismo estilo de .card-plan a .card-contact */
+.card-plan,
+.card-contact {
+  /* (tu css existente ya lo cubre) */
+}
+.card-contact {
+  max-width: 980px;
+  margin: 1.2rem auto;
+}
+
+/* cuerpo interior (como .card-plan-body) */
+.card-contact-body {
+  padding: 1.2rem;
+}
+
+/* ===== formulario: más transparente para que se vea el fondo ===== */
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.9rem, 2vw, 1.2rem);
+}
+.field-full {
+  grid-column: 1/-1;
+}
+.field label {
+  display: block;
+  margin: 0 0 0.45rem;
+  color: var(--blanco, #d0d0d0);
   font-size: 0.9rem;
-  margin-bottom: 2.5rem;
-  color: var(--gris-claro);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.contacto .formulario {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  text-align: left;
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border-radius: 14px;
+  /* MUY transparente para ver el fondo */
+  background: rgba(10, 10, 10, 0.18);
+  -webkit-backdrop-filter: blur(16px) saturate(125%) contrast(106%);
+  backdrop-filter: blur(16px) saturate(125%) contrast(106%);
+  border: 0.1px solid rgba(255, 75, 75, 0.55);
+  color: #fff;
+  padding: 0.85rem 1rem;
+  font-size: 0.98rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease,
+    background 0.18s ease;
 }
-
-.formulario {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.formulario label {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.95rem;
-  color: var(--blanco);
-}
-
-.formulario input,
-.formulario select,
-.formulario textarea {
-  margin-top: 0.5rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid #333;
-  border-radius: 8px;
-  background-color: var(--gris-oscuro);
-  color: var(--blanco);
-  font-family: var(--font-p);
-  font-size: 0.95rem;
-  transition: box-shadow 0.3s ease, border 0.3s ease, background-color 0.25s ease;
-}
-
-.formulario input:hover,
-.formulario select:hover,
-.formulario textarea:hover {
-  background-color: #2a2a2a;
-}
-
-.formulario input:focus,
-.formulario select:focus,
-.formulario textarea:focus {
-  outline: none;
-  border-color: var(--rojo-primario);
-  box-shadow: 0 0 0 2px rgba(255, 75, 75, 0.4);
-}
-
-.formulario textarea {
+.contact-form textarea {
+  min-height: 140px;
   resize: vertical;
-  min-height: 120px;
 }
 
-.contacto .formulario button {
-  background-color: var(--rojo-primario);
-  color: var(--blanco);
-  padding: 0.9rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--font-p);
+/* hover/focus con borde rojo fuerte, igual que la card */
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: rgba(255, 75, 75, 0.78);
+  background: rgba(10, 10, 10, 0.22);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(255, 75, 75, 0.92);
+  box-shadow: 0 0 0 1px rgba(255, 75, 75, 0.55),
+    0 0 18px rgba(255, 75, 75, 0.22);
+}
+
+/* captcha centrado y compacto */
+.captcha {
+  display: flex;
+  justify-content: center;
+}
+.captcha > div {
+  transform: scale(0.96);
+  transform-origin: center;
+}
+
+/* botón: borde rojo marcado (match con card) */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.3rem;
+}
+.actions .hint {
+  color: var(--gris-claro, #bdbdbd);
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.actions button {
+  appearance: none;
+  border-radius: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  align-self: center;
+  padding: 0.9rem 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(10, 10, 10, 0.18);
+  -webkit-backdrop-filter: blur(16px) saturate(125%) contrast(106%);
+  backdrop-filter: blur(16px) saturate(125%) contrast(106%);
+  border: 1px solid rgba(255, 75, 75, 0.78);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45), 0 0 18px rgba(255, 75, 75, 0.18);
+  transition: transform 0.1s ease, box-shadow 0.2s ease, border-color 0.2s ease,
+    background 0.2s ease;
+}
+.actions button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 75, 75, 0.92);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), 0 0 22px rgba(255, 75, 75, 0.24);
+  background: rgba(10, 10, 10, 0.22);
+}
+.actions button:active {
+  transform: translateY(0);
+}
+.actions button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-.contacto .formulario button:hover {
-  background-color: #c0392b;
+/* spinner */
+.spinner {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-right: 0.55rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+  vertical-align: -0.15em;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
+/* info inferior */
 .contacto-info {
-  margin-top: 3rem;
+  margin-top: 1.2rem;
+  text-align: center;
+  color: var(--gris-claro, #cfcfcf);
   font-size: 0.95rem;
-  color: var(--gris-claro);
 }
-
 .contacto-info a {
-  color: var(--rojo-primario);
+  color: var(--rojo-primario, #ff4b4b);
   text-decoration: none;
 }
-
 .contacto-info a:hover {
   text-decoration: underline;
 }
 
-.captcha-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
+/* SweetAlert mantiene tu look */
 .uthopiq-popup {
-  background-color: #1a1a1a;
+  background-color: rgba(12, 12, 12, 0.92);
   color: #fff;
   border-radius: 1rem;
-  border: 1px solid #2c2c2c;
+  border: 1px solid rgba(255, 75, 75, 0.25);
   padding: 2rem;
-  font-family: var(--font-h2);
-  box-shadow: 0 0 20px rgba(255, 75, 75, 0.25);
+  box-shadow: 0 0 24px rgba(255, 75, 75, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-
 .uthopiq-title {
   color: #ff4b4b;
   font-size: 1.6rem;
 }
-
 .uthopiq-text {
   font-size: 1rem;
   color: #ddd;
 }
-
 .uthopiq-confirm-button,
 .uthopiq-cancel-button {
   padding: 0.6rem 1.4rem;
@@ -157,34 +212,36 @@
   border: 2px solid #ff4b4b;
   background: transparent;
   color: #ff4b4b;
-  transition: all 0.3s ease;
-  margin: 0 0.3rem;
+  transition: all 0.25s;
 }
-
 .uthopiq-confirm-button:hover,
 .uthopiq-cancel-button:hover {
-  background-color: #ff4b4b;
+  background: #ff4b4b;
   color: #fff;
 }
 
-@media (max-width: 768px) {
-  .contacto {
-    padding: 3rem 1rem 5rem;
+/* responsive */
+@media (max-width: 900px) {
+  .contact-form {
+    grid-template-columns: 1fr;
   }
-
-  .contacto h2 {
-    font-size: 1.8rem;
+  .captcha > div {
+    transform: scale(0.94);
   }
-
-  .contacto .formulario {
-    padding: 0 1rem;
+}
+@media (max-width: 420px) {
+  .captcha > div {
+    transform: scale(0.86);
   }
+}
 
-  .contacto .formulario button {
-    font-size: 0.95rem;
-  }
-
-  .contacto-info {
-    font-size: 0.9rem;
+/* fallback sin backdrop-filter */
+@supports not (
+  (-webkit-backdrop-filter: blur(16px)) or (backdrop-filter: blur(16px))
+) {
+  .contact-form input,
+  .contact-form textarea,
+  .actions button {
+    background: rgba(18, 18, 18, 0.82);
   }
 }

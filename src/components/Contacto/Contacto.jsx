@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Swal from "sweetalert2";
 import ReCAPTCHA from "react-google-recaptcha";
 import "./contacto.css";
@@ -6,8 +6,8 @@ import "./contacto.css";
 function Contacto() {
   const [captchaToken, setCaptchaToken] = useState(null);
   const [status, setStatus] = useState("");
+  const recaptchaRef = useRef(null);
 
-  // SweetAlert2 personalizado
   const customSwal = Swal.mixin({
     customClass: {
       popup: "uthopiq-popup",
@@ -21,137 +21,137 @@ function Contacto() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const form = e.target;
+    const form = e.currentTarget;
     const nombre = form.nombre.value.trim();
     const email = form.email.value.trim();
     const mensaje = form.mensaje.value.trim();
-
-    if (!nombre) {
-      customSwal.fire({
-        icon: "warning",
-        title: "No se puede enviar el mensaje",
-        text: "Por favor ingresa tu nombre.",
-      });
-      return;
-    }
-
-    if (!email) {
-      customSwal.fire({
-        icon: "warning",
-        title: "No se puede enviar el mensaje",
-        text: "Por favor ingresa tu correo electrónico.",
-      });
-      return;
-    }
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      customSwal.fire({
+
+    if (!nombre)
+      return customSwal.fire({ icon: "warning", title: "Falta tu nombre" });
+    if (!emailRegex.test(email))
+      return customSwal.fire({ icon: "warning", title: "Correo inválido" });
+    if (!mensaje)
+      return customSwal.fire({ icon: "warning", title: "Mensaje vacío" });
+    if (!captchaToken)
+      return customSwal.fire({
         icon: "warning",
-        title: "Correo inválido",
-        text: "Por favor ingresa un correo electrónico válido.",
+        title: "Completa el reCAPTCHA",
       });
-      return;
-    }
 
-    if (!mensaje) {
-      customSwal.fire({
-        icon: "warning",
-        title: "No se puede enviar el mensaje",
-        text: "Por favor escribe tu mensaje.",
-      });
-      return;
-    }
-
-    if (!captchaToken) {
-      customSwal.fire({
-        icon: "warning",
-        title: "Verificación requerida",
-        text: "Por favor completa el reCAPTCHA.",
-      });
-      return;
-    }
-
-    setStatus("Enviando...");
-
+    setStatus("sending");
     try {
       const formData = new FormData(form);
       formData.append("g-recaptcha-response", captchaToken);
 
-      const response = await fetch("https://uthopiq.com/contacto.php", {
+      const res = await fetch("https://uthopiq.com/contacto.php", {
         method: "POST",
         body: formData,
       });
+      const txt = await res.text();
 
-      const result = await response.text();
-
-      if (result.includes("Mensaje enviado correctamente")) {
+      if (txt.includes("Mensaje enviado correctamente")) {
         customSwal.fire({
           icon: "success",
-          title: "Mensaje enviado correctamente",
-          text: "Pronto contactaremos contigo",
+          title: "¡Enviado!",
+          text: "Te respondemos en &lt; 24h.",
         });
         form.reset();
         setCaptchaToken(null);
-        setStatus("");
+        recaptchaRef.current?.reset();
       } else {
         customSwal.fire({
           icon: "error",
           title: "Error al enviar",
-          text: result,
+          text: txt || "Intenta de nuevo.",
         });
       }
-    } catch (error) {
+    } catch {
       customSwal.fire({
         icon: "error",
         title: "Ocurrió un error",
-        text: "Intenta nuevamente en unos minutos",
+        text: "Prueba en unos minutos.",
       });
+    } finally {
+      setStatus("");
     }
   };
 
   return (
     <section className="contacto" id="contacto">
-      <h2 data-aos="fade-up">Contacto</h2>
-      <p className="contacto-sub" data-aos="fade-up">
-        ¿Tienes un proyecto o necesitas ayuda? Escríbenos y responderemos en
-        menos de 24h.
-      </p>
+      <header className="contacto-head" data-aos="fade-up">
+        <h2>Contacto</h2>
+        <p className="contacto-sub">
+          ¿Tienes un proyecto o necesitas ayuda? Respondemos en menos de 24h.
+        </p>
+      </header>
 
-      <form className="formulario" onSubmit={handleSubmit} data-aos="fade-up">
-        <label>
-          Nombre:
-          <input type="text" name="nombre" />
-        </label>
+      {/* Card con el mismo look que .card-plan */}
+      <div
+        className="card-contact card-plan"
+        data-aos="fade-up"
+        data-aos-delay="50"
+      >
+        <div className="card-contact-body card-plan-body">
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <div className="field">
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                placeholder="Tu nombre"
+                autoComplete="name"
+              />
+            </div>
 
-        <label>
-          Correo electrónico:
-          <input type="email" name="email" />
-        </label>
+            <div className="field">
+              <label htmlFor="email">Correo electrónico</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="tucorreo@dominio.com"
+                autoComplete="email"
+              />
+            </div>
 
-        <label>
-          Mensaje:
-          <textarea
-            name="mensaje"
-            placeholder="Cuéntanos sobre tu proyecto o consulta"
-          />
-        </label>
+            <div className="field field-full">
+              <label htmlFor="mensaje">Mensaje</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="5"
+                placeholder="Cuéntanos sobre tu proyecto"
+              />
+            </div>
 
-        <div className="captcha-wrapper">
-          <ReCAPTCHA
-            sitekey="6LeYDIUrAAAAADDSGLNADq0UygjRR2aIQak6w_wT"
-            onChange={(token) => setCaptchaToken(token)}
-            onExpired={() => setCaptchaToken(null)}
-          />
+            <div className="captcha field-full">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey="6LeYDIUrAAAAADDSGLNADq0UygjRR2aIQak6w_wT"
+                onChange={(t) => setCaptchaToken(t)}
+                onExpired={() => setCaptchaToken(null)}
+                theme="dark"
+              />
+            </div>
+
+            <div className="actions field-full">
+              <button type="submit" disabled={status === "sending"}>
+                {status === "sending" ? (
+                  <span className="spinner" aria-hidden="true" />
+                ) : null}
+                {status === "sending" ? " Enviando…" : "Enviar mensaje"}
+              </button>
+              <span className="hint">Respuesta en &lt; 24h</span>
+            </div>
+          </form>
         </div>
+      </div>
 
-        <button type="submit">Enviar mensaje</button>
-      </form>
-
-      <div className="contacto-info" data-aos="fade-up">
+      <div className="contacto-info" data-aos="fade-up" data-aos-delay="100">
         <p>
-          Puedes escribirnos directamente a{" "}
+          O escríbenos a{" "}
           <a href="mailto:contacto@uthopiq.com">contacto@uthopiq.com</a>
         </p>
       </div>
