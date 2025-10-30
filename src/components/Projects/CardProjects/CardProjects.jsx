@@ -13,27 +13,30 @@ function CardProjects({ title, image, tags = [], link, demo }) {
         <img src={image} alt={title} loading="lazy" />
         {demo && <div className="demo-label">DEMO</div>}
       </div>
-      
-      <h4 className="card-project-title">{title}</h4>
 
-      <div className="card-project-footer">
-        <div className="tags">
-          {tags.map((tag, i) => (
-            <span key={i} className="tag">#{tag}</span>
-          ))}
+      {/* NUEVO wrapper para aplicar el panel interior tipo glass */}
+      <div className="card-project-body">
+        <h4 className="card-project-title">{title}</h4>
+
+        <div className="card-project-footer">
+          <div className="tags">
+            {tags.map((tag, i) => (
+              <span key={i} className="tag">#{tag}</span>
+            ))}
+          </div>
+
+          {showVisit && (
+            <a
+              className="visit-btn"
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visitar web de ${title}`}
+            >
+              Visitar web
+            </a>
+          )}
         </div>
-
-        {showVisit && (
-          <a
-            className="visit-btn"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Visitar web de ${title}`}
-          >
-            Visitar web
-          </a>
-        )}
       </div>
     </div>
   );
