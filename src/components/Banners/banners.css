@@ -1,8 +1,6 @@
 /* ===================== BANNERS / CASOS DE USO ===================== */
 
 .casos-uso-fondo {
-  background: linear-gradient(rgba(15, 15, 15, 0.9), rgba(15, 15, 15, 0.9)),
-              url("/images/automatiza-fondo.jpg") center/cover no-repeat;
   padding: 5rem 2rem;
   color: var(--blanco);
   text-align: center;
@@ -61,8 +59,6 @@
 /* ===== BENEFICIOS WEB ===== */
 
 .banner-beneficios-fondo {
-  background: linear-gradient(rgba(15, 15, 15, 0.95), rgba(15, 15, 15, 0.95)),
-              url("/images/beneficio-web.jpg") center/cover no-repeat;
   padding: 5rem 2rem;
   color: white;
   text-align: center;

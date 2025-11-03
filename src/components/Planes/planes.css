@@ -1,7 +1,6 @@
 /* ================= PLANES WEB ================= */
 
 .planes {
-  background-color: #1f1f1f;
   color: var(--blanco);
   font-family: var(--font-p);
   padding: 4rem 2rem;
@@ -43,7 +42,7 @@
 
 .planes-descripcion {
   font-size: 0.9rem;
-  color: var(--gris-claro);
+  color: var(--blanco);
   line-height: 1.6;
 
   font-family: var(--font-p);
@@ -79,7 +78,6 @@
   background-color: var(--blanco);
     color: var(--negro);
     border-color: var(--blanco);
-    font-weight: 200;
 }
 
 /* ================= AUTOMATIZACIONES ================= */

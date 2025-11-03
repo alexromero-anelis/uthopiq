@@ -1,16 +1,48 @@
-@import url('./styles/global.css');
+@import url("./styles/global.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color:var(--negro);
+/* Fondo base en el documento, NO en #root */
+html,
+body {
+  background: var(--negro, #000);
+  min-height: 100%;
 }
 
+/* #root por encima del canvas, pero TRANSPARENTE */
+#root {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+body {
+  color: var(--blanco, #fff);
+  overflow-x: hidden;
+}
+
+/* Scroll suave + offset a anclas */
 html {
   scroll-behavior: smooth;
 }
-
 [id] {
   scroll-margin-top: 100px;
+}
+
+/* Canvas global detrás de todo (hint de rendimiento extra) */
+.site-bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  background: #000;
+
+  /* rendimiento/pintado */
+  contain: strict; /* limita el área de layout/paint */
+  will-change: transform; /* ayuda a compositor */
+  image-rendering: auto; /* no pixelar los puntos pequeñitos */
 }

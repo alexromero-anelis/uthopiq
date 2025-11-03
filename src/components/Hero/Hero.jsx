@@ -1,11 +1,8 @@
-import FondoAnimado from "./FondoAnimado.jsx";
 import "./hero.css";
-import { Link } from "react-router-dom";
 
 function Hero({ scrollToSection }) {
   return (
     <div className="hero-wrapper" id="inicio">
-      <FondoAnimado />
 
       <div className="hero-container container mx-auto px-4 min-h-screen flex flex-col justify-center relative z-10 mt-28 sm:mt-0">
         {/* Hero Section */}
@@ -22,7 +19,7 @@ function Hero({ scrollToSection }) {
             tecnológicas que trabajan 24/7 para ti.
           </p>
 
-          {/* Botones CTA */}
+          {/* Botón CTA */}
           <div className="hero-buttons flex flex-col sm:flex-row gap-3 justify-center mb-12">
             <button
               className="cta-button-outline px-6 py-3 rounded-md font-medium text-base"
@@ -33,7 +30,7 @@ function Hero({ scrollToSection }) {
           </div>
         </div>
 
-        {/* Beneficios de la agencia */}
+        {/* Beneficios */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12 text-center px-4">
           <div className="flex flex-col items-center">
             <h3 className="benefit-title text-lg sm:text-xl mb-2">

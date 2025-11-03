@@ -1,5 +1,4 @@
 .quienes {
-  background-color: #1f1f1f;
   color: var(--blanco);
   font-family: var(--font-p);
   padding: 4rem 2rem;
@@ -29,7 +28,7 @@
   margin: 0 auto 4rem;
   text-align: center;
   font-size: 0.9rem;
-  color: var(--gris-claro);
+  color: var(--blanco);
   line-height: 1.6;
 }
 
@@ -64,7 +63,7 @@
 
 .socio-texto p {
   font-size: 1rem;
-  color: var(--gris-claro);
+  color: var(--blanco);
   line-height: 1.6;
 }
 

@@ -1,7 +1,39 @@
+/* Paleta base */
+:root {
+  --negro: #000000;
+  --blanco: #ffffff;
+  --rojo-primario: #ff4b4b;
+  --gris-texto: #d6d6d6;
+  --gris-suave: #9ea0a4;
+}
+
+/* Wrapper para fijar el canvas detrás */
 .hero-wrapper {
-  background-color: var(--negro-fondo);
-  color: var(--blanco);
-  padding-top: 80px;
+  position: relative;
+  overflow: clip; /* evita scroll por el canvas */
+}
+
+/* Canvas de fondo, cubriendo toda la sección */
+.tech-bg-canvas {
+  position: fixed;        /* fijo para cubrir toda la pantalla y reciclar frames */
+  inset: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* Contenedor principal por delante del canvas */
+.hero-container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Títulos */
+.hero-title {
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .hero-title-white {
@@ -14,147 +46,49 @@
   font-family: var(--font-h2);
 }
 
+/* Subtítulo */
 .hero-subtitle {
-  color: var(--gris-claro-letras);
-  font-family: var(--font-p);
-}
-
-.cta-button {
-  background-color: var(--rojo-primario);
   color: var(--blanco);
-  font-family: var(--font-p);
-  box-shadow: 0 4px 15px rgba(255, 75, 75, 0.3);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-wrap: balance;
 }
 
+/* Botón CTA */
 .cta-button-outline {
-  border-color: var(--rojo-primario);
-  color: var(--rojo-primario);
-  background-color: transparent;
-  font-family: var(--font-p);
-  transition: all 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--blanco);
+  background: transparent;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
 }
-
 .cta-button-outline:hover {
-  background-color: var(--blanco);
-  color: var(--gris-oscuro);
-  border-color: var(--blanco);
+  border-color: var(--rojo-primario);
+  background: rgba(255,75,75,0.08);
+  transform: translateY(-1px);
+}
+.cta-button-outline:active {
+  transform: translateY(0);
 }
 
+/* Beneficios */
 .benefit-title {
   color: var(--blanco);
-  font-family: var(--font-h2);
+  font-weight: 700;
 }
 
 .benefit-text {
-  color: var(--gris-claro);
-  font-family: var(--font-p);
-  max-width: 90%;
-  text-align: center;
+  color: var(--gris-suave);
+  max-width: 52ch;
 }
 
-.arrow-down {
-  animation: bounce 2s infinite;
+/* Utilidades */
+.hero-buttons { z-index: 10; }
+
+/* Ajustes de spacing en pantallas pequeñas */
+@media (max-width: 640px) {
+  .hero-wrapper { padding-top: 4rem; }
 }
 
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Fondo Animado */
-.tech-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 50, 50, 0.05),
-    transparent 70%
-  );
-}
-
-.floating-element {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 75, 75, 0.12);
-  animation: float 8s ease-in-out infinite;
-}
-
-.tech-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background-color: rgba(255, 75, 75, 0.2);
-  border-radius: 50%;
-  animation: pulse 10s infinite ease-in-out alternate;
-}
-
-.circuit-line {
-  position: absolute;
-  height: 1px;
-  background: linear-gradient(to right, rgba(255, 75, 75, 0.3), transparent);
-  animation: moveLine 5s linear infinite;
-}
-
-.tech-hexagon {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: rgba(255, 75, 75, 0.07);
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  animation: floatHex 12s infinite ease-in-out;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.1;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.3;
-  }
-}
-
-@keyframes moveLine {
-  0% {
-    transform: translateX(-100px);
-  }
-  100% {
-    transform: translateX(100px);
-  }
-}
-
-@keyframes floatHex {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(15deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
+/* Accesibilidad: foco visible en CTA si navegan con teclado */
+.cta-button-outline:focus-visible {
+  outline: 2px solid var(--rojo-primario);
+  outline-offset: 2px;
 }

@@ -1,5 +1,4 @@
 .proyectos {
-  background-color: var(--negro);
   color: var(--blanco);
   font-family: var(--font-p);
   padding: 4rem 2rem;
@@ -26,7 +25,7 @@
 
 .proyectos-subtitulo {
   font-size: 0.9rem;
-  color: var(--gris-claro);
+  color: var(--blanco);
   margin-bottom: 3.5rem;
   max-width: 650px;
   margin-left: auto;

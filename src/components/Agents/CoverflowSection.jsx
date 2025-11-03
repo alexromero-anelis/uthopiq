@@ -3,11 +3,11 @@ import "./agents.css";
 import { useNavigate } from "react-router-dom";
 
 const agents = [
-  { id: 1, name: "Ena",  role: "Gestor de Reservas", image: "/images/agentes/gestor-reservas.png",
-    description: "Gestiona y confirma citas automáticamente, enviando recordatorios personalizados para reducir ausencias y optimizar tu agenda diaria.",
+  { id: 1, name: "Ena",  role: "Gestor de Leads y Cualificación", image: "/images/agentes/gestor-reservas.png",
+    description: "Captura prospectos desde tu web, anuncios y chat; los califica automáticamente, los envía a tu CRM y agenda llamadas o demos con tu equipo. Realiza seguimiento inteligente en las primeras 48 h para aumentar conversiones.",
     accent: "#1e15c7ff", backA: "rgba(40, 32, 70, 0.55)", backB: "rgba(20, 16, 35, 0.6)", backC: "rgba(15, 12, 25, 0.7)" },
-  { id: 2, name: "Milo", role: "Gestor de Recordatorios", image: "/images/agentes/gestor-recordatorios.png",
-    description: "Envía recordatorios por mensaje o correo para garantizar que tus clientes nunca olviden sus citas, mejorando la asistencia y la comunicación.",
+  { id: 2, name: "Milo", role: "Gestor de Análisis y Reportes", image: "/images/agentes/gestor-recordatorios.png",
+    description: "Recopila y analiza datos de ventas, marketing y operaciones en tiempo real. Genera dashboards automáticos y reportes inteligentes que te ayudan a tomar decisiones basadas en datos sin esfuerzo manual.",
     accent: "#ff86cdff", backA: "rgba(66, 22, 22, 0.55)", backB: "rgba(30, 12, 12, 0.6)", backC: "rgba(22, 8, 8, 0.7)" },
   { id: 4, name: "Nero", role: "Asistente de Voz", image: "/images/agentes/asistente-voz.png",
     description: "Atiende llamadas, responde preguntas frecuentes y guía a tus clientes con voz natural, disponible las 24 horas.",

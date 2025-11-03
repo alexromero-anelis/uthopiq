@@ -1,7 +1,6 @@
 import "./planes.css";
 import CardPlan from "./CardPlan/CardPlan";
 import planesData from "./planesData";
-import { Link } from "react-router-dom";
 
 function Planes() {
   const scrollToSection = (id) => {
