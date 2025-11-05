@@ -14,6 +14,7 @@ function MobileNavbarLinks({
         <li><button onClick={() => scrollToSection("automatizaciones")}>Automatizaciones</button></li>
         <li><button onClick={() => scrollToSection("quienes-somos")}>Quiénes somos</button></li>
         <li><button onClick={() => scrollToSection("contacto")}>Contáctanos</button></li>
+        <li><a href="https://blog.uthopiq.com/" target="_blank"><button>Blog</button></a></li>
 
 <li className="navbar-cta-mobile">
   <button
