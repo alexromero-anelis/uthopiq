@@ -200,3 +200,38 @@
   .agents { padding: 3rem 0; }
   .agents-header h2 { font-size: 1.8rem; }
 }
+
+/* --- FIX SAFARI/WEBKIT PARA FLIP 3D --- */
+.card-inner{
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Asegura que TODAS las capas ocultan su dorso */
+.agent-face,
+.agent-face * {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);              /* promover a GPU y evitar “bleed” */
+  -webkit-transform: translateZ(0);
+}
+
+/* Separa ligeramente ambas caras en Z para WebKit */
+.agent-front { transform: rotateY(0deg) translateZ(0.1px); }
+.agent-back  { transform: rotateY(180deg) translateZ(0.1px); }
+
+/* Fallback visual: opacidad cruzada durante el flip */
+.agent-front, .agent-back {
+  transition: transform .7s cubic-bezier(.2,.7,.2,1.02),
+              opacity .28s ease;
+}
+.agent-back { opacity: 0; }
+.agent-card.is-flipped .agent-front { opacity: 0; }
+.agent-card.is-flipped .agent-back  { opacity: 1; }
+
+/* Evita que el gradiente/imagen rompa el ocultado */
+.agent-img, .agent-gradient, .surface, .surface-back, .agent-info {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
