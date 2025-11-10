@@ -5,7 +5,7 @@ function BeneficiosWeb() {
     <section className="banner-beneficios-fondo">
       <div className="banner-beneficios-container" data-aos="fade-up">
         <h2 className="banner-beneficios-title">
-          ¿Por qué deberías tener una página web?
+          ¿Por qué deberías tener una web?
         </h2>
         <ul className="banner-beneficios-lista">
           <li>

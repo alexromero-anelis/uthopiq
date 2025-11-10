@@ -4,7 +4,7 @@ function Hero({ scrollToSection }) {
   return (
     <div className="hero-wrapper" id="inicio">
 
-      <div className="hero-container container mx-auto px-4 min-h-screen flex flex-col justify-center relative z-10 mt-28 sm:mt-0">
+    <div className="hero-container container mx-auto px-4 min-h-[calc(100svh-72px)] flex flex-col justify-center md:justify-center sm:justify-start pt-4 md:pt-8">
         {/* Hero Section */}
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl mb-4">
@@ -22,7 +22,7 @@ function Hero({ scrollToSection }) {
           {/* Botón CTA */}
           <div className="hero-buttons flex flex-col sm:flex-row gap-3 justify-center mb-12">
             <button
-              className="cta-button-outline px-6 py-3 rounded-md font-medium text-base"
+              className="cta-button-outline px-6 py-3 rounded-md font-medium text-lg"
               onClick={() => scrollToSection("contacto")}
             >
               Contáctanos ahora

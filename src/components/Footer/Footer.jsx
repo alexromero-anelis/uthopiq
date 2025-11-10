@@ -98,7 +98,7 @@ function Footer() {
           <div className="footer-column footer-contact">
             <div className="flex items-start gap-2">
               <MapPin size={18} className="icon" />
-              <span>Elda, Alicante – España</span>
+              <span>Elda/Petrer, Alicante – España</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail size={18} className="icon" />
